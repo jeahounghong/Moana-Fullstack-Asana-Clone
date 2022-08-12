@@ -1,14 +1,15 @@
 import React from "react";
-import NavBar from "./nav_bar/nav_bar";
 
-class Home extends React.Component{
+class Home extends React.Component {
+
     constructor(props){
         super(props);
     }
 
-    render(){return(
-        <div class="home">
-            <NavBar/>
+    render(){return (
+        <div>
+            <div>Welcome, {this.props.currentUser.username}</div>
+            <button onClick={() => this.props.logoutUser(this.props.currentUser.id)}>Logout</button>
         </div>
     )}
 }
