@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+
+.home-video {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+ }
+
+ #root {
+    position: fixed;
+    top: 0;
+    width: 100%;
+ }
