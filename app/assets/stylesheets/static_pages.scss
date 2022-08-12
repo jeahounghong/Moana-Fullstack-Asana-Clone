@@ -3,3 +3,29 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "reset";
 @import "home/home.scss";
+@import "session_form.scss";
+
+#root{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.app {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.home{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+

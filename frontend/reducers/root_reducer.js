@@ -1,13 +1,10 @@
+import { combineReducers } from "redux"
+import sessionsReducer from "./sessions_reducer"
+import errorsReducer from "./errors_reducer"
 
-
-
-
-
-
-// Setup Reducer: Comment out upon creation of other reducers
-
-const rootReducer = (state = {}, action)=>{
-
-}
+const rootReducer = combineReducers({
+    session: sessionsReducer,
+    errors: errorsReducer
+})
 
 export default rootReducer

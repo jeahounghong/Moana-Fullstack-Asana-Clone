@@ -1,0 +1,11 @@
+.session-form-container{
+    margin-top: 40px;
+    border: 1px solid red;
+    .session-form {
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+        border: solid 1px red;
+        padding: 40px;
+    }
+}

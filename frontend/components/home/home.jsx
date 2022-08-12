@@ -7,7 +7,7 @@ class Home extends React.Component{
     }
 
     render(){return(
-        <div>
+        <div class="home">
             <NavBar/>
         </div>
     )}
