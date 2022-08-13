@@ -10,6 +10,10 @@ class Api::TeamsController < ApplicationController
         end
     end
 
+    def index
+        debugger
+    end
+
     private
 
     def team_params

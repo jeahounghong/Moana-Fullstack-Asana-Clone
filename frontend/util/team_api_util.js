@@ -6,3 +6,10 @@ export const createTeam = (team) => (
         data: {team: team}
     })
 )
+
+export const receiveUserTeams = (userId) => (
+    $.ajax({
+        url: `/api/users/${userId}/teams`,
+        method: 'GET'
+    })
+)
