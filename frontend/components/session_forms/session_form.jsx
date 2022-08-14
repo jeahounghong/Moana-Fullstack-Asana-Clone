@@ -10,11 +10,8 @@ class SessionForm extends React.Component {
         }
         if (this.props.formType === "signup"){
             this.setState({email: ""})
-            // this.state = {
-            //     username: "",
-            //     password: "",
-            //     email: ""
-            // }
+            this.setState({firstName: ""})
+            this.setState({lastName: ""})
         }
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -44,13 +41,31 @@ class SessionForm extends React.Component {
                     />
                 </label>
 
-                {/* EMAIL INPUT ONLY FOR SIGNUP */}
+                {/* EMAIL, FIRST NAME, LAST NAME INPUT ONLY FOR SIGNUP */}
                 {this.props.formType === "Sign Up" ? 
                     <label>Email:
                         <input 
                             type="text" 
                             value={this.state.email} 
                             onChange={this.handleInput('email')}
+                        />
+                    </label>
+                : ""}
+                {this.props.formType === "Sign Up" ? 
+                    <label>First Name:
+                        <input 
+                            type="text" 
+                            value={this.state.firstName} 
+                            onChange={this.handleInput('firstName')}
+                        />
+                    </label>
+                : ""}
+                {this.props.formType === "Sign Up" ? 
+                    <label>Last Name:
+                        <input 
+                            type="text" 
+                            value={this.state.lastName} 
+                            onChange={this.handleInput('lastName')}
                         />
                     </label>
                 : ""}

@@ -7,7 +7,7 @@ export const createTeam = (team) => (
     })
 )
 
-export const receiveUserTeams = (userId) => (
+export const fetchUserTeams = (userId) => (
     $.ajax({
         url: `/api/users/${userId}/teams`,
         method: 'GET'

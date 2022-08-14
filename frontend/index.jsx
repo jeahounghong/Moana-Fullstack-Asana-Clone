@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { openSidebar, closeSidebar } from "./actions/ui_actions";
 import Root from './components/root'
 import configureStore from './store/store'
-import {receiveUserTeams} from './util/team_api_util'
 
 document.addEventListener("DOMContentLoaded", ()=>{
 
@@ -20,7 +20,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
         store = configureStore()
     }
     window.store = store;
-    window.receiveUserTeams= receiveUserTeams;
+    window.openSidebar = openSidebar;
+    window.closeSidebar = closeSidebar;
+    
     const root = document.getElementById("root");
     ReactDOM.render(<Root store={store}/>, root)
 })

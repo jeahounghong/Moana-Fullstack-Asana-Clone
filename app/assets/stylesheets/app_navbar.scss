@@ -1,0 +1,47 @@
+.app-navbar {
+    background-color: lightcoral;
+    width: auto;
+    height: 60px;
+    display: flex;
+    align-items: center;
+
+    .app-navbar-right {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        display: flex;
+        * {
+            margin-left: 10px;
+        }
+    }
+
+    .app-navbar-title{
+
+        display: flex;
+
+        * {
+            margin-right: 15px;
+            font-size: 30px;
+        }
+
+        .toggle-sidebar{
+            // background-color: red;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+            margin-left: 10px;
+            * {
+                margin-left: 15px;
+            }
+            transition: 0.3s;
+        }
+
+        .toggle-sidebar:hover{
+            background-color: rgb(188, 100, 100);
+            transition: 0.3s;
+        }
+    }
+}

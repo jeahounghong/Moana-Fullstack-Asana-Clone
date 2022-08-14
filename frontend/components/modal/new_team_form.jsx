@@ -1,6 +1,7 @@
 import React from "react";
 
 class NewTeamForm extends React.Component{
+
     constructor(props){
         super(props);
         this.state = {
@@ -10,8 +11,6 @@ class NewTeamForm extends React.Component{
                 description: ""
             }
         }
-        this.toggleModal = this.toggleModal.bind(this);
-        this.modal = this.modal.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -24,8 +23,8 @@ class NewTeamForm extends React.Component{
 
     handleSubmit(e){
         e.preventDefault();
-        this.props.printTeam(this.state.teamInfo)
-        this.props.createTeam(this.state.teamInfo)
+        const result = this.props.createTeam(this.state.teamInfo)
+        console.log(result);
 
         /*
             If the team is successfully created, this should redirect to the team's show page. 
@@ -33,14 +32,13 @@ class NewTeamForm extends React.Component{
         */
     }
 
-    toggleModal(){
-        this.setState({showModal: !this.state.showModal})
-        console.log(this.state.showModal)
+    componentDidMount(){
+        console.log(this.props.closeModal)
     }
 
-    modal(){return(
+    render(){return(
         <div className="modal-container" onSubmit={this.handleSubmit}>
-            <div className="modal-close-button"  onClick={this.toggleModal}>
+            <div className="modal-close-button"  onClick={this.props.closeModal}>
                 <i class="fa-solid fa-xmark"></i>
             </div>
             <div className="modal-content">
@@ -65,13 +63,7 @@ class NewTeamForm extends React.Component{
 
         </div>
     )}
-
-    render(){return(
-        <div>
-            <div className="add-team-button" onClick={this.toggleModal}>Add Team+</div>
-            {this.state.showModal ? this.modal() : "" }
-        </div>
-    )}
 }
+
 
 export default NewTeamForm;

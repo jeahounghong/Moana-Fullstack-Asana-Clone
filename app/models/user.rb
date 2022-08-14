@@ -9,16 +9,24 @@
 #  session_token   :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  first_name      :string
+#  last_name       :string
 #
 class User < ApplicationRecord
 
     attr_reader :password
 
     validates :username, presence: true, uniqueness: true
-    validates :password_digest, :session_token, :email, presence: true
+    validates :email, presence: true, uniqueness: true
+    validates :password_digest, :session_token, presence: true
+    validates :first_name, :last_name, presence: true
     validate :valid_email
     validates :password, length: { minimum: 6 }, allow_nil: true
     after_initialize :ensure_session_token
+
+    has_many :team_users, dependent: :destroy
+    
+    has_many :teams, through: :team_users
 
     def self.find_by_credentials(username,password)
         user = User.find_by(username: username)

@@ -1,4 +1,4 @@
-import { RECEIVE_TEAM } from "../actions/team_actions";
+import { RECEIVE_TEAM, RECEIVE_USER_TEAMS } from "../actions/team_actions";
 
 const TeamsReducer = (state = {}, action) => {
     Object.freeze(state);
@@ -6,12 +6,16 @@ const TeamsReducer = (state = {}, action) => {
 
     switch(action.type){
         case RECEIVE_TEAM:
-            debugger;
             nextState[action.team.id] = action.team;
+            return nextState;
+        case RECEIVE_USER_TEAMS:
+            Object.values(action.teams).forEach((team)=>{
+                nextState[team.id] = team
+            })
             return nextState;
         default:
             return state;
     }
 }
 
-export default TeamsReducer
+export default TeamsReducer;

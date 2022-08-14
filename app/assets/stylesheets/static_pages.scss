@@ -4,8 +4,11 @@
 @import "reset";
 @import "main/main.scss";
 @import "session_form.scss";
-@import "sidebar.scss"
-;
+@import "sidebar.scss";
+@import "modal.scss";
+@import "app_navbar.scss";
+@import "team_page.scss";
+
 #root{
     display: flex;
     flex-direction: column;

@@ -6,14 +6,24 @@ import LoginFormContainer from "./session_forms/login_form_container";
 import { AuthRoute, ProtectedRoute } from "../util/route_util";
 import HomeContainer from "./home/home_container";
 import SidebarContainer from "./sidebar/sidebar_container";
+import ModalContainer from "./modal/modal";
+import AppNavbarContainer from "./app_navbar/app_navbar_container";
+import { TeamContainer } from "./teams/team_container";
 
 const App = () => (
     <div className="app">
         <AuthRoute exact path="/" component={Main}/>
         <AuthRoute path="/signup" component={SignupFormContainer}/>
         <AuthRoute path="/login" component={LoginFormContainer}/>
-        <ProtectedRoute path="/" component={SidebarContainer}/>
-        <ProtectedRoute path="/home" component={HomeContainer}/>
+        <div id="app-logged-in">
+            <ProtectedRoute path="/" component={SidebarContainer}/>
+            <div id="main-content">
+                <ProtectedRoute path="/" component={ModalContainer}/>
+                <ProtectedRoute path="/" component={AppNavbarContainer}/>
+                <ProtectedRoute path="/teams/:team_id/show" component={TeamContainer}/>
+
+            </div>
+        </div>
     </div>
 )
 

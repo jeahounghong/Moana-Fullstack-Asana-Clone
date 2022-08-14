@@ -10,4 +10,13 @@
 #
 class Team < ApplicationRecord
     validates :name, presence: :true
+
+    has_many :team_users,
+        class_name: :TeamUser,
+        primary_key: :id,
+        foreign_key: :team_id,
+        dependent: :destroy
+    
+    has_many :users,
+        through: :team_users
 end
