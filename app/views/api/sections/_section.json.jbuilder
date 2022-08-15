@@ -1,0 +1,1 @@
+json.extract! section, :id, :project_id, :title

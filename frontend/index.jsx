@@ -2,7 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Root from './components/root';
 import configureStore from './store/store';
-import { fetchUserProjects } from "./actions/project_actions";
+import { fetchProjectSections, RECEIVE_SECTION } from './actions/section_actions'
+import {fetchUserProjects} from './actions/project_actions'
 
 
 document.addEventListener("DOMContentLoaded", ()=>{
@@ -22,8 +23,10 @@ document.addEventListener("DOMContentLoaded", ()=>{
     }
     window.store = store;
     window.fetchUserProjects = fetchUserProjects;
-
+    window.fetchProjectSections = fetchProjectSections;
+    window.RECEIVE_SECTION = RECEIVE_SECTION;
     
     const root = document.getElementById("root");
     ReactDOM.render(<Root store={store}/>, root)
 })
+

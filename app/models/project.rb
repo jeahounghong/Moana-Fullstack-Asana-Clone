@@ -16,4 +16,5 @@ class Project < ApplicationRecord
     validates :title, uniqueness: {scope: :team_id}
     belongs_to :team
 
+    has_many :sections
 end
