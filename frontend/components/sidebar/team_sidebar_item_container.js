@@ -9,7 +9,7 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    fetchUserProjects: (userId) => dispatch(fetchUserProjects(userId)),
+    
 })
 
 const TeamSidebarItemContainer = connect(mapStateToProps, mapDispatchToProps)(TeamSidebarItem);

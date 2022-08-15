@@ -23,7 +23,10 @@ class AppNavbar extends React.Component{
                     console.log(id)
                     console.log(this.props.teams)
                     return this.props.teams[id] ? this.props.teams[id].name : "";
-                } else{
+                } else if (this.props.url.substring(0,9) === "/projects"){
+
+                    return "PROJECT PAGE"
+                } else {
                     return this.props.url;
                 }
         }

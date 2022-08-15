@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 class TeamShow extends React.Component {
 
@@ -27,10 +28,12 @@ class TeamShow extends React.Component {
                         Object.values(this.props.projects).map((project) => {
                             if (project.teamId === this.props.team.id){
                                 return (
-                                    <li key={project.id} className="team-show-projects-item">
-                                        <div>{project.title}</div>
-                                        <div>{project.description}</div>
-                                    </li>
+                                    <Link to={`/projects/${project.id}/list`} key={project.id}>
+                                        <li  className="team-show-projects-item">
+                                            <div>{project.title}</div>
+                                            <div>{project.description}</div>
+                                        </li>
+                                    </Link>
                                 )
                             }
                         })

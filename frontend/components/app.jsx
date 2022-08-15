@@ -9,6 +9,8 @@ import SidebarContainer from "./sidebar/sidebar_container";
 import ModalContainer from "./modal/modal";
 import AppNavbarContainer from "./app_navbar/app_navbar_container";
 import { TeamContainer } from "./teams/team_container";
+import ProjectContainer from "../projects/project_container";
+import { Switch } from "react-router-dom";
 
 const App = () => (
     <div className="app">
@@ -21,7 +23,9 @@ const App = () => (
                 <ProtectedRoute path="/" component={ModalContainer}/>
                 <ProtectedRoute path="/" component={AppNavbarContainer}/>
                 <ProtectedRoute path="/teams/:team_id/show" component={TeamContainer}/>
-
+                <Switch>
+                    <ProtectedRoute path="/projects/:project_id/list" component={ProjectContainer}/>
+                </Switch>
             </div>
         </div>
     </div>

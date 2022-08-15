@@ -57,9 +57,11 @@ class TeamSidebarItem extends React.Component {
                 </div>
                 <ul>
                     {this.props.team.teamProjects.map((projectId) => (
-                        <li>
-                            {this.props.projects[projectId].title}
-                        </li>
+                        <Link to={`/projects/${projectId}/list`} key={projectId}>
+                            <li>
+                                {this.props.projects[projectId].title}
+                            </li>
+                        </Link>
                     ))}
                 </ul>
             </div>
