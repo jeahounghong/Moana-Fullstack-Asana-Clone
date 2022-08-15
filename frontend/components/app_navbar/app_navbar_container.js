@@ -9,7 +9,8 @@ const mapStateToProps = (state, ownProps) => ({
     currentUser: (Boolean(state.session.id) ? state.entities.users[state.session.id] : null),
     url: ownProps.location.pathname,
     showSidebar: state.ui.sidebar,
-    teams: state.entities.teams
+    teams: state.entities.teams,
+    projects: state.entities.projects
 })
 
 const mapDispatchToProps = dispatch => ({
