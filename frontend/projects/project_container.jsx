@@ -4,6 +4,13 @@ import ProjectList from "./project_list";
 
 class Project extends React.Component {
 
+    constructor(props){
+        super(props)
+        console.log(props)
+
+        this.renderProject = this.renderProject.bind(this)
+    }
+
     projectNavbar(){return(
         <div className="project-navbar">
             <div>
@@ -24,15 +31,26 @@ class Project extends React.Component {
         </div>
     )}
 
+    renderProject(path){
+        switch(path){
+            case "/projects/:project_id/list":
+                return <ProjectList {...this.props}/>
+            default: 
+                return ""
+        }
+    }
+
     render(){return(
         <div className="project-page">
             {this.projectNavbar()}
+            {this.renderProject(this.props.path)}
         </div>
     )}
 }
 
-const mapStateToProps = state => ({
-
+const mapStateToProps = (state, ownProps) => ({
+    project: state.entities.projects[ownProps.match.params.project_id],
+    path: ownProps.match.path
 })
 
 const mapDispatchToProps = dispatch => ({
