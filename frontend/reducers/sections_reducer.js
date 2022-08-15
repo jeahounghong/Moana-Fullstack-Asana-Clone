@@ -1,4 +1,4 @@
-import { RECEIVE_SECTION, RECEIVE_SECTIONS } from "../actions/section_actions";
+import { RECEIVE_SECTION, RECEIVE_SECTIONS, REMOVE_SECTION } from "../actions/section_actions";
 
 
 const SectionsReducer = (state = {}, action) => {
@@ -14,6 +14,11 @@ const SectionsReducer = (state = {}, action) => {
         case RECEIVE_SECTION:
             nextState[action.section.id] = action.section;
             return nextState;
+
+        case REMOVE_SECTION:
+            delete nextState[action.sectionId];
+            return nextState;
+
         default:
             return state;
     }

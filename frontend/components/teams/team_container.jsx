@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import TeamShow from "./team_show";
 import { fetchUserProjects } from "../../actions/project_actions";
 import { showNewProjectForm } from "../../actions/ui_actions";
-import { fetchProjectSections } from "../../actions/section_actions";
+import { deleteSection, fetchProjectSections } from "../../actions/section_actions";
 
 const mapStateToProps = (state, ownProps) => ({
     team: state.entities.teams[ownProps.match.params.team_id],
@@ -14,7 +14,7 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch) => ({
     fetchUserProjects: (userId) => dispatch(fetchUserProjects(userId)),
     showNewProjectForm: (teamId) => dispatch(showNewProjectForm(teamId)),
-    fetchProjectSections: (projectId) => dispatch(fetchProjectSections(projectId))
+    fetchProjectSections: (projectId) => dispatch(fetchProjectSections(projectId)),
 })
 
 class Team extends React.Component{

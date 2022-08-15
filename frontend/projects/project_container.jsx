@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import ProjectList from "./project_list";
-import { createSection, fetchProjectSections, updateSection } from "../actions/section_actions";
+import { createSection, deleteSection, fetchProjectSections, updateSection } from "../actions/section_actions";
 
 class Project extends React.Component {
 
@@ -59,7 +59,8 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = dispatch => ({
     fetchProjectSections: (projectId) => dispatch(fetchProjectSections(projectId)),
     updateSection: (section) => dispatch(updateSection(section)),
-    createSection: (section) => dispatch(createSection(section))
+    createSection: (section) => dispatch(createSection(section)),
+    deleteSection: (sectionId) => dispatch(deleteSection(sectionId))
 })
 
 const ProjectContainer = connect(mapStateToProps, mapDispatchToProps)(Project);

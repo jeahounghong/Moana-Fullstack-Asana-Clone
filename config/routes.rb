@@ -9,15 +9,15 @@ Rails.application.routes.draw do
       resources :projects, only: [:index]
     end
 
-    resources :teams, only: [:create, :update, :delete] do
+    resources :teams, only: [:create, :update, :destroy] do
       resources :projects, only: [:index]
     end
 
-    resources :projects, only: [:create, :update, :delete] do 
+    resources :projects, only: [:create, :update, :destroy] do 
       resources :sections, only: [:index]
     end
 
-    resources :sections, only: [:create, :update, :delete]
+    resources :sections, only: [:create, :update, :destroy]
 
     resource :session, only: [:create, :destroy]
   end

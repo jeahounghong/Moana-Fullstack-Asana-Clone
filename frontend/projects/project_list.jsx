@@ -55,25 +55,33 @@ class ProjectList extends React.Component {
     }
 
     componentDidMount(){
-        const contents = $('.sections')
-        $('.sections').blur((() => {
-            console.log($('.sections'))
-            for( let i = 0; i < contents.length; i++){
-                let sectionId = parseInt(contents[i].id.substring(8))
-                this.props.updateSection({
-                    id: sectionId,
-                    project_id: this.props.project.id,
-                    title: contents[i].innerHTML
-                })
-                
-            }
-        }))
+        // Used a setTimeout in place of a hook to allow for components to render
+        setTimeout(() => {
+            const contents = $('.sections')
+            console.log(contents)
+            $('.sections').blur((() => {
+                for( let i = 0; i < contents.length; i++){
+                    let sectionId = parseInt(contents[i].id.substring(8))
+                    if (contents[i].innerHTML === ""){
+                        // console.log("empty")
+                        this.props.deleteSection(sectionId)
+                    } else {
+                        this.props.updateSection({
+                            id: sectionId,
+                            project_id: this.props.project.id,
+                            title: contents[i].innerHTML
+                        })
+                    }
+                    
+                }
+            }))
 
-        contents.keydown((e) => {
-            if (e.keyCode === 13){
-                e.preventDefault();
-            }
-        })
+            contents.keydown((e) => {
+                if (e.keyCode === 13){
+                    e.preventDefault();
+                }
+            })
+        }, 500)
     }
 
     render(){
@@ -94,26 +102,10 @@ class ProjectList extends React.Component {
                                 {this.props.sections[section.id] ? this.props.sections[section.id].title : ""}
                             </span>
                         </li> : ""
-                    
-                        // <li>
-                        //     {section.projectId},{this.props.project.id}
-                        // </li>
                     ))}
 
-
-                    {/* { this.props.project ? this.props.project.projectSections.map((sectionId) => (
-                        <li className="project-section-li-items" key={sectionId}>
-                            <span contentEditable={true} 
-                                    onChange={this.updateSection} 
-                                    className="sections" 
-                                    id={`section-${sectionId}`}
-                                    suppressContentEditableWarning={true}>
-                                {this.props.sections[sectionId] ? this.props.sections[sectionId].title : ""}
-                            </span>
-                        </li>
-                    )) : ""} */}
                 </ul>
-                <div onClick={() => this.setState({addSection: true})}>Add Section +</div>
+                <div onClick={() => this.setState({addSection: !this.state.addSection})}>Add Section +</div>
                 {this.state.addSection ? this.addSectionForm() : ""}
             </div>
         </div>

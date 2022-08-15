@@ -21,3 +21,10 @@ export const createSection = (section) => (
         data: {section: section}
     })
 )
+
+export const deleteSection = (sectionId) => (
+    $.ajax({
+        url: `/api/sections/${sectionId}`,
+        method: `DELETE`
+    })
+)

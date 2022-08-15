@@ -24,7 +24,17 @@ class Api::SectionsController < ApplicationController
         if @section.save
             render :show
         else
-            render json: @section.errors.full_messages
+            render json: @section.errors.full_messages, status: 401
+        end
+    end
+
+    def destroy
+        @section = Section.find_by(id: params[:id])
+        if @section && current_user
+            @section.destroy
+            render json: ["Section successfully deleted"]
+        else
+            render json: ["Section was either not found or not deleted"], status: 401
         end
     end
 
