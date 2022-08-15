@@ -9,7 +9,8 @@ class ProjectList extends React.Component {
             title: ""
         }
         this.description = this.description.bind(this);
-        this.handleCreate = this.handleCreate.bind(this)
+        this.handleCreate = this.handleCreate.bind(this);
+        this.addSectionForm = this.addSectionForm.bind(this)
     }
 
     description(){
@@ -21,12 +22,14 @@ class ProjectList extends React.Component {
         )
     }
 
-    handleCreate(){
+    handleCreate(e){
+        e.preventDefault();
         const title = this.state.title;
         this.props.createSection({
             title: title,
             project_id: parseInt(this.props.project.id)
         })
+        this.setState({addSection: false})
     }
 
     handleInput(type){
@@ -68,15 +71,6 @@ class ProjectList extends React.Component {
         contents.keydown((e) => {
             if (e.keyCode === 13){
                 e.preventDefault();
-                // console.log("hi")
-                // for( let i = 0; i < contents.length; i++){
-                //     let sectionId = parseInt(contents[i].id.substring(8))
-                //     this.props.updateSection({
-                //         id: sectionId,
-                //         project_id: this.props.project.id,
-                //         title: contents[i].innerHTML
-                //     })
-                // }
             }
         })
     }
