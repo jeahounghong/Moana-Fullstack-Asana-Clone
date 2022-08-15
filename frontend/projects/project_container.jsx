@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import ProjectList from "./project_list";
+import { createSection, fetchProjectSections, updateSection } from "../actions/section_actions";
 
 class Project extends React.Component {
 
@@ -32,8 +33,9 @@ class Project extends React.Component {
     )}
 
     renderProject(path){
-        switch(path){
-            case "/projects/:project_id/list":
+        
+        switch(path.substring(path.length-4,path.length)){
+            case "list":
                 return <ProjectList {...this.props}/>
             default: 
                 return ""
@@ -50,11 +52,14 @@ class Project extends React.Component {
 
 const mapStateToProps = (state, ownProps) => ({
     project: state.entities.projects[ownProps.match.params.project_id],
-    path: ownProps.match.path
+    path: ownProps.location.pathname,
+    sections: state.entities.sections
 })
 
 const mapDispatchToProps = dispatch => ({
-
+    fetchProjectSections: (projectId) => dispatch(fetchProjectSections(projectId)),
+    updateSection: (section) => dispatch(updateSection(section)),
+    createSection: (section) => dispatch(createSection(section))
 })
 
 const ProjectContainer = connect(mapStateToProps, mapDispatchToProps)(Project);

@@ -17,6 +17,8 @@ Rails.application.routes.draw do
       resources :sections, only: [:index]
     end
 
+    resources :sections, only: [:create, :update, :delete]
+
     resource :session, only: [:create, :destroy]
   end
 end

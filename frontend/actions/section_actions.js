@@ -14,4 +14,12 @@ const receiveSections = (sections) => ({
 })
 
 export const fetchProjectSections = (projectId) => dispatch => SectionApiUtil.fetchProjectSections(projectId)
-    .then(projects => dispatch(receiveSections(projects)))
+    .then(sections => dispatch(receiveSections(sections)))
+
+export const updateSection = (section) => dispatch => SectionApiUtil.updateSection(section)
+    .then(section => dispatch(receiveSection(section)))
+
+export const createSection = (section) => dispatch => SectionApiUtil.createSection(section)
+    .then(section => dispatch(receiveSection(section)))
+
+// export const update

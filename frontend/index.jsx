@@ -3,7 +3,8 @@ import ReactDOM from "react-dom";
 import Root from './components/root';
 import configureStore from './store/store';
 import { fetchProjectSections, RECEIVE_SECTION } from './actions/section_actions'
-import {fetchUserProjects} from './actions/project_actions'
+import {createSection} from './actions/section_actions'
+import * as SectionApiUtil from './util/section_api_util'
 
 
 document.addEventListener("DOMContentLoaded", ()=>{
@@ -22,9 +23,8 @@ document.addEventListener("DOMContentLoaded", ()=>{
         store = configureStore()
     }
     window.store = store;
-    window.fetchUserProjects = fetchUserProjects;
-    window.fetchProjectSections = fetchProjectSections;
-    window.RECEIVE_SECTION = RECEIVE_SECTION;
+    
+    window.createSection = SectionApiUtil.createSection
     
     const root = document.getElementById("root");
     ReactDOM.render(<Root store={store}/>, root)

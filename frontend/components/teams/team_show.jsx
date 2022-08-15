@@ -28,7 +28,7 @@ class TeamShow extends React.Component {
                         Object.values(this.props.projects).map((project) => {
                             if (project.teamId === this.props.team.id){
                                 return (
-                                    <Link to={`/projects/${project.id}/list`} key={project.id}>
+                                    <Link to={`/projects/${project.id}/list`} key={project.id} onClick={()=> this.props.fetchProjectSections(project.id)}>
                                         <li  className="team-show-projects-item">
                                             <div>{project.title}</div>
                                             <div>{project.description}</div>

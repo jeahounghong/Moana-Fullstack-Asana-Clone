@@ -57,7 +57,7 @@ class TeamSidebarItem extends React.Component {
                 </div>
                 <ul>
                     {this.props.team.teamProjects.map((projectId) => (
-                        <Link to={`/projects/${projectId}/list`} key={projectId} >
+                        <Link to={`/projects/${projectId}/list`} key={projectId} onClick={() => this.props.fetchProjectSections(projectId)}>
                             <li className="sidebar-project-item">
                                 <div>{this.props.projects[projectId].title}</div>
                                 {this.props.projects[projectId].public ? "" : <i className="fa-solid fa-lock"></i>}

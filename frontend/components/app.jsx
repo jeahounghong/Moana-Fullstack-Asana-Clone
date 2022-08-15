@@ -23,9 +23,7 @@ const App = () => (
                 <ProtectedRoute path="/" component={ModalContainer}/>
                 <ProtectedRoute path="/" component={AppNavbarContainer}/>
                 <ProtectedRoute path="/teams/:team_id/show" component={TeamContainer}/>
-                <Switch>
-                    <ProtectedRoute path="/projects/:project_id/list" component={ProjectContainer}/>
-                </Switch>
+                <ProtectedRoute path="/projects/:project_id/" component={ProjectContainer}/>
             </div>
         </div>
     </div>
