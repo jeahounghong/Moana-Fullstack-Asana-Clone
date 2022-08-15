@@ -15,4 +15,6 @@ class Section < ApplicationRecord
     validates :title, uniqueness: {scope: :project_id}
 
     belongs_to :project
+
+    has_many :tasks, as: :owner
 end

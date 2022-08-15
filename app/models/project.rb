@@ -17,4 +17,6 @@ class Project < ApplicationRecord
     belongs_to :team
 
     has_many :sections
+
+    has_many :tasks, as: :owner
 end
