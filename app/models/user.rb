@@ -28,6 +28,8 @@ class User < ApplicationRecord
     
     has_many :teams, through: :team_users
 
+    has_many :projects, through: :teams
+
     def self.find_by_credentials(username,password)
         user = User.find_by(username: username)
         return nil unless user

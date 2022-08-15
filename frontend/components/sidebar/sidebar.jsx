@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import TeamSidebarItemContainer from "./team_sidebar_item_container";
 
 class Sidebar extends React.Component{
     constructor(props){
@@ -12,6 +12,7 @@ class Sidebar extends React.Component{
 
     componentDidMount(){
         this.props.fetchUserTeams(this.props.currentUser);
+        this.props.fetchUserProjects(this.props.currentUser);
     }
 
     componentDidUpdate(){
@@ -42,7 +43,8 @@ class Sidebar extends React.Component{
                         <ul>
                             {Object.values(this.props.teams).map((team) => (
                                     <li key={team.id}>
-                                        <Link to={`/teams/${team.id}/show`}>{team.name}</Link>
+
+                                        <TeamSidebarItemContainer team={team}/>
                                     </li>
                             ))}
                         </ul>

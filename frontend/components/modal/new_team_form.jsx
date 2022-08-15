@@ -39,7 +39,7 @@ class NewTeamForm extends React.Component{
     render(){return(
         <div className="modal-container" onSubmit={this.handleSubmit}>
             <div className="modal-close-button"  onClick={this.props.closeModal}>
-                <i class="fa-solid fa-xmark"></i>
+                <i className="fa-solid fa-xmark"></i>
             </div>
             <div className="modal-content">
                 <h3>Create new team</h3>

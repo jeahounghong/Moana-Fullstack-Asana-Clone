@@ -1,4 +1,4 @@
-import { SHOW_NEW_TEAM_FORM, CLOSE_MODAL, OPEN_SIDEBAR, CLOSE_SIDEBAR } from "../actions/ui_actions";
+import { SHOW_NEW_PROJECT_FORM,SHOW_NEW_TEAM_FORM, CLOSE_MODAL, OPEN_SIDEBAR, CLOSE_SIDEBAR } from "../actions/ui_actions";
 
 const preloadedState = {
     loading: false,
@@ -16,6 +16,11 @@ const uiReducer = (state = preloadedState, action) => {
             nextState.modal = true;
             return nextState;
         
+        case SHOW_NEW_PROJECT_FORM:
+            nextState.modalContent = SHOW_NEW_PROJECT_FORM;
+            nextState.modal = true;
+            return nextState;
+
         case CLOSE_MODAL:
             nextState.modal = false;
             nextState.modalContent = null;

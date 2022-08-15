@@ -1,12 +1,18 @@
 import React from "react";
 import { connect } from "react-redux";
 import TeamShow from "./team_show";
+import { fetchUserProjects } from "../../actions/project_actions";
+import { showNewProjectForm } from "../../actions/ui_actions";
 
 const mapStateToProps = (state, ownProps) => ({
-    team: state.entities.teams[ownProps.match.params.team_id]
+    team: state.entities.teams[ownProps.match.params.team_id],
+    projects: state.entities.projects,
+    currentUser: state.session.id
 })
 
 const mapDispatchToProps = (dispatch) => ({
+    fetchUserProjects: (teamId) => dispatch(fetchUserProjects(teamId)),
+    showNewProjectForm: (teamId) => dispatch(showNewProjectForm(teamId))
 
 })
 
