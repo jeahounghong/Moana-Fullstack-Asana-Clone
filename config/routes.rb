@@ -15,9 +15,14 @@ Rails.application.routes.draw do
 
     resources :projects, only: [:create, :update, :destroy] do 
       resources :sections, only: [:index]
+      resources :tasks, only: [:index]
     end
 
-    resources :sections, only: [:create, :update, :destroy]
+    resources :sections, only: [:create, :update, :destroy] do 
+      resources :tasks, only: [:index]
+    end
+
+    resources :tasks, only: [:create, :update, :destroy]
 
     resource :session, only: [:create, :destroy]
   end
