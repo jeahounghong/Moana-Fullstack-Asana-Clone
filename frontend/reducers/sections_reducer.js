@@ -13,7 +13,7 @@ const SectionsReducer = (state = {}, action) => {
         
         case RECEIVE_SECTION:
             nextState[action.section.id] = action.section;
-
+            return nextState;
         default:
             return state;
     }

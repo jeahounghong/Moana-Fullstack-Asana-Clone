@@ -30,6 +30,7 @@ class ProjectList extends React.Component {
             project_id: parseInt(this.props.project.id)
         })
         this.setState({addSection: false})
+        setTimeout(() => {this.setState({title: ""})}, 500)
     }
 
     handleInput(type){
@@ -75,19 +76,42 @@ class ProjectList extends React.Component {
         })
     }
 
-    render(){return(
+    render(){
+        return(
         <div className="project-list">
             {this.description()}
             <div className="project-sections">
                 <h3>Sections</h3>
                 <ul>
-                    { this.props.project ? this.props.project.projectSections.map((sectionId) => (
-                        <li className="project-section-li-items">
-                            <span contentEditable={true} onChange={this.updateSection} className="sections" id={`section-${sectionId}`}>
+                    { Object.values(this.props.sections).map((section) => (
+                        (section.projectId === this.props.project.id) ? 
+                        <li className="project-section-li-items" key={section.id}>
+                            <span contentEditable={true} 
+                                    onChange={this.updateSection} 
+                                    className="sections" 
+                                    id={`section-${section.id}`}
+                                    suppressContentEditableWarning={true}>
+                                {this.props.sections[section.id] ? this.props.sections[section.id].title : ""}
+                            </span>
+                        </li> : ""
+                    
+                        // <li>
+                        //     {section.projectId},{this.props.project.id}
+                        // </li>
+                    ))}
+
+
+                    {/* { this.props.project ? this.props.project.projectSections.map((sectionId) => (
+                        <li className="project-section-li-items" key={sectionId}>
+                            <span contentEditable={true} 
+                                    onChange={this.updateSection} 
+                                    className="sections" 
+                                    id={`section-${sectionId}`}
+                                    suppressContentEditableWarning={true}>
                                 {this.props.sections[sectionId] ? this.props.sections[sectionId].title : ""}
                             </span>
                         </li>
-                    )) : ""}
+                    )) : ""} */}
                 </ul>
                 <div onClick={() => this.setState({addSection: true})}>Add Section +</div>
                 {this.state.addSection ? this.addSectionForm() : ""}

@@ -14,7 +14,7 @@ import { Switch } from "react-router-dom";
 
 const App = () => (
     <div className="app">
-        <AuthRoute exact path="/" component={Main}/>
+        <AuthRoute path="/" component={Main}/>
         <AuthRoute path="/signup" component={SignupFormContainer}/>
         <AuthRoute path="/login" component={LoginFormContainer}/>
         <div id="app-logged-in">
