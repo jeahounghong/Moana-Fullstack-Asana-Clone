@@ -20,5 +20,5 @@ class Team < ApplicationRecord
     has_many :users,
         through: :team_users
 
-    has_many :projects
+    has_many :projects, dependent: :destroy
 end
