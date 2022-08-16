@@ -29,8 +29,11 @@ class SessionForm extends React.Component {
 
     render(){return(
         <div className="session-form-container">
-            <div className="form-heading">{this.props.formType}</div>
-
+            <div className="form-logo">
+                <img src={window.logo} alt="" />
+            </div>
+            {/* <div className="form-heading">{this.props.formType}</div> */}
+            <img className="form-background-image" src={window.background} alt="form-background" />
             <form onSubmit={this.handleSubmit} className="session-form">
                 {/* USERNAME INPUT */}
                 <label>Username:
@@ -83,6 +86,7 @@ class SessionForm extends React.Component {
                 <input 
                     type="submit"
                     value={this.props.formType}
+                    className="submit"
                 />
             </form>
 

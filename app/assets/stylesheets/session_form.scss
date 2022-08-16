@@ -1,11 +1,70 @@
 .session-form-container{
-    margin-top: 40px;
-    border: 1px solid red;
+    margin-top: 70px;
+    // border: 1px solid red;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px gray;
     .session-form {
         display: flex;
         flex-direction: column;
-        width: 300px;
-        border: solid 1px red;
-        padding: 40px;
+        width: 400px;
+        // border: solid 1px red;
+        padding: 30px;
+        background-color: white;
+
+        label {
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 10px;
+
+            :first-child{
+                margin-top: 3px;   
+                margin-bottom: 10px;
+            }
+
+            input{
+                border-radius: 3px;
+                border: 1px solid gray;
+                height: 25px;
+                font-size: 20px;
+                font-family: avenir;
+                padding: 5px;
+            }
+        }
+
+        .submit{
+            background-color: rgb(80, 100, 255);
+            height: 35px;
+            border: none;
+            border-radius: 3px;
+            color: white;
+            font-size: 15px;
+            font-family: avenir;
+        }
     }
+
+    .form-background-image{
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        z-index: -1;
+    }
+
+    .form-heading {
+        // background-color: red;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .form-logo {
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        img{
+            height: 30px;
+        }
+    }
+    
 }

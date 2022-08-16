@@ -19,12 +19,15 @@
 
     #nav-bar-logo{
         img{
-            height: 40px;
+            height: 35px;
+            padding-top: 10px;
+
         }
     }
 
     .session-button {
         padding-right: 20px;
+        // padding-bottom: 10px;
     }
 
     .get-started {
@@ -36,7 +39,7 @@
     }
     
     #gray-background{
-        height: 800px;
+        height: 700px;
         width: 40%;
         z-index: -1;
         background-color: rgb(195, 195, 195);
@@ -82,4 +85,24 @@
 #main-page-description{
     font-size: 20px;
     width: 500px;
+}
+
+.main-buttons{
+    margin-top: 30px;
+    display: flex;
+    font-size: 20px;
+    text-decoration: none;
+    * {
+        margin-right: 15px;
+        background-color: black;
+        color: white;
+        text-decoration: none;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    .demo {
+        background-color: rgb(180, 210, 255);
+        color: black;
+    }
 }
