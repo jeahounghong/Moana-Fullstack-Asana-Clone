@@ -14,18 +14,20 @@ import { Switch } from "react-router-dom";
 
 const App = () => (
     <div className="app">
-        <AuthRoute path="/" component={Main}/>
-        <AuthRoute path="/signup" component={SignupFormContainer}/>
-        <AuthRoute path="/login" component={LoginFormContainer}/>
-        <div id="app-logged-in">
-            <ProtectedRoute path="/" component={SidebarContainer}/>
-            <div id="main-content">
-                <ProtectedRoute path="/" component={ModalContainer}/>
-                <ProtectedRoute path="/" component={AppNavbarContainer}/>
-                <ProtectedRoute path="/teams/:team_id/show" component={TeamContainer}/>
-                <ProtectedRoute path="/projects/:project_id/" component={ProjectContainer}/>
+            <Switch>
+                <AuthRoute exact path="/" component={Main}/>
+                <AuthRoute exact path="/signup" component={SignupFormContainer}/>
+                <AuthRoute exact path="/login" component={LoginFormContainer}/>
+            </Switch>
+            <div id="app-logged-in">
+                <ProtectedRoute path="/" component={SidebarContainer}/>
+                <div id="main-content">
+                    <ProtectedRoute path="/" component={ModalContainer}/>
+                    <ProtectedRoute path="/" component={AppNavbarContainer}/>
+                    <ProtectedRoute path="/teams/:team_id/show" component={TeamContainer}/>
+                    <ProtectedRoute path="/projects/:project_id/" component={ProjectContainer}/>
+                </div>
             </div>
-        </div>
     </div>
 )
 

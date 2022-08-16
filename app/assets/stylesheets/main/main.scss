@@ -1,19 +1,85 @@
 .nav-bar{
-    background-color: rgba($color: #000000, $alpha: 0.4);
+    background-color: rgba($color: #000000, $alpha: 0.0);
     width: 100%;
     margin: none;
-    height: 70px;
+    height: 80px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    color: white;
+    color: black;
     text-decoration: none;
 
     :first-child{
         padding-left: 50px;
     }
     :last-child{
-        padding-right: 50px;
+        margin-right: 50px;
     }
+
+    #nav-bar-logo{
+        img{
+            height: 40px;
+        }
+    }
+
+    .session-button {
+        padding-right: 20px;
+    }
+
+    .get-started {
+        background-color: black;
+        color:white;
+        padding: 7px;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+    
+    #gray-background{
+        height: 800px;
+        width: 40%;
+        z-index: -1;
+        background-color: rgb(195, 195, 195);
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}
+
+#phrase{
+    position: absolute;
+    font-size: 50px;
+    color: black;
+    top: 200px;
+    left: 100px;
+
+    div {
+        padding-bottom: 20px;
+    }
+
+    .underline{
+        margin-top: 60px;
+        width: 80px;
+        border-top: solid 2px rgb(195, 195, 195);
+    }
+}
+
+#hawaii-1 img {
+    position: absolute;
+    height: 340px;
+    top: 150px;
+    right: 150px;
+    z-index: 1;
+}
+
+#beach img {
+    position: absolute;
+    height: 400px;
+    top: 200px;
+    right: 30px;
+}
+
+#main-page-description{
+    font-size: 20px;
+    width: 500px;
 }

@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import ProjectList from "./project_list";
 import { createSection, deleteSection, fetchProjectSections, updateSection } from "../actions/section_actions";
+import { fetchProjectTasks } from "../actions/task_actions";
 
 class Project extends React.Component {
 
@@ -10,6 +11,10 @@ class Project extends React.Component {
         console.log(props)
 
         this.renderProject = this.renderProject.bind(this)
+    }
+
+    componentDidMount(){
+        // this.props.fetchProjectTasks(this.props.project.id)
     }
 
     projectNavbar(){return(
@@ -60,7 +65,9 @@ const mapDispatchToProps = dispatch => ({
     fetchProjectSections: (projectId) => dispatch(fetchProjectSections(projectId)),
     updateSection: (section) => dispatch(updateSection(section)),
     createSection: (section) => dispatch(createSection(section)),
-    deleteSection: (sectionId) => dispatch(deleteSection(sectionId))
+    deleteSection: (sectionId) => dispatch(deleteSection(sectionId)),
+    fetchProjectTasks: (projectId) => dispatch(fetchProjectTasks(projectId)),
+    fetchSectionTasks: (sectionId) => dispatch(fetchSectionTasks(sectionId))
 })
 
 const ProjectContainer = connect(mapStateToProps, mapDispatchToProps)(Project);

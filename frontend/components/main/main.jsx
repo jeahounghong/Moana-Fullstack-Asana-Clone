@@ -9,6 +9,27 @@ class Main extends React.Component{
     render(){return(
         <div className="main">
             <NavBar/>
+            <div id="phrase">
+                <div>
+                    Work faster,
+                </div>
+                <div>
+                    Vacation sooner.
+                </div>
+                <div class="underline">
+                </div>
+
+                <div id="main-page-description">
+                From the small stuff to the big picture, Moana organizes work so teams know what to do, why it matters, and how to get it done.
+                </div>
+            </div>
+
+            <div id="hawaii-1">
+                <img src={window.hawaii} alt="" />
+            </div>
+            <div id="beach">
+                <img src={window.beach} alt="" />
+            </div>
         </div>
     )}
 }

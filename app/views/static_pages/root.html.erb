@@ -1,4 +1,7 @@
 <script type="text/javascript">
     window.currentUser = <%= logged_in? ? render("api/users/user.json.jbuilder", user: current_user).html_safe : nil %>
+    window.logo = "<%= image_url('logo.png') %>"
+    window.hawaii = "<%= image_url('hawaii-1') %>"
+    window.beach = "<%= image_url('beach') %>"
 </script>
 <div id="root">React is not working</div>

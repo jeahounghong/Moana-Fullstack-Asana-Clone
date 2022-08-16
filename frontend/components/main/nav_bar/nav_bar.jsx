@@ -3,11 +3,17 @@ import { Link } from "react-router-dom";
 
 const NavBar = (props) => (
     <div className="nav-bar">
-        <div id="nav-bar-logo">Moana</div>
-        <div className="session-buttons">
-            <Link className="session-button" to="/signup">Sign Up</Link>
-            <Link className="session-button" to="/login">Log In</Link>
+        <div id="nav-bar-logo">
+            <img src={window.logo} alt="Logo" />
         </div>
+        <div id="gray-background"></div>
+        
+        <div className="session-buttons">
+            <Link className="session-button" to="/login">Log In</Link>
+            <Link className="session-button" to="/login">Demo</Link>
+            <Link className="get-started" to="/signup">Get Started</Link>
+        </div>
+        
     </div>
 )
 
