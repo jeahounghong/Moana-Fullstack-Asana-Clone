@@ -2,7 +2,8 @@ import { connect } from "react-redux"
 import React from "react"
 import NewTeamFormContainer from "./new_team_form_container";
 import NewProjectFormContainer from "./new_project_form_container";
-import { SHOW_NEW_TEAM_FORM, SHOW_NEW_PROJECT_FORM,closeModal } from "../../actions/ui_actions"
+import UpdateTeamFormContainer from "./update_team_form_container";
+import { SHOW_NEW_TEAM_FORM, SHOW_NEW_PROJECT_FORM, SHOW_UPDATE_TEAM_FORM, SHOW_UPDATE_PROJECT_FORM ,closeModal } from "../../actions/ui_actions"
 
 
 class Modal extends React.Component{
@@ -18,8 +19,16 @@ class Modal extends React.Component{
         switch(modalContent){
             case SHOW_NEW_TEAM_FORM:
                 return <NewTeamFormContainer/>
+
+            case SHOW_UPDATE_TEAM_FORM:
+                return <UpdateTeamFormContainer/>
+
             case SHOW_NEW_PROJECT_FORM:
                 return <NewProjectFormContainer closeModal={this.props.closeModal}/>
+
+            case SHOW_UPDATE_PROJECT_FORM:
+                return null;
+            
             default:
                 return null;
         }

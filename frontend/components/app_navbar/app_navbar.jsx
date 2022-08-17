@@ -60,12 +60,12 @@ class AppNavbar extends React.Component{
     dropdown(){
         if (this.project >= 0) {
             return (<div className="drop-down-menu">
-                <div>Edit project details</div>
+                <div onClick={() => this.props.showUpdateProjectForm(this.project)}>Edit project details</div>
                 <div className="delete">Delete project</div>
             </div>)
         } else if (this.team >= 0) {
             return (<div className="drop-down-menu">
-                <div>Edit team details</div>
+                <div onClick={() => this.props.showUpdateTeamForm(this.team)}>Edit team details</div>
                 <div className="delete" 
                         onClick={() => {this.props.deleteTeam(this.team); 
                                     this.props.history.push("/home");

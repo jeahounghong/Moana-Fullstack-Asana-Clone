@@ -22,6 +22,9 @@ const removeTeam = (teamId) => ({
 export const createTeam = (team) => dispatch => TeamApiUtil.createTeam(team)
     .then(team => dispatch(receiveTeam(team)))
 
+export const updateTeam = (team) => dispatch => TeamApiUtil.updateTeam(team)
+    .then(team => dispatch(receiveTeam(team)))
+
 export const fetchUserTeams = (userId) => dispatch => TeamApiUtil.fetchUserTeams(userId)
     .then(teams => dispatch(receiveTeams(teams)))
 

@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import AppNavbar from "./app_navbar";
 import { logoutUser } from "../../actions/session_actions";
-import { openSidebar, closeSidebar} from "../../actions/ui_actions"
+import { openSidebar, closeSidebar, showUpdateTeamForm, showUpdateProjectForm} from "../../actions/ui_actions"
 import { deleteTeam } from "../../actions/team_actions";
 
 
@@ -18,7 +18,9 @@ const mapDispatchToProps = dispatch => ({
     logoutUser: () => dispatch(logoutUser()),
     openSidebar: () => dispatch(openSidebar()),
     closeSidebar: () => dispatch(closeSidebar()),
-    deleteTeam: (teamId) => dispatch(deleteTeam(teamId))
+    deleteTeam: (teamId) => dispatch(deleteTeam(teamId)),
+    showUpdateTeamForm: (team) => dispatch(showUpdateTeamForm(team)),
+    showUpdateProjectForm: (project) => dispatch(showUpdateProjectForm(project))
 
 })
 

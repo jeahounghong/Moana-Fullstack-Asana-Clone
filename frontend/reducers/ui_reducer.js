@@ -1,10 +1,13 @@
-import { SHOW_NEW_PROJECT_FORM,SHOW_NEW_TEAM_FORM, CLOSE_MODAL, OPEN_SIDEBAR, CLOSE_SIDEBAR } from "../actions/ui_actions";
+import { SHOW_NEW_PROJECT_FORM,SHOW_NEW_TEAM_FORM, CLOSE_MODAL, OPEN_SIDEBAR, CLOSE_SIDEBAR,
+            SHOW_UPDATE_PROJECT_FORM, SHOW_UPDATE_TEAM_FORM } from "../actions/ui_actions";
 
 const preloadedState = {
     loading: false,
     modal: false,
     modalContent: null,
-    sidebar: true
+    sidebar: true,
+    modalTeam: null,
+    modalProject: null
 }
 
 const uiReducer = (state = preloadedState, action) => {
@@ -14,6 +17,12 @@ const uiReducer = (state = preloadedState, action) => {
         case SHOW_NEW_TEAM_FORM:
             nextState.modalContent = SHOW_NEW_TEAM_FORM;
             nextState.modal = true;
+            return nextState;
+
+        case SHOW_UPDATE_TEAM_FORM:
+            nextState.modalContent = SHOW_UPDATE_TEAM_FORM;
+            nextState.modal=true;
+            nextState.modalTeam = action.teamId;
             return nextState;
         
         case SHOW_NEW_PROJECT_FORM:
