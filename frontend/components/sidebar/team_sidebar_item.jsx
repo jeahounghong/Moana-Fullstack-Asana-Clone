@@ -21,7 +21,8 @@ class TeamSidebarItem extends React.Component {
 
     }
 
-    toggleView(){
+    toggleView(e){
+        e.preventDefault()
         this.setState({collapsed: !this.state.collapsed})  
     }
 
@@ -29,19 +30,17 @@ class TeamSidebarItem extends React.Component {
 
         if (this.props.team.teamProjects.length > 0){
             return(
-                <div>
+                <div className="sidebar-team">
                     <div className="sidebar-team-item">
-                        <i className="fa-solid fa-caret-right" onClick={this.toggleView}></i>
-                        <Link to={`/teams/${this.props.team.id}/show`}>{this.props.team.name}</Link>
+                        <Link to={`/teams/${this.props.team.id}/show`}><i className="fa-solid fa-caret-right spacer" onClick={this.toggleView}></i>{this.props.team.name}</Link>
                     </div>
                 </div>
             )
         } else {
             return (
-                <div>
+                <div className="sidebar-team">
                     <div className="sidebar-team-item">
-                        <i ></i>
-                        <Link to={`/teams/${this.props.team.id}/show`}>{this.props.team.name}</Link>
+                        <Link className="no-projects" to={`/teams/${this.props.team.id}/show`}><div className="spacer"></div>{this.props.team.name}</Link>
                     </div>
                 </div>
             )
@@ -50,21 +49,24 @@ class TeamSidebarItem extends React.Component {
 
     expandedView(){
         return (
-            <div>
+            <div className="sidebar-team">
                 <div className="sidebar-team-item">
-                    <i className="fa-solid fa-caret-down" onClick={this.toggleView}></i>
-                    <Link to={`/teams/${this.props.team.id}/show`}>{this.props.team.name}</Link>
+                    <Link to={`/teams/${this.props.team.id}/show`}><i className="fa-solid fa-caret-down" onClick={this.toggleView}></i>{this.props.team.name}</Link>
                 </div>
-                <ul>
-                    {this.props.team.teamProjects.map((projectId) => (
-                        <Link to={`/projects/${projectId}/list`} key={projectId} onClick={() => this.props.fetchProjectSections(projectId)}>
-                            <li className="sidebar-project-item">
-                                <div>{this.props.projects[projectId].title}</div>
-                                {this.props.projects[projectId].public ? "" : <i className="fa-solid fa-lock"></i>}
-                            </li>
-                        </Link>
-                    ))}
-                </ul>
+                <div className="sidebar-projects">
+                    <ul >
+                        {this.props.team.teamProjects.map((projectId) => (
+                            <Link to={`/projects/${projectId}/list`} key={projectId} onClick={() => this.props.fetchProjectSections(projectId)}>
+                                <li className="sidebar-project-item">
+                                    <div>
+                                        {this.props.projects[projectId].title}
+                                        {this.props.projects[projectId].public ? "" : <i className="fa-solid fa-lock"></i>}
+                                    </div>
+                                </li>
+                            </Link>
+                        ))}
+                    </ul>
+                </div>
             </div>
         )
     }

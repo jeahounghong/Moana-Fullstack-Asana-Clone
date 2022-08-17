@@ -15,9 +15,10 @@ import { Switch } from "react-router-dom";
 const App = () => (
     <div className="app">
             <Switch>
-                <AuthRoute exact path="/" component={Main}/>
                 <AuthRoute exact path="/signup" component={SignupFormContainer}/>
                 <AuthRoute exact path="/login" component={LoginFormContainer}/>
+                <AuthRoute exact path="/" component={Main}/>
+                
             </Switch>
             <div id="app-logged-in">
                 <ProtectedRoute path="/" component={SidebarContainer}/>

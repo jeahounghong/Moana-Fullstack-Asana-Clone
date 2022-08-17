@@ -28,6 +28,17 @@
     .session-button {
         padding-right: 20px;
         // padding-bottom: 10px;
+        
+        text-decoration: none;
+        color: black;
+        // font-weight: bold;
+    }
+
+    .session-button:hover{
+        // color: black;
+        // background-color: ;
+        // background-color: #78A2CC;
+        transition: 0.3s;
     }
 
     .get-started {
@@ -36,6 +47,12 @@
         padding: 7px;
         border-radius: 5px;
         text-decoration: none;
+        transition: 0.3s;
+    }
+
+    .get-started:hover {
+        background-color: #78A2CC;
+        // transform: 0.3s;
     }
     
     #gray-background{
@@ -102,7 +119,8 @@
     }
 
     .demo {
-        background-color: rgb(180, 210, 255);
-        color: black;
+        // background-color: rgb(180, 210, 255);
+        background-color: #78A2CC;
+        color: white;
     }
 }

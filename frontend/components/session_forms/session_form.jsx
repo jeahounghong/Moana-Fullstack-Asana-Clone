@@ -27,6 +27,10 @@ class SessionForm extends React.Component {
         this.props.processSessionForm(this.state);
     }
 
+    componentWillUnmount(){
+        this.props.clearErrors();
+    }
+
     render(){return(
         <div className="session-form-container">
             <div className="form-logo">
@@ -92,10 +96,11 @@ class SessionForm extends React.Component {
 
             {/* ERRORS */}
             <ul className="session-form-errors">
-                {Object.values(this.props.errors).map((error) => <li>{error}</li>)}
+                {Object.values(this.props.errors).map((error) => <li>* {error}</li>)}
             </ul>
-
-            <Link to={"/"}>Back to Home</Link>
+            <div className="back-to-home">
+                <Link to={"/"}>Back to Home</Link>
+            </div>
         </div>
     )}
 }

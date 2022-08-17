@@ -1,5 +1,6 @@
 .app-navbar {
-    background-color: lightcoral;
+    // background-color: lightcoral;
+    border-bottom: solid 1px rgb(195, 195, 195);
     width: auto;
     height: 60px;
     display: flex;
@@ -24,6 +25,44 @@
             font-size: 30px;
         }
 
+        i {
+            font-size: 20px;
+        }
+
+        p {
+            display: flex;
+            padding-top: 5px;
+        }
+
+        .drop-down{
+            // background-color: red;
+            border-radius: 10px;
+            margin-left: 5px;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            i {
+                padding-left: 15px;
+                color: gray;
+                position: fixed;
+            }
+
+        }
+
+        .drop-down:hover{
+            background-color: rgb(207, 207, 207);
+            i {
+                color:black;
+                transition: 0.3s;
+            }
+            transition: 0.3s;
+        }
+
+        
+
+
         .toggle-sidebar{
             // background-color: red;
             width: 40px;
@@ -40,8 +79,40 @@
         }
 
         .toggle-sidebar:hover{
-            background-color: rgb(188, 100, 100);
+            background-color: rgb(207, 207, 207);
             transition: 0.3s;
         }
     }
+
+
+    .drop-down-menu-container{
+        .drop-down-menu {
+            position: relative;
+            // border: solid 1px black;
+            box-shadow: 0px 2px 5px rgba($color: #000000, $alpha: 0.5);
+            background-color: white;
+            min-width: 170px;
+            max-width: 170px;
+            top: 45px;
+            right: 60px;
+            
+            div {
+                display: flex;
+                flex-direction: row;
+                font-size: 15px;
+                padding: 5px;
+            }
+            div:hover{
+                background-color: rgb(207, 207, 207);
+                cursor: default;
+                transition: 0.3s;
+            }
+        }
+
+        .delete {
+            color: red;
+        }
+    }
+
+
 }

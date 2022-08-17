@@ -1,4 +1,4 @@
-import { RECEIVE_TEAM, RECEIVE_USER_TEAMS } from "../actions/team_actions";
+import { RECEIVE_TEAM, RECEIVE_USER_TEAMS, REMOVE_TEAM } from "../actions/team_actions";
 
 const TeamsReducer = (state = {}, action) => {
     Object.freeze(state);
@@ -13,6 +13,11 @@ const TeamsReducer = (state = {}, action) => {
                 nextState[team.id] = team
             })
             return nextState;
+
+        case REMOVE_TEAM:
+            delete nextState[action.teamId];
+            return nextState;
+
         default:
             return state;
     }

@@ -34,22 +34,27 @@ class Sidebar extends React.Component{
     render(){
         return(
             <div id="sidebar">
-                <h3>SideBar</h3>
+                <img className="sidebar-logo" src={window.darklogo} alt="" />
                 <ul className="sidebar-list">
-                    <Link to="/home">Home</Link>
-                    <Link to="/tasks">My Tasks</Link>
-                    <Link to="/inbox">Inbox</Link>
-                    <div> My Teams
-                        <ul>
-                            {Object.values(this.props.teams).map((team) => (
-                                    <li key={team.id}>
+                    <Link to="/home"><i class="fa-solid fa-house"></i> Home</Link>
+                    <Link to="/tasks"><i class="fa-regular fa-circle-check"></i> My Tasks</Link>
+                    <Link id="sidebar-inbox" to="/inbox"><i class="fa-solid fa-inbox"></i> Inbox</Link>
+                    <div className="sidebar-scroll">
+                        <div> 
+                            <div id="my-teams">
+                                My Teams
+                            </div>
+                            <ul>
+                                {Object.values(this.props.teams).map((team) => (
+                                        <li key={team.id}>
 
-                                        <TeamSidebarItemContainer team={team}/>
-                                    </li>
-                            ))}
-                        </ul>
+                                            <TeamSidebarItemContainer team={team}/>
+                                        </li>
+                                ))}
+                            </ul>
+                        </div>
+                        <div onClick={this.props.showNewTeamForm}>Add Team+</div>
                     </div>
-                    <div onClick={this.props.showNewTeamForm}>Add Team+</div>
                 </ul>
             </div>
         )

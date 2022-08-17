@@ -20,6 +20,15 @@ class Api::TeamsController < ApplicationController
         end
     end
 
+    def destroy
+        @team = Team.find_by(id: params[:id])
+        if @team.destroy
+            render json: ["Team successfully deleted"]
+        else
+            render json: @team.erros.full_messages;
+        end
+    end
+
     private
 
     def team_params

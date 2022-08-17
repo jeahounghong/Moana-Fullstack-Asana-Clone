@@ -3,7 +3,7 @@
 }
 
 #sidebar {
-    background-color: lightblue;
+    background-color: #252525;
     width: 250px;
     height: 100ch;
     position: absolute;
@@ -11,34 +11,121 @@
     left: 0px;
     overflow-x: hidden;
     transition: .5s;
+    color: white;
+
+    a {
+        text-decoration: none;
+    }
+
+    // padding-left: 20px;
+    #sidebar-inbox {
+        margin-bottom: 15px;
+    }
+    .sidebar-scroll{
+        padding-top: 15px;
+        border-top: solid 1px rgb(121, 121, 121);
+        // background-color: red;
+        overflow-y: scroll;
+
+        #my-teams{
+            padding-left: 20px;
+            padding-bottom: 10px;
+        }
+
+        height: 400px;
+        border-bottom:solid 1px rgb(121, 121, 121);
+    }
+
+    .sidebar-logo {
+        padding-top: 20px;
+        width: 150px;
+        padding-left: 20px;
+        padding-bottom: 20px;
+    }
 
     .sidebar-list{
         display: flex;
         flex-direction: column;
+        
+        
+        > a {
+            padding-top: 5px;
+            padding-left: 20px;
+            padding-bottom: 5px;
+        }
+
+        > a:hover{
+            // background-color: #252525;
+            background-color: #6a6a6a;
+        }
+
+        i {
+            width: 20px;
+            // background-color: red;
+        }
     }
     * {
+        text-decoration: none;
+        color: white;
         width: 250px;
     }
 
     .sidebar-team-item{
-        margin-left: 10px;
-        height: 20px;
-        // background-color: red;
         display: flex;
-        // justify-content: left;
+        * {
+            text-decoration: none;
+            color: white;
+        }
         i {
-            width: 20px;
+            // background-color: red;
+            width: 13px;
+            // height: 15;
+        }
+
+        .no-projects{
+            padding-left: 33px;
+        }
+        > a {
+            padding-top: 5px;
+            padding-left: 20px;
+            padding-bottom: 5px;
+        }
+
+        > a:hover {
+            background-color: #6a6a6a;
+        }
+
+    }
+    
+    .sidebar-project-item{
+        // padding-left: 40px;
+        // height: 20px;
+        // padding-top: 5px;
+        // padding-bottom: 10px;
+        // background-color: #252525;
+        // background-color: rgb(146, 184, 197);
+        // display: flex;
+
+        > div {
+            padding-left: 50px;
+            padding-top: 3px;
+            padding-bottom: 3px;
+        }
+
+        > div:hover {
+            background-color: #6a6a6a;
+        }
+
+        i {
+            padding-left: 5px;
         }
     }
 
-    .sidebar-project-item{
-        padding-left: 40px;
-        height: 20px;
-        background-color: rgb(146, 184, 197);
-        display: flex;
+    .sidebar-projects{
+        background-color: #394c5f;
     }
-
 }
+
 
 #main-content {
     margin-left: 250px ;

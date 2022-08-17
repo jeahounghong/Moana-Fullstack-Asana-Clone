@@ -13,3 +13,10 @@ export const fetchUserTeams = (userId) => (
         method: 'GET'
     })
 )
+
+export const deleteTeam = (teamId) => (
+    $.ajax({
+        url: `/api/teams/${teamId}`,
+        method: `DELETE`
+    })
+)
