@@ -9,24 +9,39 @@ class Modal extends React.Component{
 
     constructor(props){
         super(props);
-        
+        this.modalContent = this.modalContent.bind(this);
+        this.backgroundCloseModal = this.backgroundCloseModal.bind(this)
     }
 
 
-    modalContent(){
+    modalContent(modalContent){
+        switch(modalContent){
+            case SHOW_NEW_TEAM_FORM:
+                return <NewTeamFormContainer/>
+            case SHOW_NEW_PROJECT_FORM:
+                return <NewProjectFormContainer closeModal={this.props.closeModal}/>
+            default:
+                return null;
+        }
+    }
 
+    backgroundCloseModal(e){
+        // e.preventDefault();
+        if (e.target === e.currentTarget){
+            this.props.closeModal();
+        }
     }
 
     render(){
         if (this.props.show) {
-            switch(this.props.modalContent){
-                case SHOW_NEW_TEAM_FORM:
-                    return <NewTeamFormContainer closeModal={this.props.closeModal}/>
-                case SHOW_NEW_PROJECT_FORM:
-                    return <NewProjectFormContainer closeModal={this.props.closeModal}/>
-                default:
-                    return null;
-            }
+            return (
+                <div className="modal-container" onClick={this.backgroundCloseModal}>
+                    <div className="modal-close-button"  onClick={this.props.closeModal}>
+                        <i className="fa-solid fa-xmark"></i>
+                    </div>
+                    {this.modalContent(this.props.modalContent)}
+                </div>
+            )
         } else {
             return null
         }

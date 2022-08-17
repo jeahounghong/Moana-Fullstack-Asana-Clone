@@ -3,7 +3,7 @@
     background-color: rgba($color: #000000, $alpha: 0.4);
     position: fixed;
     width: 100%;
-    height: 100ch;
+    height: 100vh;
     left:0;
     top:0;
 
@@ -35,12 +35,62 @@
     .modal-content {
         background-color: white;
         width: 600px;
-        height: 70%;
+        max-height: 70%;
         margin-top: 5%;
+        border-radius: 10px;
 
-        .team-modal-form{
+        h3:first-of-type {
+            padding: 20px;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .modal-line{
+            width: 100%;
+            border-bottom: solid 1px gray;
+        }
+
+        .modal-form{
             display: flex;
             flex-direction: column;
+            color: gray;
+            label {
+                display: flex;
+                flex-direction: column;
+                padding-left: 20px;
+                padding-right: 20px;
+                padding-top: 20px;
+            }
+
+            input {
+                margin-top: 5px;
+                padding: 5px;
+                border: solid 1px gray;
+                border-radius: 5px;
+            }
+
+            textarea{
+                margin-top: 5px;
+                resize: none;
+                min-height: 100px;
+                font-family: avenir;
+                padding: 5px;
+                border: solid 1px gray;
+                border-radius: 5px;
+            }
+
+            .submit {
+                margin: 20px;
+                border: none;
+                background-color: #78A2CC;
+                padding: 10px;
+                font-weight: bold;
+            }
+
+            .submit:hover{
+                background-color: #93c7fc;
+                transition: 0.3s;
+            }
         }
 
         .project-modal-form{

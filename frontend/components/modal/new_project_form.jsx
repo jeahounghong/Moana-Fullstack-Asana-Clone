@@ -34,32 +34,27 @@ class NewProjectForm extends React.Component{
     }
 
     render(){return(
-        <div className="modal-container" onSubmit={this.handleSubmit}>
-            <div className="modal-close-button"  onClick={this.props.closeModal}>
-                <i className="fa-solid fa-xmark"></i>
-            </div>
-            <div className="modal-content">
-                <h3>Create New Project</h3>
-                <form className="project-modal-form">
-                    <label>Title:
-                        <input type="text"
-                                value={this.state.title}
-                                onChange={this.handleInput("title")} />
-                    </label>
-                    <label>Description:
-                        <textarea value={this.state.description}
-                                onChange={this.handleInput("description")} />
-                    </label>
-                    <label> Public?
-                        <select name="public" value={this.state.public} onChange={this.handleInput("public")}>
-                            <option value={true} defaultValue>Public (Default)</option>
-                            <option value={false}>Private</option>
-                        </select>                       
-                    </label>
-                    <input type="submit" value="Create Project" />
-                </form>
-            </div>
-
+        <div className="modal-content">
+            <h3>Create New Project</h3>
+            <div className="modal-line"></div>
+            <form className="project-modal-form">
+                <label>Title:
+                    <input type="text"
+                            value={this.state.title}
+                            onChange={this.handleInput("title")} />
+                </label>
+                <label>Description:
+                    <textarea value={this.state.description}
+                            onChange={this.handleInput("description")} />
+                </label>
+                <label> Public?
+                    <select name="public" value={this.state.public} onChange={this.handleInput("public")}>
+                        <option value={true} defaultValue>Public (Default)</option>
+                        <option value={false}>Private</option>
+                    </select>                       
+                </label>
+                <input type="submit" value="Create Project" />
+            </form>
         </div>
     )}
 }

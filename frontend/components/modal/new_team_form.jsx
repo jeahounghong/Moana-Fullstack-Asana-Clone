@@ -37,30 +37,25 @@ class NewTeamForm extends React.Component{
     }
 
     render(){return(
-        <div className="modal-container" onSubmit={this.handleSubmit}>
-            <div className="modal-close-button"  onClick={this.props.closeModal}>
-                <i className="fa-solid fa-xmark"></i>
-            </div>
-            <div className="modal-content">
-                <h3>Create new team</h3>
-                <form className="team-modal-form">
-                    <label>Team Name:
-                        <input 
-                            type="text" 
-                            value={this.state.teamInfo.name}
-                            onChange={this.handleInput("name")}
-                        />
-                    </label>
-                    <label>Description:
-                        <textarea 
-                            value={this.state.teamInfo.description}
-                            onChange={this.handleInput("description")}
-                        />
-                    </label>
-                    <input type="submit" value="Create Form"/>
-                </form>
-            </div>
-
+        <div className="modal-content">
+            <h3>Create new team</h3>
+            <div className="modal-line"></div>
+            <form className="modal-form" onSubmit={this.handleSubmit}>
+                <label>Team Name:
+                    <input 
+                        type="text" 
+                        value={this.state.teamInfo.name}
+                        onChange={this.handleInput("name")}
+                    />
+                </label>
+                <label>Description:
+                    <textarea 
+                        value={this.state.teamInfo.description}
+                        onChange={this.handleInput("description")}
+                    />
+                </label>
+                <input className="submit" type="submit" value="Create Team"/>
+            </form>
         </div>
     )}
 }
