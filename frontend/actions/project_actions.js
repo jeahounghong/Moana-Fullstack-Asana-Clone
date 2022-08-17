@@ -25,3 +25,9 @@ export const createProject = (project) => dispatch => ProjectApiUtil.createProje
         dispatch(receiveProject(project));
         dispatch(closeModal())
     })
+
+export const updateProject = (project) => dispatch => ProjectApiUtil.updateProject(project)
+    .then(project => {
+        dispatch(receiveProject(project));
+        dispatch(closeModal());
+    })

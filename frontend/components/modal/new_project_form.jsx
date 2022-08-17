@@ -37,7 +37,7 @@ class NewProjectForm extends React.Component{
         <div className="modal-content">
             <h3>Create New Project</h3>
             <div className="modal-line"></div>
-            <form className="project-modal-form">
+            <form className="modal-form">
                 <label>Title:
                     <input type="text"
                             value={this.state.title}
@@ -53,7 +53,7 @@ class NewProjectForm extends React.Component{
                         <option value={false}>Private</option>
                     </select>                       
                 </label>
-                <input type="submit" value="Create Project" />
+                <input className="submit"type="submit" value="Create Project" />
             </form>
         </div>
     )}

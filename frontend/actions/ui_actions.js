@@ -20,7 +20,7 @@ export const showUpdateTeamForm = (teamId) => ({
 })
 
 export const showUpdateProjectForm = (projectId) => ({
-    type: SHOW_UPDATE_TEAM_FORM,
+    type: SHOW_UPDATE_PROJECT_FORM,
     projectId
 })
 

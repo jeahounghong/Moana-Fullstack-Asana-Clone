@@ -21,12 +21,18 @@ const uiReducer = (state = preloadedState, action) => {
 
         case SHOW_UPDATE_TEAM_FORM:
             nextState.modalContent = SHOW_UPDATE_TEAM_FORM;
-            nextState.modal=true;
             nextState.modalTeam = action.teamId;
+            nextState.modal=true;
             return nextState;
         
         case SHOW_NEW_PROJECT_FORM:
             nextState.modalContent = SHOW_NEW_PROJECT_FORM;
+            nextState.modal = true;
+            return nextState;
+
+        case SHOW_UPDATE_PROJECT_FORM:
+            nextState.modalContent = SHOW_UPDATE_PROJECT_FORM;
+            nextState.modalProject = action.projectId;
             nextState.modal = true;
             return nextState;
 

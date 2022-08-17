@@ -20,3 +20,11 @@ export const createProject = (project) => (
         data: {project: project}
     })
 )
+
+export const updateProject = (project) => (
+    $.ajax({
+        url: `/api/projects/${project.id}`,
+        method: `PATCH`,
+        data: {project: project}
+    })
+)

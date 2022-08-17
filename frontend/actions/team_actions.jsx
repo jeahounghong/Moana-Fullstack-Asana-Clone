@@ -1,4 +1,5 @@
 import * as TeamApiUtil  from "../util/team_api_util";
+import { closeModal } from "./ui_actions";
 
 export const RECEIVE_TEAM = "RECEIVE_TEAM";
 export const RECEIVE_USER_TEAMS = "RECEIVE_USER_TEAMS";
@@ -20,10 +21,10 @@ const removeTeam = (teamId) => ({
 })
 
 export const createTeam = (team) => dispatch => TeamApiUtil.createTeam(team)
-    .then(team => dispatch(receiveTeam(team)))
+    .then(team => {dispatch(receiveTeam(team)) ; dispatch(closeModal()) })
 
 export const updateTeam = (team) => dispatch => TeamApiUtil.updateTeam(team)
-    .then(team => dispatch(receiveTeam(team)))
+    .then(team => {dispatch(receiveTeam(team)); dispatch(closeModal())} )
 
 export const fetchUserTeams = (userId) => dispatch => TeamApiUtil.fetchUserTeams(userId)
     .then(teams => dispatch(receiveTeams(teams)))
