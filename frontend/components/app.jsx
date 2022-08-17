@@ -11,6 +11,7 @@ import AppNavbarContainer from "./app_navbar/app_navbar_container";
 import { TeamContainer } from "./teams/team_container";
 import ProjectContainer from "../projects/project_container";
 import { Switch } from "react-router-dom";
+import MainApp from "./main_app";
 
 const App = () => (
     <div className="app">
@@ -18,17 +19,8 @@ const App = () => (
                 <AuthRoute exact path="/signup" component={SignupFormContainer}/>
                 <AuthRoute exact path="/login" component={LoginFormContainer}/>
                 <AuthRoute exact path="/" component={Main}/>
-                
+                <ProtectedRoute path="/" component={MainApp}/>
             </Switch>
-            <div id="app-logged-in">
-                <ProtectedRoute path="/" component={SidebarContainer}/>
-                <div id="main-content">
-                    <ProtectedRoute path="/" component={ModalContainer}/>
-                    <ProtectedRoute path="/" component={AppNavbarContainer}/>
-                    <ProtectedRoute path="/teams/:team_id/show" component={TeamContainer}/>
-                    <ProtectedRoute path="/projects/:project_id/" component={ProjectContainer}/>
-                </div>
-            </div>
     </div>
 )
 

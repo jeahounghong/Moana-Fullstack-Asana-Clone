@@ -20,3 +20,11 @@ export const deleteTeam = (teamId) => (
         method: `DELETE`
     })
 )
+
+export const updateTeam = (team) => (
+    $.ajax({
+        url: `/api/teams/${team.id}`,
+        method: `PATCH`,
+        data: {team: team}
+    })
+)
