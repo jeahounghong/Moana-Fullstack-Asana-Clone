@@ -124,6 +124,71 @@
     .sidebar-projects{
         background-color: #394c5f;
     }
+
+    .sidebar-logout{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 250px;
+        // background-color: red;
+
+        .sidebar-logout-button{
+            margin-top: 12px;
+            background-color: #78A2CC;
+            text-align: center;
+            width: 100px;
+            padding: 8px;
+            color: black;
+            border-radius: 5px;
+            cursor: default;
+            
+        }
+
+        .sidebar-logout-button:hover{
+            background-color: #93c7fc;
+            cursor: default;
+            transition: 0.3s;
+
+        }
+
+
+
+        .sidebar-profile{
+            margin-top: 12px;
+            font-size: 15px;
+            text-align: center;
+        }
+
+        
+    }
+    
+    .sidebar-profile-icons{
+        // background-color: red;
+        padding-top: 12px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        font-size: 30px;
+
+        a {
+            width: 30px;
+            padding-left: 2px;
+            padding-right: 2px;
+        }
+
+        .icon {
+            color: rgb(135, 135, 135);
+            width: 30px;
+        }
+
+        .icon:hover {
+            color: white;
+            transition: 0.3s;
+        }
+
+
+    }
 }
 
 

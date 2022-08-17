@@ -31,13 +31,23 @@ class AppNavbar extends React.Component{
                 // Ideally I would add regex conditions for /teams/:team_id as well
                 if (this.props.url.substring(0,6) === "/teams"){
                     let id = parseInt(this.props.url.substring(7))
+
+                    if (this.team !== id){
+                        this.setState({titleDropdownShow: false})
+                        // console.log(this.state.toggleDropdownShow)
+                    }
+
                     this.team = id;
                     this.project = -1;
                     return this.props.teams[id] ? this.props.teams[id].name : "";
+
                 } else if (this.props.url.substring(0,9) === "/projects"){
                     let id = this.props.url.substring(10);
                     let idx = id.indexOf("/");
                     id = parseInt(id.substring(0,idx));
+                    if (this.project !== id){
+                        this.setState({titleDropdownShow: false})
+                    }
                     this.project = id;
                     this.team = -1;
                     return this.props.projects[id] ? this.props.projects[id].title : "";
@@ -51,7 +61,7 @@ class AppNavbar extends React.Component{
         if (this.project >= 0) {
             return (<div className="drop-down-menu">
                 <div>Edit project details</div>
-                <div className="delete">Delete project details</div>
+                <div className="delete">Delete project</div>
             </div>)
         } else if (this.team >= 0) {
             return (<div className="drop-down-menu">
@@ -62,7 +72,7 @@ class AppNavbar extends React.Component{
                                     this.toggleTitleDropdown();
                         }}>
                         
-                    Delete team details
+                    Delete team
                     </div>
             </div>)
         } else {
