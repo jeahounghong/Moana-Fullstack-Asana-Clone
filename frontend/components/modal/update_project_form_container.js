@@ -5,7 +5,7 @@ import UpdateProjectForm from "./update_project_form";
 const mapStateToProps = state => ({
     currentUser: state.session.id,
     projectId: state.ui.modalProject,
-    projects: state.entities.projects
+    project: state.entities.projects[state.ui.modalProject]
 })
 
 const mapDispatchToProps = dispatch => ({

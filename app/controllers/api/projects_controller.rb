@@ -23,6 +23,24 @@ class Api::ProjectsController < ApplicationController
         end
     end
 
+    def update
+        @project = Project.find_by(id: params[:id])
+        if @project && @project.update(project_params)
+            render :show
+        else
+            render json: ["Project was not updated"], status: 401
+        end
+    end
+
+    def destroy
+        @project = Project.find_by(id: params[:id])
+        if @project && @project.destroy
+            render json: ["Project successfully deleted."]
+        else
+            render json: ["Project was not deleted."], status: 401
+        end
+    end
+
     private
 
     def project_params

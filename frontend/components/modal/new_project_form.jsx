@@ -37,7 +37,7 @@ class NewProjectForm extends React.Component{
         <div className="modal-content">
             <h3>Create New Project</h3>
             <div className="modal-line"></div>
-            <form className="modal-form">
+            <form className="modal-form" onSubmit={this.handleSubmit}>
                 <label>Title:
                     <input type="text"
                             value={this.state.title}

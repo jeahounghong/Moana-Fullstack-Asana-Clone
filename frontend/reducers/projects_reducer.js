@@ -1,4 +1,4 @@
-import { RECEIVE_PROJECT, RECEIVE_PROJECTS } from "../actions/project_actions";
+import { RECEIVE_PROJECT, RECEIVE_PROJECTS, REMOVE_PROJECT } from "../actions/project_actions";
 
 const ProjectsReducer = (state = {}, action) => {
     Object.freeze(state);
@@ -13,6 +13,10 @@ const ProjectsReducer = (state = {}, action) => {
             
         case RECEIVE_PROJECT:
             nextState[action.project.id] = action.project;
+            return nextState;
+
+        case REMOVE_PROJECT:
+            delete nextState[action.projectId];
             return nextState;
 
         default:
