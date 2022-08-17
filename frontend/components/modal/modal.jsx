@@ -7,6 +7,16 @@ import { SHOW_NEW_TEAM_FORM, SHOW_NEW_PROJECT_FORM,closeModal } from "../../acti
 
 class Modal extends React.Component{
 
+    constructor(props){
+        super(props);
+        
+    }
+
+
+    modalContent(){
+
+    }
+
     render(){
         if (this.props.show) {
             switch(this.props.modalContent){

@@ -47,30 +47,32 @@ class Sidebar extends React.Component{
                             <ul>
                                 {Object.values(this.props.teams).map((team) => (
                                         <li key={team.id}>
-
                                             <TeamSidebarItemContainer team={team}/>
                                         </li>
                                 ))}
                             </ul>
                         </div>
-                        <div onClick={this.props.showNewTeamForm}>Add Team+</div>
+                        <div className="add-team-container">
+                            <div className="add-team-button" onClick={this.props.showNewTeamForm}>Add Team+</div>
+                        </div>
                     </div>
 
                 </ul>
-
-                <div className="sidebar-logout">
-                    <div className="sidebar-logout-button" onClick={() => this.props.logoutUser()}>
-                        Sign Out
+                <div className="sidebar-bottom">
+                    <div className="sidebar-logout">
+                        <div className="sidebar-logout-button" onClick={() => this.props.logoutUser()}>
+                            Sign Out
+                        </div>
+                        <div className="sidebar-profile">
+                            Made by: David (Jeahoung) Hong
+                        </div>
                     </div>
-                    <div className="sidebar-profile">
-                        Made by: David (Jeahoung) Hong
-                    </div>
-                </div>
 
-                <div className="sidebar-profile-icons">
-                    <a href="https://www.linkedin.com/in/david-jeahoung-hong-7ab00b134/"><i class="fa-brands fa-linkedin icon"></i></a>
-                    <a href="https://github.com/jeahounghong"><i class="fa-brands fa-github icon"></i></a>
-                    <a href=""><i class="fa-brands fa-angellist icon"></i></a>
+                    <div className="sidebar-profile-icons">
+                        <a href="https://www.linkedin.com/in/david-jeahoung-hong-7ab00b134/"><i class="fa-brands fa-linkedin icon"></i></a>
+                        <a href="https://github.com/jeahounghong"><i class="fa-brands fa-github icon"></i></a>
+                        <a href=""><i class="fa-brands fa-angellist icon"></i></a>
+                    </div>
                 </div>
             </div>
         )
