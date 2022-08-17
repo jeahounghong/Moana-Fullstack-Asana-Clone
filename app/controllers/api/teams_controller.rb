@@ -25,7 +25,16 @@ class Api::TeamsController < ApplicationController
         if @team.destroy
             render json: ["Team successfully deleted"]
         else
-            render json: @team.erros.full_messages;
+            render json: @team.errors.full_messages;
+        end
+    end
+
+    def update
+        @team = Team.find_by(id: params[:id])
+        if @team && @team.update(team_params)
+            render :show
+        else
+            render json: ["Changes were not successfully changed."], status: 401
         end
     end
 
