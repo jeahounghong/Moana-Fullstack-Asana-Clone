@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import ProjectList from "./project_list";
 import { createSection, deleteSection, fetchProjectSections, updateSection } from "../actions/section_actions";
 import { fetchProjectTasks } from "../actions/task_actions";
+import { Link } from "react-router-dom";
 
 class Project extends React.Component {
 
@@ -17,22 +18,31 @@ class Project extends React.Component {
         // this.props.fetchProjectTasks(this.props.project.id)
     }
 
-    projectNavbar(){return(
-        <div className="project-navbar">
-            <div>
-                Overview
+    projectNavbar(){
+
+        const path = this.props.location.pathname;
+        const list = path.substring(path.length-4, path.length) === "list"
+        const overview = path.substring(path.length-4, path.length) === "view"
+        const board = path.substring(path.length-4, path.length) === "aord"
+        const timeline = path.substring(path.length-4, path.length) === "line"
+        const calendar = path.substring(path.length-4, path.length) === "ndar"
+        
+        return(
+        <div className="second-navbar">
+            <div className={`second-navbar-item ${overview ? "active" : ""}`}>
+                <Link to={`/projects/${this.props.projectId}/overview`}>Overview</Link>
             </div>
-            <div>
-                List
+            <div className={`second-navbar-item ${list ? "active" : ""}`}>
+                <Link to={`/projects/${this.props.projectId}/list`}>List</Link>
             </div>
-            <div>
-                Board
+            <div className={`second-navbar-item ${board ? "active" : ""}`}>
+                <Link to={`/projects/${this.props.projectId}/board`}>Board</Link>
             </div>
-            <div>
-                Timeline
+            <div className={`second-navbar-item ${timeline ? "active" : ""}`}>
+                <Link to={`/projects/${this.props.projectId}/timeline`}>Timeline</Link>
             </div>
-            <div>
-                Calendar
+            <div className={`second-navbar-item ${calendar ? "active" : ""}`}>
+                <Link to={`/projects/${this.props.projectId}/calendar`}>Calendar</Link>
             </div>
         </div>
     )}
@@ -58,7 +68,8 @@ class Project extends React.Component {
 const mapStateToProps = (state, ownProps) => ({
     project: state.entities.projects[ownProps.match.params.project_id],
     path: ownProps.location.pathname,
-    sections: state.entities.sections
+    sections: state.entities.sections,
+    projectId: ownProps.match.params.project_id
 })
 
 const mapDispatchToProps = dispatch => ({

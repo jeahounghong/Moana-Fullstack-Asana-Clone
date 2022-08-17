@@ -19,7 +19,7 @@ class MainApp extends React.Component{
             <div id="main-content">
                 <ProtectedRoute path="/" component={ModalContainer}/>
                 <ProtectedRoute path="/" component={AppNavbarContainer}/>
-                <ProtectedRoute path="/teams/:team_id/show" component={TeamContainer}/>
+                <ProtectedRoute path="/teams/:team_id/" component={TeamContainer}/>
                 <ProtectedRoute path="/projects/:project_id/" component={ProjectContainer}/>
             </div>
         </div>)
