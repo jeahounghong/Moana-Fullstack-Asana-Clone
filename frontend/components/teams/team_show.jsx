@@ -23,16 +23,24 @@ class TeamShow extends React.Component {
 
             <div className="team-show-projects right-most">
                 <div className="team-show-projects-label">Projects:</div>
-                <div onClick={this.props.showNewProjectForm}>New Project</div>
+                
                 <ul>
+                    <li onClick={this.props.showNewProjectForm}>
+                        <div className="project-square new-project">
+                            <i class="fa-solid fa-plus"></i>
+                        </div>
+                        <p>New Project</p>
+                    </li>
                     {
                         Object.values(this.props.projects).map((project) => {
                             if (project.teamId === this.props.team.id){
                                 return (
                                     <Link to={`/projects/${project.id}/list`} key={project.id} onClick={()=> this.props.fetchProjectSections(project.id)}>
-                                        <li  className="team-show-projects-item">
-                                            <div>{project.title}</div>
-                                            <div>{project.description}</div>
+                                        <li  className="team-show-projects-item" >
+                                            <div className="project-square actual-projects">
+                                                <i class="fa-solid fa-diagram-project"></i>
+                                            </div>
+                                            <p>{project.title}</p>
                                         </li>
                                     </Link>
                                 )

@@ -1,10 +1,10 @@
 .team-page {
     
 
-    .team-show-projects-item{
-        border: solid 4px gray;
-        width: 400px;
-    }
+    // .team-show-projects-item{
+    //     border: solid 4px gray;
+    //     width: 400px;
+    // }
     
 
     .team-show{
@@ -13,9 +13,9 @@
 
         .team-show-projects-label {
             border-bottom: solid 1px gray;
+            padding-bottom: 10px;
             font-weight: bold;
         }
-
 
         // background-color: aqua;
         width: 100%;
@@ -23,7 +23,7 @@
         flex-direction: row;
         justify-content: center;
         // align-items: center;
-        padding-top: 20px;
+        padding-top: 30px;
 
         .team-show-content{
             display: flex;
@@ -35,10 +35,74 @@
         }
 
         .team-show-projects {
-            width: 600px;
+            width: 640px;
             // background-color: blue;
             margin-right: 250px;
             transition: 0.5s;
+            ul {
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            a {
+                text-decoration: none;
+            }
+
+            li {
+                width: 150px;
+                min-height: 190px;
+                // background-color: lightgrey;
+                margin-right: 10px;
+                margin-top: 10px;
+                border-radius: 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                // padding: 10px;
+                text-decoration: none;
+
+
+                .new-project {
+                    border: dashed 2px gray;
+                }
+
+                .project-square{
+                    // background-color: red;
+                    width: 130px;
+                    height: 130px;
+                    border-radius: 15px;
+                    margin: 10px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 40px;
+                    text-decoration: none;
+                    
+                    i {
+                        // text-decoration: none;
+                        // color: black;
+                    }
+                }
+
+                .actual-projects{
+                    background-color: #78A2CC;
+                    color: white;
+                }
+
+                p {
+                    margin: 10px;
+                    text-decoration: none;
+                    color: black;
+                    a {
+
+                    }
+                }
+            }
+
+            li:hover {
+                background-color: rgb(207, 207, 207);
+                transition: 0.3s;
+            }
         }
     }
 }
