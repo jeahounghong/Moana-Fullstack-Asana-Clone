@@ -4,6 +4,7 @@ import ProjectList from "./project_list";
 import { createSection, deleteSection, fetchProjectSections, updateSection } from "../actions/section_actions";
 import { fetchProjectTasks } from "../actions/task_actions";
 import { Link } from "react-router-dom";
+import ProjectBoard from "./project_board";
 
 class Project extends React.Component {
 
@@ -23,7 +24,7 @@ class Project extends React.Component {
         const path = this.props.location.pathname;
         const list = path.substring(path.length-4, path.length) === "list"
         const overview = path.substring(path.length-4, path.length) === "view"
-        const board = path.substring(path.length-4, path.length) === "aord"
+        const board = path.substring(path.length-4, path.length) === "oard"
         const timeline = path.substring(path.length-4, path.length) === "line"
         const calendar = path.substring(path.length-4, path.length) === "ndar"
         
@@ -52,6 +53,9 @@ class Project extends React.Component {
         switch(path.substring(path.length-4,path.length)){
             case "list":
                 return <ProjectList {...this.props}/>
+            case "oard":
+                // console.log()
+                return <ProjectBoard {...this.props}/>;
             default: 
                 return ""
         }

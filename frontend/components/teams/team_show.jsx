@@ -20,6 +20,11 @@ class TeamShow extends React.Component {
               teamCopy.description = contents[0].innerHTML
               this.props.updateTeam(teamCopy)
             })
+            contents.keydown((e) => {
+                if (e.keyCode === 13){
+                    e.preventDefault();
+                }
+            })
         }, 500)
 
         

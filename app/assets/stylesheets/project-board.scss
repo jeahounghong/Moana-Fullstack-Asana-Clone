@@ -1,0 +1,12 @@
+.project-board{
+    background-color: grey;
+    display: flex;
+    flex: row;
+
+    .project-board-column{
+        background-color: white;
+        width: 200px;
+        height: 700px;
+        margin-right: 40px;
+    }
+}

@@ -1,4 +1,5 @@
 import React from "react";
+import TaskListContainer from '../components/tasks/task_list_container'
 
 class ProjectList extends React.Component {
 
@@ -10,7 +11,7 @@ class ProjectList extends React.Component {
         }
         this.description = this.description.bind(this);
         this.handleCreate = this.handleCreate.bind(this);
-        this.addSectionForm = this.addSectionForm.bind(this)
+        this.addSectionForm = this.addSectionForm.bind(this);
     }
 
     description(){
@@ -101,6 +102,7 @@ class ProjectList extends React.Component {
                                     suppressContentEditableWarning={true}>
                                 {this.props.sections[section.id] ? this.props.sections[section.id].title : ""}
                             </span>
+                            {/* <TaskListContainer/> */}
                         </li> : ""
                     ))}
 
