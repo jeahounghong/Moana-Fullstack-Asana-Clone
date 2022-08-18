@@ -16,13 +16,14 @@ class TeamShow extends React.Component {
 
     render(){return(
         <div className="team-show">
-            <div className="team-show-description">
+            <div className="team-show-left">
                 <h3>Description:</h3>
                 {this.props.team ? this.props.team.description : ""}
             </div>
 
-            <div className="team-show-projects">
-                <div>Projects:</div>
+            <div className="team-show-projects right-most">
+                <div className="team-show-projects-label">Projects:</div>
+                <div onClick={this.props.showNewProjectForm}>New Project</div>
                 <ul>
                     {
                         Object.values(this.props.projects).map((project) => {
@@ -39,7 +40,7 @@ class TeamShow extends React.Component {
                         })
                     }
                 </ul>
-                <div onClick={this.props.showNewProjectForm}>New Project</div>
+                
             </div>
         </div>
     )}

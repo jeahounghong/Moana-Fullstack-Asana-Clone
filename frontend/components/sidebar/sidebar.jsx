@@ -23,10 +23,20 @@ class Sidebar extends React.Component{
             if (this.state.showSidebar){
                 document.getElementById("sidebar").style.width = "250px";
                 document.getElementById("main-content").style.marginLeft = "250px";
+                let rights = document.getElementsByClassName("right-most")
+                for(let i = 0; i < rights.length; i ++){
+                    rights[i].style.marginRight = "250px";
+                }
+                // document.getElementById("main-content").style.paddingLeft = "250px";
             } else {
                 console.log("close")
                 document.getElementById("sidebar").style.width = "0";
                 document.getElementById("main-content").style.marginLeft= "0";
+                let rights = document.getElementsByClassName("right-most")
+                for(let i = 0; i < rights.length; i ++){
+                    rights[i].style.marginRight = "0px";
+                }
+                // document.getElementById("main-content").style.paddingLeft= "0";
             }
         }
     }
