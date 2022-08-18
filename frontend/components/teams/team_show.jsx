@@ -9,8 +9,20 @@ class TeamShow extends React.Component {
     }
 
     componentDidMount(){
-        console.log(this.props.currentUser)
+        // console.log(this.props.currentUser)
         this.props.fetchUserProjects(this.props.currentUser)
+
+        setTimeout(() => {
+            const contents = $(".team-show-description")
+            contents.blur(()=>{
+              console.log(contents[0].innerHTML)
+              let teamCopy = Object.assign({}, this.props.team)
+              teamCopy.description = contents[0].innerHTML
+              this.props.updateTeam(teamCopy)
+            })
+        }, 500)
+
+        
 
     }
 
@@ -18,7 +30,9 @@ class TeamShow extends React.Component {
         <div className="team-show">
             <div className="team-show-left">
                 <h3>Description:</h3>
-                {this.props.team ? this.props.team.description : ""}
+                <section className="team-show-description" contentEditable={true}>
+                    {this.props.team ? this.props.team.description : ""}
+                </section>
             </div>
 
             <div className="team-show-projects right-most">
