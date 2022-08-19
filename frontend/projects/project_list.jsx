@@ -61,7 +61,7 @@ class ProjectList extends React.Component {
         // Used a setTimeout in place of a hook to allow for components to render
         setTimeout(() => {
             const contents = $('.sections')
-            console.log(contents)
+            // console.log(contents)
             $('.sections').blur((() => {
                 for( let i = 0; i < contents.length; i++){
                     let sectionId = parseInt(contents[i].id.substring(8))

@@ -6,40 +6,65 @@ import { useState } from 'react';
 
 function ProjectBoard(props) {
 
-    console.log("project")
-    console.log(props.project)
-    console.log("sections")
-    console.log(props.sections)
-    //  if (props.project) {
-    //     props.fetchProjectSections(props.project.id)
-    //  };
-
-    const [tasks, setTasks] = useState(['Item 1', 'Item 2', 'Item 3']);
-
     const initialColumns = {
-        todo: {
-          id: 'todo',
-          tasks: ['item 1', 'item 2', 'item 3', 'item 4', 'item 5' , 'item 6', 'item 7']
-        },
-        doing: {
-          id: 'doing',
-          tasks: []
-        },
-        done: {
-          id: 'done',
-          tasks: []
-        },
-        started: {
-          id: 'started',
-          tasks: []
-        },
-        sent: {
-          id: 'sent',
-          tasks: []
-        }
+        // todo: {
+        //   id: 'todo',
+        //   tasks: ['item 1', 'item 2', 'item 3', 'item 4', 'item 5' , 'item 6', 'item 7']
+        // },
+        // doing: {
+        //   id: 'doing',
+        //   tasks: []
+        // },
+        // done: {
+        //   id: 'done',
+        //   tasks: []
+        // },
+        // started: {
+        //   id: 'started',
+        //   tasks: []
+        // },
+        // sent: {
+        //   id: 'sent',
+        //   tasks: []
+        // }
     }
 
+    
+    initialColumns['To Do'] = {
+        id: 'To Do',
+        type: 'project',
+        typeId: props.project ? props.project.id : null,
+        tasks: ['item 1', 'item 2', 'item 3']
+    }
+    
+    
+    Object.values(props.sections).forEach((section) => {
+        
+        // setColumns(Object.assign(columns, {[section.title]: {
+        //     id: section.title,
+        //     type: 'section',
+        //     typeId: section.id,
+        //     tasks: []
+        // }}))
+        initialColumns[section.title] = {
+                id: section.title,
+                type: 'section',
+                typeId: section.id,
+                tasks: []
+            }
+    })
+    
     const [columns, setColumns] = useState(initialColumns)
+    console.log("initC, C")
+    console.log(Object.keys(initialColumns).length);
+    console.log(Object.keys(columns).length)
+    if (Object.keys(initialColumns).length !== Object.keys(columns).length){
+        console.log("difference")
+        setColumns(initialColumns);
+    }
+
+
+
 
 
     const onDragEnd = ({source, destination}) => {
@@ -107,7 +132,6 @@ function ProjectBoard(props) {
                 {Object.values(columns).map((col) => (
                     <Column col={col} key={col.id}/>
                 ))}
-                <div className='spacer'></div>
             </div>
         </DragDropContext>
     )

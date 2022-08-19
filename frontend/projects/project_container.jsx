@@ -16,6 +16,13 @@ class Project extends React.Component {
         this.props.fetchProjectSections(parseInt(this.props.projectId))
     }
 
+    componentDidMount(){
+        setTimeout(() => {
+            this.props.fetchProjectSections(parseInt(this.props.projectId))
+        }, 1500)
+        
+    }
+
     projectNavbar(){
 
         const path = this.props.location.pathname;
@@ -61,7 +68,10 @@ class Project extends React.Component {
             case "list":
                 return <ProjectList {...this.props}/>
             case "oard":
-                return <ProjectBoard {...this.props}/>;
+                if (this.props.sections){
+                    console.log(this.props.sections)
+                    return <ProjectBoard {...this.props}/>;
+                }
             default: 
                 return ""
         }

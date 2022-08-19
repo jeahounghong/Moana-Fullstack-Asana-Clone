@@ -13,7 +13,7 @@ class TeamSidebarItem extends React.Component {
         this.expandedView = this.expandedView.bind(this);
         this.toggleView = this.toggleView.bind(this);
 
-        console.log(this.props.team.teamProjects)
+        // console.log(this.props.team.teamProjects)
 
     }
 
