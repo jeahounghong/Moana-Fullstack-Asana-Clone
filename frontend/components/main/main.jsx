@@ -31,7 +31,7 @@ class Main extends React.Component{
             </div>
 
             <div id="hawaii-1">
-                <img src={window.hawaii} alt="" />
+                <img src="https://i.pinimg.com/736x/5a/33/7f/5a337f64fcca094439c4cfceeb5d04cf.jpg" alt="" />
             </div>
             <div id="beach">
                 <img src={window.beach} alt="" />
