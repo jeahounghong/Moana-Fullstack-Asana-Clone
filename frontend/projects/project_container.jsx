@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import ProjectList from "./project_list";
 import { createSection, deleteSection, fetchProjectSections, updateSection } from "../actions/section_actions";
-import { fetchProjectTasks } from "../actions/task_actions";
+import { fetchProjectTasks, fetchSectionTasks } from "../actions/task_actions";
 import { Link } from "react-router-dom";
 import ProjectBoard from "./project_board";
 import { showNewTaskForm } from "../actions/ui_actions";
@@ -15,13 +15,27 @@ class Project extends React.Component {
         console.log(props)
         this.renderProject = this.renderProject.bind(this)
         this.props.fetchProjectSections(parseInt(this.props.projectId))
+        this.props.fetchProjectTasks(this.props.projectId)
+        if (Object.keys(this.props.projects).length > 0) {
+            this.props.projects[this.props.projectId].projectSections.forEach((id) => {
+                this.props.fetchSectionTasks(id)
+            })
+        }
     }
 
     componentDidMount(){
         setTimeout(() => {
             this.props.fetchProjectSections(parseInt(this.props.projectId))
+        }, 1000)
+        setTimeout(() => {
+            let projects = this.props.projects;
+            debugger;
+            if (this.props.projects) {
+                this.props.projects[this.props.projectId].projectSections.forEach((id) => {
+                    this.props.fetchSectionTasks(id)
+                })
+            }
         }, 1500)
-        
     }
 
     projectNavbar(){
@@ -87,7 +101,7 @@ class Project extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-    project: state.entities.projects[ownProps.match.params.project_id],
+    projects: state.entities.projects,
     path: ownProps.location.pathname,
     sections: state.entities.sections,
     projectId: parseInt(ownProps.match.params.project_id)

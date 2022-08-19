@@ -7,6 +7,7 @@ class Api::TasksController < ApplicationController
             @tasks = project.tasks
             render :index
         elsif section && current_user
+            # debugger;
             @tasks = section.tasks
             render :index
         else
