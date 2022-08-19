@@ -29,7 +29,7 @@ class Project extends React.Component {
         }, 1000)
         setTimeout(() => {
             let projects = this.props.projects;
-            debugger;
+            // debugger;
             if (this.props.projects) {
                 this.props.projects[this.props.projectId].projectSections.forEach((id) => {
                     this.props.fetchSectionTasks(id)
@@ -84,7 +84,6 @@ class Project extends React.Component {
                 return <ProjectList {...this.props}/>
             case "oard":
                 if (this.props.sections){
-                    console.log(this.props.sections)
                     return <ProjectBoard {...this.props}/>;
                 }
             default: 
@@ -104,7 +103,8 @@ const mapStateToProps = (state, ownProps) => ({
     projects: state.entities.projects,
     path: ownProps.location.pathname,
     sections: state.entities.sections,
-    projectId: parseInt(ownProps.match.params.project_id)
+    projectId: parseInt(ownProps.match.params.project_id),
+    tasks: state.entities.tasks
 })
 
 const mapDispatchToProps = dispatch => ({

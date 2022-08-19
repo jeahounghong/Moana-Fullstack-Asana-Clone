@@ -6,30 +6,9 @@ import { useState } from 'react';
 
 function ProjectBoard(props) {
 
-    const initialColumns = {
-        // todo: {
-        //   id: 'todo',
-        //   tasks: ['item 1', 'item 2', 'item 3', 'item 4', 'item 5' , 'item 6', 'item 7']
-        // },
-        // doing: {
-        //   id: 'doing',
-        //   tasks: []
-        // },
-        // done: {
-        //   id: 'done',
-        //   tasks: []
-        // },
-        // started: {
-        //   id: 'started',
-        //   tasks: []
-        // },
-        // sent: {
-        //   id: 'sent',
-        //   tasks: []
-        // }
-    }
+    const initialColumns = {};
 
-    console.log(props)
+    console.log("board props")
     console.log(props)
     
     initialColumns['To Do'] = {
@@ -41,13 +20,6 @@ function ProjectBoard(props) {
     
     
     Object.values(props.sections).forEach((section) => {
-        
-        // setColumns(Object.assign(columns, {[section.title]: {
-        //     id: section.title,
-        //     type: 'section',
-        //     typeId: section.id,
-        //     tasks: []
-        // }}))
         initialColumns[section.title] = {
                 id: section.title,
                 type: 'section',
