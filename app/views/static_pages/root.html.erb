@@ -2,8 +2,7 @@
     window.currentUser = <%= logged_in? ? render("api/users/user.json.jbuilder", user: current_user).html_safe : nil %>
     window.logo = "<%= image_url('logo.png') %>"
     
-    window.beach = "<%= image_url('beach') %>"
-    window.background = "<%= image_url('background') %>"
-    window.darklogo = "<%= image_url('logo-dark') %>"
+    window.background = "<%= image_url('background.jpeg') %>"
+    window.darklogo = "<%= image_url('logo-dark.png') %>"
 </script>
 <div id="root">React is not working</div>
