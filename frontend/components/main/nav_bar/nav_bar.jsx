@@ -10,7 +10,8 @@ const NavBar = (props) => (
         
         <div className="session-buttons">
             <Link className="session-button" to="/login">Log In</Link>
-            <Link className="session-button" to="/login">Demo</Link>
+            <a className="session-button" onClick={() => props.loginUser({username: "DemoDavid", password: "password"})}>Demo</a>
+            {/* <Link className="session-button" to="/login">Demo</Link> */}
             <Link className="get-started" to="/signup">Get Started</Link>
         </div>
         

@@ -1,15 +1,19 @@
 import React from "react";
 import NavBar from "./nav_bar/nav_bar";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import {loginUser } from "../../actions/session_actions";
 
-class Main extends React.Component{
+class MainComponent extends React.Component{
     constructor(props){
         super(props);
     }
 
+
+
     render(){return(
         <div className="main">
-            <NavBar/>
+            <NavBar {...this.props}/>
             <div id="phrase">
                 <div>
                     Work faster,
@@ -26,18 +30,28 @@ class Main extends React.Component{
 
                 <div className="main-buttons">
                     <Link className="get-startedn" to="/login">Get Started</Link>
-                    <Link className="demo" to="/login">Demo</Link>
+                    <a className="demo" onClick={() => this.props.loginUser({username: "DemoDavid", password: "password"})}>Demo</a>
+                    {/* <Link className="demo" to="/login">Demo</Link> */}
                 </div>
             </div>
 
             <div id="hawaii-1">
                 <img src="https://i.pinimg.com/736x/5a/33/7f/5a337f64fcca094439c4cfceeb5d04cf.jpg" alt="" />
             </div>
-            <div id="beach">
-                <img src={window.beach} alt="" />
+            <div id="horseshoe">
+                <img src="https://www.outsideonline.com/wp-content/uploads/2018/03/22/horseshoe-bend-iconic_s.jpg" alt="" />
             </div>
         </div>
     )}
 }
 
+const mapStateToProps = state => ({
+
+})
+
+const mapDispatchToProps = dispatch => ({
+    loginUser: (user) => dispatch(loginUser(user))
+})
+
+const Main = connect(mapStateToProps, mapDispatchToProps)(MainComponent)
 export default Main;
