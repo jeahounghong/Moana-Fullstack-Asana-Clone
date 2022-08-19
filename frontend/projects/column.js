@@ -2,8 +2,12 @@ import Task from './task';
 import React from 'react';
 import {Droppable} from 'react-beautiful-dnd'
 
-const Column = ({col: {tasks, id}}) => {
+const Column = (props) => {
+    console.log("show new task")
+    console.log(props.showNewTaskForm)
 
+    const tasks = props.col.tasks
+    const id = props.col.id
     return(
         <Droppable droppableId={id}>
             {(provided) => (
@@ -14,7 +18,7 @@ const Column = ({col: {tasks, id}}) => {
                             <Task key={task} text={task} index={index}/>
                         ))}
                         {provided.placeholder}
-                        <div className="add-task">
+                        <div className="add-task" onClick={() => props.showNewTaskForm()}>
                             <label><i class="fa-regular fa-plus"></i>Add Task</label>
                         </div>
                     </div>

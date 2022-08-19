@@ -29,6 +29,8 @@ function ProjectBoard(props) {
         // }
     }
 
+    console.log(props)
+    console.log(props)
     
     initialColumns['To Do'] = {
         id: 'To Do',
@@ -55,17 +57,10 @@ function ProjectBoard(props) {
     })
     
     const [columns, setColumns] = useState(initialColumns)
-    console.log("initC, C")
-    console.log(Object.keys(initialColumns).length);
-    console.log(Object.keys(columns).length)
     if (Object.keys(initialColumns).length !== Object.keys(columns).length){
         console.log("difference")
         setColumns(initialColumns);
     }
-
-
-
-
 
     const onDragEnd = ({source, destination}) => {
         if (destination === undefined || destination === null){
@@ -130,7 +125,7 @@ function ProjectBoard(props) {
         <DragDropContext onDragEnd={onDragEnd}>
             <div className='project-board right-most'>
                 {Object.values(columns).map((col) => (
-                    <Column col={col} key={col.id}/>
+                    <Column col={col} key={col.id} showNewTaskForm={props.showNewTaskForm}/>
                 ))}
             </div>
         </DragDropContext>
