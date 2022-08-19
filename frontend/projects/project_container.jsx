@@ -5,6 +5,7 @@ import { createSection, deleteSection, fetchProjectSections, updateSection } fro
 import { fetchProjectTasks } from "../actions/task_actions";
 import { Link } from "react-router-dom";
 import ProjectBoard from "./project_board";
+import { showNewTaskForm } from "../actions/ui_actions";
 
 class Project extends React.Component {
 
@@ -98,7 +99,8 @@ const mapDispatchToProps = dispatch => ({
     createSection: (section) => dispatch(createSection(section)),
     deleteSection: (sectionId) => dispatch(deleteSection(sectionId)),
     fetchProjectTasks: (projectId) => dispatch(fetchProjectTasks(projectId)),
-    fetchSectionTasks: (sectionId) => dispatch(fetchSectionTasks(sectionId))
+    fetchSectionTasks: (sectionId) => dispatch(fetchSectionTasks(sectionId)),
+    showNewTaskForm: () => dispatch(showNewTaskForm())
 })
 
 const ProjectContainer = connect(mapStateToProps, mapDispatchToProps)(Project);
