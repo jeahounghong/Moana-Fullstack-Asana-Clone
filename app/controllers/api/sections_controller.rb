@@ -1,6 +1,7 @@
 class Api::SectionsController < ApplicationController
 
     def index
+        # debugger;
         project = Project.find_by(id: params[:project_id])
         if current_user && project
             @sections = project.sections

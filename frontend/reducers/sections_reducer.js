@@ -6,9 +6,11 @@ const SectionsReducer = (state = {}, action) => {
     let nextState = Object.assign({}, state);
     switch(action.type){
         case RECEIVE_SECTIONS:
+            // debugger;
             Object.values(action.sections).forEach((section) => {
                 nextState[section.id] = section
             })
+            // debugger;
             return nextState;
         
         case RECEIVE_SECTION:

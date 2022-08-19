@@ -4,10 +4,17 @@ import Task from './task'
 import {DragDropContext} from 'react-beautiful-dnd';
 import { useState } from 'react';
 
-function ProjectBoard() {
+function ProjectBoard(props) {
+
+    console.log("project")
+    console.log(props.project)
+    console.log("sections")
+    console.log(props.sections)
+    //  if (props.project) {
+    //     props.fetchProjectSections(props.project.id)
+    //  };
 
     const [tasks, setTasks] = useState(['Item 1', 'Item 2', 'Item 3']);
-    // const tasks = ['Item 1', 'Item 2', 'Item 3'];
 
     const initialColumns = {
         todo: {
@@ -20,6 +27,14 @@ function ProjectBoard() {
         },
         done: {
           id: 'done',
+          tasks: []
+        },
+        started: {
+          id: 'started',
+          tasks: []
+        },
+        sent: {
+          id: 'sent',
           tasks: []
         }
     }
@@ -88,10 +103,11 @@ function ProjectBoard() {
 
     return (
         <DragDropContext onDragEnd={onDragEnd}>
-            <div className='project-board'>
+            <div className='project-board right-most'>
                 {Object.values(columns).map((col) => (
                     <Column col={col} key={col.id}/>
                 ))}
+                <div className='spacer'></div>
             </div>
         </DragDropContext>
     )

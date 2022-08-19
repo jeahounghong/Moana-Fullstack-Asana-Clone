@@ -12,6 +12,8 @@ class ProjectList extends React.Component {
         this.description = this.description.bind(this);
         this.handleCreate = this.handleCreate.bind(this);
         this.addSectionForm = this.addSectionForm.bind(this);
+
+        // debugger;
     }
 
     description(){
@@ -86,6 +88,7 @@ class ProjectList extends React.Component {
     }
 
     render(){
+        // debugger;
         return(
         <div className="project-list">
             {this.description()}
@@ -93,7 +96,7 @@ class ProjectList extends React.Component {
                 <h3>Sections</h3>
                 <ul>
                     { Object.values(this.props.sections).map((section) => (
-                        (section.projectId === this.props.project.id) ? 
+                        (section.projectId === this.props.projectId) ? 
                         <li className="project-section-li-items" key={section.id}>
                             <span contentEditable={true} 
                                     onChange={this.updateSection} 

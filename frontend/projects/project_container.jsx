@@ -10,13 +10,10 @@ class Project extends React.Component {
 
     constructor(props){
         super(props)
+        console.log("container-props")
         console.log(props)
-
         this.renderProject = this.renderProject.bind(this)
-    }
-
-    componentDidMount(){
-        // this.props.fetchProjectTasks(this.props.project.id)
+        this.props.fetchProjectSections(parseInt(this.props.projectId))
     }
 
     projectNavbar(){
@@ -30,21 +27,31 @@ class Project extends React.Component {
         
         return(
         <div className="second-navbar">
-            <div className={`second-navbar-item ${overview ? "active" : ""}`}>
-                <Link to={`/projects/${this.props.projectId}/overview`}>Overview</Link>
-            </div>
-            <div className={`second-navbar-item ${list ? "active" : ""}`}>
-                <Link to={`/projects/${this.props.projectId}/list`}>List</Link>
-            </div>
-            <div className={`second-navbar-item ${board ? "active" : ""}`}>
-                <Link to={`/projects/${this.props.projectId}/board`}>Board</Link>
-            </div>
-            <div className={`second-navbar-item ${timeline ? "active" : ""}`}>
-                <Link to={`/projects/${this.props.projectId}/timeline`}>Timeline</Link>
-            </div>
-            <div className={`second-navbar-item ${calendar ? "active" : ""}`}>
-                <Link to={`/projects/${this.props.projectId}/calendar`}>Calendar</Link>
-            </div>
+            <Link to={`/projects/${this.props.projectId}/overview`}>
+                <div className={`second-navbar-item ${overview ? "active" : ""}`}>
+                    Overview
+                </div>
+            </Link>
+            <Link to={`/projects/${this.props.projectId}/list`}>
+                <div className={`second-navbar-item ${list ? "active" : ""}`}>
+                    List
+                </div>
+            </Link>
+            <Link to={`/projects/${this.props.projectId}/board`}>
+                <div className={`second-navbar-item ${board ? "active" : ""}`}>
+                    Board
+                </div>
+            </Link>
+            <Link to={`/projects/${this.props.projectId}/timeline`}>
+                <div className={`second-navbar-item ${timeline ? "active" : ""}`}>
+                    Timeline
+                </div>
+            </Link>
+            <Link to={`/projects/${this.props.projectId}/calendar`}>
+                <div className={`second-navbar-item ${calendar ? "active" : ""}`}>
+                    Calendar
+                </div>
+            </Link>
         </div>
     )}
 
@@ -54,7 +61,6 @@ class Project extends React.Component {
             case "list":
                 return <ProjectList {...this.props}/>
             case "oard":
-                // console.log()
                 return <ProjectBoard {...this.props}/>;
             default: 
                 return ""
@@ -73,7 +79,7 @@ const mapStateToProps = (state, ownProps) => ({
     project: state.entities.projects[ownProps.match.params.project_id],
     path: ownProps.location.pathname,
     sections: state.entities.sections,
-    projectId: ownProps.match.params.project_id
+    projectId: parseInt(ownProps.match.params.project_id)
 })
 
 const mapDispatchToProps = dispatch => ({

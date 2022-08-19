@@ -14,7 +14,11 @@ const Column = ({col: {tasks, id}}) => {
                             <Task key={task} text={task} index={index}/>
                         ))}
                         {provided.placeholder}
+                        <div className="add-task">
+                            <label><i class="fa-regular fa-plus"></i>Add Task</label>
+                        </div>
                     </div>
+                    
                 </div>
             )}
         </Droppable>
