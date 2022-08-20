@@ -1,0 +1,27 @@
+#home-screen{
+    
+    margin-right: 250px;
+    transition: 0.5s;
+    background-color: blue;
+    height: 100vh;
+
+    .welcome-greeting{
+        padding-top: 20px;
+        padding-bottom: 20px;
+        background-color: red;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+        .date{
+            font-size: 20px;
+        }
+
+        p {
+            padding-top: 10px;
+            font-size: 40px;
+        }
+
+    }
+}

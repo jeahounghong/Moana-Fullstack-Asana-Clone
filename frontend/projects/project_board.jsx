@@ -18,8 +18,14 @@ function ProjectBoard(props) {
         tasks: ['item 1', 'item 2', 'item 3']
     }
     
+    let sections = Object.values(props.sections).filter((section) => section.projectId === props.projectId)
     
-    Object.values(props.sections).forEach((section) => {
+    sections.forEach((section) => {
+
+        let projectTasks = section.sectionTasks.filter((task) => {
+            props.tasks(task.id)
+        })
+
         initialColumns[section.title] = {
                 id: section.title,
                 type: 'section',
