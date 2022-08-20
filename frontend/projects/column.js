@@ -3,8 +3,8 @@ import React from 'react';
 import {Droppable} from 'react-beautiful-dnd'
 
 const Column = (props) => {
-    console.log("show new task")
-    console.log(props.showNewTaskForm)
+    // console.log("show new task")
+    // console.log(props.showNewTaskForm)
 
     const tasks = props.col.tasks
     const id = props.col.id

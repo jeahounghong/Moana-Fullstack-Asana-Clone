@@ -25,8 +25,9 @@ class Project extends React.Component {
 
     componentDidMount(){
         setTimeout(() => {
-            this.props.fetchProjectSections(parseInt(this.props.projectId))
-        }, 1000)
+            this.props.fetchProjectSections(parseInt(this.props.projectId));
+            this.props.fetchProjectTasks(parseInt(this.props.projectId));
+        }, 10)
         setTimeout(() => {
             let projects = this.props.projects;
             // debugger;
@@ -35,7 +36,7 @@ class Project extends React.Component {
                     this.props.fetchSectionTasks(id)
                 })
             }
-        }, 1500)
+        }, 15)
     }
 
     projectNavbar(){

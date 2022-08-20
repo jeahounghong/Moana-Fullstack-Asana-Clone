@@ -5,12 +5,7 @@ import {DragDropContext} from 'react-beautiful-dnd';
 import { useState } from 'react';
 
 function ProjectBoard(props) {
-
     const initialColumns = {};
-
-    console.log("board props")
-    console.log(props)
-    
     initialColumns['To Do'] = {
         id: 'To Do',
         type: 'project',
