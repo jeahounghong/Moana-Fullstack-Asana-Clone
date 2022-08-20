@@ -45,6 +45,21 @@ class Home extends React.Component {
                 <div className="date">{this.weekday(this.date.getDay())}, {this.month(this.date.getMonth())} {this.date.getDate()}</div>
                 <p>Welcome, {this.props.currentUser.firstName}.</p>
             </div>
+
+            <div className="priorities-projects-people">
+                <div className="priorities-projects">
+                    <div className="priorities">
+                        My Priorities
+                    </div>
+                    <div className="projects">
+                        My Projects
+                    </div>
+                </div>
+
+                <div className="people">
+                    People
+                </div>
+            </div>
         </div>
     )}
 }
