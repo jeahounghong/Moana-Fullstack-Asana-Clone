@@ -12,8 +12,7 @@ class ProjectList extends React.Component {
         this.description = this.description.bind(this);
         this.handleCreate = this.handleCreate.bind(this);
         this.addSectionForm = this.addSectionForm.bind(this);
-
-        // debugger;
+        this.renderProjectTasks = this.renderProjectTasks.bind(this);
     }
 
     description(){
@@ -33,7 +32,7 @@ class ProjectList extends React.Component {
             project_id: parseInt(this.props.project.id)
         })
         this.setState({addSection: false})
-        setTimeout(() => {this.setState({title: ""})}, 500)
+        setTimeout(() => {this.setState({title: ""})}, 100)
     }
 
     handleInput(type){
@@ -87,13 +86,33 @@ class ProjectList extends React.Component {
         }, 500)
     }
 
+    renderProjectTasks(){
+        return (
+            <ul>
+                <li className="project-section-li-items" key="project-list-todo">
+                    To Do
+                </li>
+                {Object.values(this.props.tasks).map((task) => (
+                    <li key={task.title+task.id} className="project-list-task">
+                        <div>
+                            {task.title}
+                        </div>
+                    </li>
+                ))}
+            </ul>
+
+        )  
+    }
+
     render(){
         // debugger;
         return(
-        <div className="project-list">
-            {this.description()}
+        <div className="project-list right-most">
+            <div className="project-list-tasks">
+                {this.renderProjectTasks()}
+            </div>
             <div className="project-sections">
-                <h3>Sections</h3>
+                {/* <h3>Sections</h3> */}
                 <ul>
                     { Object.values(this.props.sections).map((section) => (
                         (section.projectId === this.props.projectId) ? 
