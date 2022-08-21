@@ -30,11 +30,14 @@
     .project-list{
         // background-color: red;
         padding: 20px;
-        .project-section-li-items{
-        // background-color: red;
+
+        .project-section-li-items {
+            // width: 100%;
+            // background-color: red;
             font-weight: bold;
             border-bottom: solid 1px lightgrey;
             padding: 10px;
+            font-size: 20px;
         }
 
         margin-right: 250px;
@@ -43,8 +46,24 @@
 
         .project-list-task{
             border-bottom: solid 1px lightgrey;
-            width: 100%;
+            // width: 100%;
             padding: 10px;
+        }
+
+        .project-list-add-task{
+            padding: 10px;
+            // background-color: red;
+            border-bottom: solid 1px lightgrey;
+            color: grey;
+        }
+
+        .project-list-add-task:hover{
+            background-color:rgb(207, 207, 207) ;
+            transition: 0.3s;
+        }
+
+        .incomplete {
+            color: grey;
         }
     }
 }

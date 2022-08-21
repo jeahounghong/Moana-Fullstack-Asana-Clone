@@ -17,16 +17,19 @@ function ProjectBoard(props) {
     
     sections.forEach((section) => {
 
-        let projectTasks = section.sectionTasks.filter((task) => {
-            props.tasks(task.id)
-        })
-
-        initialColumns[section.title] = {
-                id: section.title,
-                type: 'section',
-                typeId: section.id,
-                tasks: []
-            }
+        let projectTasks;
+        if (Object.keys(props.tasks).length > 0){
+            projectTasks = section.sectionTasks.filter((task) => {
+                props.tasks[task.id]
+            })
+    
+            initialColumns[section.title] = {
+                    id: section.title,
+                    type: 'section',
+                    typeId: section.id,
+                    tasks: []
+                }
+        }
     })
     
     const [columns, setColumns] = useState(initialColumns)

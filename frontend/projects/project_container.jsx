@@ -31,12 +31,13 @@ class Project extends React.Component {
         setTimeout(() => {
             let projects = this.props.projects;
             // debugger;
-            if (this.props.projects) {
-                this.props.projects[this.props.projectId].projectSections.forEach((id) => {
+            if (projects) {
+                // debugger
+                projects[this.props.projectId].projectSections.forEach((id) => {
                     this.props.fetchSectionTasks(id)
                 })
             }
-        }, 15)
+        }, 1000)
     }
 
     projectNavbar(){

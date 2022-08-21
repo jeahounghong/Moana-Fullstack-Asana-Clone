@@ -119,9 +119,14 @@ class AppNavbar extends React.Component{
             </div>
 
             <div className="app-navbar-right">
-                <p>Welcome, {this.props.currentUser.firstName}</p>
-                <i className="fa-solid fa-plus"></i>
-                <button onClick={() => this.props.logoutUser(this.props.currentUser.id)}>Logout</button>
+                <div className="add-icon">
+                    <i className="fa-solid fa-plus"></i>
+                </div>
+                <div className="circle-name">
+                    {this.props.currentUser ? this.props.currentUser.firstName[0].toUpperCase() + this.props.currentUser.lastName[0].toUpperCase() : ""}
+                </div>
+                {/* <p>Welcome, {this.props.currentUser.firstName[0]}{this.props.currentUser.lastName[0]}</p> */}
+                {/* <button onClick={() => this.props.logoutUser(this.props.currentUser.id)}>Logout</button> */}
             </div>
 
             <div className="drop-down-menu-container">

@@ -11,7 +11,7 @@ const Task = (props) => {
             {...provided.draggableProps}
             className="project-board-task"
         >
-          <i class="fa-regular fa-circle-check"></i> {props.text}
+          <i className={`fa-regular fa-circle-check`}></i> {props.text}
         </div>
       )}
     </Draggable>

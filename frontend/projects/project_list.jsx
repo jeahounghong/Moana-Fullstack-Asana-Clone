@@ -13,6 +13,7 @@ class ProjectList extends React.Component {
         this.handleCreate = this.handleCreate.bind(this);
         this.addSectionForm = this.addSectionForm.bind(this);
         this.renderProjectTasks = this.renderProjectTasks.bind(this);
+        this.renderSectionTasks = this.renderSectionTasks.bind(this)
     }
 
     description(){
@@ -29,7 +30,7 @@ class ProjectList extends React.Component {
         const title = this.state.title;
         this.props.createSection({
             title: title,
-            project_id: parseInt(this.props.project.id)
+            project_id: parseInt(this.props.projectId)
         })
         this.setState({addSection: false})
         setTimeout(() => {this.setState({title: ""})}, 100)
@@ -65,12 +66,11 @@ class ProjectList extends React.Component {
                 for( let i = 0; i < contents.length; i++){
                     let sectionId = parseInt(contents[i].id.substring(8))
                     if (contents[i].innerHTML === ""){
-                        // console.log("empty")
                         this.props.deleteSection(sectionId)
                     } else {
                         this.props.updateSection({
                             id: sectionId,
-                            project_id: this.props.project.id,
+                            project_id: this.props.projectId,
                             title: contents[i].innerHTML
                         })
                     }
@@ -83,7 +83,7 @@ class ProjectList extends React.Component {
                     e.preventDefault();
                 }
             })
-        }, 500)
+        }, 1000)
     }
 
     renderProjectTasks(){
@@ -93,15 +93,28 @@ class ProjectList extends React.Component {
                     To Do
                 </li>
                 {Object.values(this.props.tasks).map((task) => (
+                    (task.ownerType === "Project" && task.ownerId === this.props.projectId) ? 
                     <li key={task.title+task.id} className="project-list-task">
                         <div>
-                            {task.title}
+                            <i className={`fa-regular fa-circle-check ${task.complete ? "complete" : "incomplete"}`}></i> {task.title}
                         </div>
-                    </li>
+                    </li> : ""
                 ))}
+
+                <li className="project-list-add-task">
+                    <i class="fa-regular fa-plus"></i>Add Task
+                </li>
             </ul>
 
         )  
+    }
+
+    renderSectionTasks(sectionId){
+        return(
+            <ul>
+                sdgnsdg
+            </ul>
+        )
     }
 
     render(){
@@ -115,17 +128,29 @@ class ProjectList extends React.Component {
                 {/* <h3>Sections</h3> */}
                 <ul>
                     { Object.values(this.props.sections).map((section) => (
-                        (section.projectId === this.props.projectId) ? 
-                        <li className="project-section-li-items" key={section.id}>
-                            <span contentEditable={true} 
-                                    onChange={this.updateSection} 
-                                    className="sections" 
-                                    id={`section-${section.id}`}
-                                    suppressContentEditableWarning={true}>
-                                {this.props.sections[section.id] ? this.props.sections[section.id].title : ""}
-                            </span>
-                            {/* <TaskListContainer/> */}
-                        </li> : ""
+                        (section.projectId === this.props.projectId) ?
+                        <div>
+                            <li className="project-section-li-items" key={section.id}>
+                                <span contentEditable={true} 
+                                        onChange={this.updateSection} 
+                                        className="sections bold" 
+                                        id={`section-${section.id}`}
+                                        suppressContentEditableWarning={true}>
+                                    {this.props.sections[section.id] ? this.props.sections[section.id].title : ""}
+                                </span>
+                            </li>
+                            {Object.values(this.props.tasks).map((task)=>(
+                                (task.ownerType === "Section" && task.ownerId === section.id) ? 
+                                <li key={task.title+task.id} className="project-list-task">
+                                    <i class="fa-regular fa-circle-check"></i> {task.title}
+                                </li> : ""
+                                
+                            ))}
+                            <li className="project-list-add-task">
+                                <i class="fa-regular fa-plus"></i>Add Task
+                            </li>
+                        </div> 
+                         : ""
                     ))}
 
                 </ul>

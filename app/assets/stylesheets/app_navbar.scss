@@ -8,11 +8,32 @@
 
     .app-navbar-right {
         position: absolute;
+        // background-color: red;
         top: 10px;
         right: 10px;
         display: flex;
-        * {
-            margin-left: 10px;
+
+        .circle-name{
+            background-color: #78A2CC;
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            color: white;
+        }
+
+        .add-icon{
+            display: flex;
+            align-items: center;
+            height: 40px;
+            width: 40px;
+            justify-content: center;
+            font-size: 25px;
+            border-radius: 20px;
+            margin-right: 10px;
         }
     }
 
