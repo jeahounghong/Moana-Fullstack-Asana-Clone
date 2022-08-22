@@ -58,7 +58,7 @@ const uiReducer = (state = preloadedState, action) => {
         case SHOW_UPDATE_TASK_FORM:
             nextState.taskShow = true;
             nextState.taskContent = action.task;
-            debugger;
+            // debugger;
             taskform = document.getElementById("task-show-container");
             taskform.style.width="45%";
             return nextState;

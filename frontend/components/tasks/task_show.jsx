@@ -7,6 +7,18 @@ class TaskShow extends React.Component {
         super(props);
         this.state = this.props.task;
         this.handleInput = this.handleInput.bind(this);
+
+        document.addEventListener("click", (e) => {
+            console.log(document.getElementById("task-show-container").style.width)
+
+            if (this.props.show){
+                console.log("time to close")
+                if (e.target.className.indexOf("task-show-open") < 0){
+                    this.props.closeTaskShow()
+                }
+            }
+
+        })
     }
 
     componentWillReceiveProps(nextProps){
@@ -21,10 +33,10 @@ class TaskShow extends React.Component {
 
     render(){
         return(
-        <div id="task-show-container" onBlur={() => console.log("blur")}>
-            <div className="task-show-header">
+        <div id="task-show-container" className="task-show-open" >
+            <div className="task-show-header task-show-open">
                 <div className="complete-button">
-                    <div>
+                    <div className="task-show-open">
                         <i class="fa-solid fa-check"></i> Mark Complete
                     </div>
                 </div>
@@ -37,21 +49,21 @@ class TaskShow extends React.Component {
             </div>
 
         
-            <input className="task-title" 
+            <input className="task-title task-show-open" 
                     contentEditable={true} 
                     value={this.state.title}
                     placeholder="New Task"
                     onChange={this.handleInput("title")}
             />
 
-            <div className="table">
-                <div className="left">
+            <div className="table task-show-open">
+                <div className="left task-show-open">
                     {/* 1 */}
                     <p>Assignee</p>
                     {/* 2 */}
                     <p>Due date</p>
                 </div>
-                <div className="right">
+                <div className="right task-show-open">
                     {/* 1 */}
                     <div className="assignee">
                         <Assignee {...this.props}/>
