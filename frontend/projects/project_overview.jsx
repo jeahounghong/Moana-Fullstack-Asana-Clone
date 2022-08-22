@@ -5,6 +5,7 @@ export default class ProjectOverview extends React.Component {
     constructor(props){
         super(props);
         this.description = this.description.bind(this);
+        this.people.bind(this);
     }
 
     description(){
@@ -15,6 +16,36 @@ export default class ProjectOverview extends React.Component {
         }
     }
 
+    people(){
+        if (this.props.projects[this.props.projectId] && Object.keys(this.props.users).length > 0){
+            return (<ul>
+                {/* lskdnlksdg */}
+                <li className="add-box"> 
+                    <div className="add-icon">
+                        <i className="fa-solid fa-plus"></i>
+                    </div>
+                    <div>
+                        Add User
+                    </div>
+                </li>
+                {this.props.projects[this.props.projectId].projectUsers.map((userId) => (
+                    this.props.users[userId] ? 
+                    <li className="people-box">
+                        <div className="initials">
+                            {this.props.users[userId].firstName[0] + this.props.users[userId].lastName[0]}
+                        </div>
+                        <div >
+                            {this.props.users[userId].firstName}
+                        </div>
+                        <div >
+                            {this.props.users[userId].lastName}
+                        </div>
+
+                    </li> : ""
+                ))}
+            </ul>)
+        }
+    }
 
 
     render(){return(
@@ -28,7 +59,7 @@ export default class ProjectOverview extends React.Component {
                     </div>
                     <div className="people">
                         <h1>People</h1>
-                        
+                        {this.people()}
                     </div>
                 </div>
 

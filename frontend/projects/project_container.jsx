@@ -142,7 +142,8 @@ const mapStateToProps = (state, ownProps) => ({
     path: ownProps.location.pathname,
     sections: state.entities.sections,
     projectId: parseInt(ownProps.match.params.project_id),
-    tasks: state.entities.tasks
+    tasks: state.entities.tasks,
+    users: state.entities.users
 })
 
 const mapDispatchToProps = dispatch => ({
