@@ -1,0 +1,86 @@
+#project-overview{
+    // background-color: yellow;
+    display: flex;
+    margin-right: 250px;
+    flex-direction: column;
+    align-items: center;
+    transition: 0.5s;
+    margin-top: 40px;
+
+    .project-overview-content{
+        width: 75%;
+        // background-color: red;
+        display: flex;
+
+        .left-content{
+            width: 50%;
+            margin-right: 5px;
+        }
+        .right-content {
+            width: 50%;
+            margin-left: 5px;
+            background-color: white;
+        }
+    }
+
+    .project-overview-description{
+        background-color: white;
+        
+        border-radius: 10px;
+        padding: 10px;
+        border: solid 1px lightgrey;
+
+        h1 {
+            border-bottom: solid 1px  lightgrey;
+            // padding: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            padding-bottom: 10px;
+        }
+
+        .description-text{
+            margin-top: 10px;
+            min-height: 60px;
+            border-radius: 10px;
+            border: solid 1px  white;
+            padding: 5px;
+        }
+        .description-text:hover{
+            border:  solid 1px  lightgrey;
+            transition: 0.3s;
+        }
+    }
+
+    .people{
+        margin-top: 10px;
+        background-color: white;
+        
+        border-radius: 10px;
+        padding: 10px;
+        border: solid 1px lightgrey;
+
+        h1 {
+            border-bottom: solid 1px  lightgrey;
+            padding-bottom: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    }
+
+    .right-content{
+        background-color: white;
+        
+        border-radius: 10px;
+        padding: 10px;
+        border: solid 1px lightgrey;
+
+        h1 {
+            border-bottom: solid 1px  lightgrey;
+            padding-bottom: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            
+        }
+    }
+
+}

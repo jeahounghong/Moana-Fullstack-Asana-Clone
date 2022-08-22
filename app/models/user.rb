@@ -25,6 +25,9 @@ class User < ApplicationRecord
     after_initialize :ensure_session_token
 
     has_many :team_users, dependent: :destroy
+    has_many :project_users, dependent: :destroy
+    has_many :joined_projects, through: :project_users, source: :project
+
     
     has_many :teams, through: :team_users
 

@@ -6,6 +6,8 @@ import { createTask, fetchProjectTasks, fetchSectionTasks, updateTask } from "..
 import { Link } from "react-router-dom";
 import ProjectBoard from "./project_board";
 import { showNewTaskForm, showUpdateTaskForm } from "../actions/ui_actions";
+import ProjectOverview from "./project_overview";
+import { fetchUser } from "../actions/user_actions";
 
 class Project extends React.Component {
 
@@ -21,6 +23,10 @@ class Project extends React.Component {
                 this.props.fetchSectionTasks(id)
             })
         }
+    }
+
+    componentWillReceiveProps(nextProps){
+
     }
 
     componentDidMount(){
@@ -48,6 +54,23 @@ class Project extends React.Component {
                 })
             }
         }, 2500)
+
+        setTimeout(() => {
+            if (this.props.projects && this.props.projects[this.props.projectId]){
+                this.props.projects[this.props.projectId].projectUsers.forEach((userId) => {
+                    // debugger;
+                    this.props.fetchUser(userId)
+                })
+            }
+        }, 1500)
+        setTimeout(() => {
+            if (this.props.projects && this.props.projects[this.props.projectId]){
+                this.props.projects[this.props.projectId].projectUsers.forEach((userId) => {
+                    // debugger;
+                    this.props.fetchUser(userId)
+                })
+            }
+        }, 0)
     }
     
 
@@ -99,6 +122,8 @@ class Project extends React.Component {
                 if (this.props.sections){
                     return <ProjectBoard {...this.props}/>;
                 }
+            case "view":
+                return <ProjectOverview {...this.props}/>;
             default: 
                 return ""
         }
@@ -130,7 +155,8 @@ const mapDispatchToProps = dispatch => ({
     showNewTaskForm: () => dispatch(showNewTaskForm()),
     showUpdateTaskForm: (task) => dispatch(showUpdateTaskForm(task)),
     createTask: (task) => dispatch(createTask(task)),
-    updateTask: (task) => dispatch(updateTask(task))
+    updateTask: (task) => dispatch(updateTask(task)),
+    fetchUser: (userId) => dispatch(fetchUser(userId))
 })
 
 const ProjectContainer = connect(mapStateToProps, mapDispatchToProps)(Project);

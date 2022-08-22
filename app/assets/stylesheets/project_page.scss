@@ -50,6 +50,11 @@
             padding: 10px;
         }
 
+        .project-list-task:hover{
+            background-color: lightgrey;
+            transition: 0.3s;
+        }
+
         .project-list-add-task{
             padding: 10px;
             // background-color: red;
@@ -62,12 +67,20 @@
             transition: 0.3s;
         }
 
-        .incomplete {
+        i.incomplete {
             color: grey;
         }
-        .incomplete:hover {
+        i.incomplete:hover {
             color: lightgreen;
             transition: 0.3s;
+        }
+
+        .complete{
+            color: lightgreen;
+        }
+
+        .incomplete{
+            color: black;
         }
 
         .add-section{

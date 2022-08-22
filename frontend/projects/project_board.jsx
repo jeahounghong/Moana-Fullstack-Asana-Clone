@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 function ProjectBoard(props) {
     
-    const [tasks, setTasks] = useState(props.tasks)
+    // const [tasks, setTasks] = useState(props.tasks)
     console.log("board tasks")
     console.log(props.tasks)
 

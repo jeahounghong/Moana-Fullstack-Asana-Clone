@@ -14,6 +14,7 @@ class ProjectList extends React.Component {
         this.addSectionForm = this.addSectionForm.bind(this);
         this.renderProjectTasks = this.renderProjectTasks.bind(this);
         this.renderSectionTasks = this.renderSectionTasks.bind(this)
+        this.toggleComplete = this.toggleComplete.bind(this);
     }
 
     description(){
@@ -86,6 +87,13 @@ class ProjectList extends React.Component {
         }, 1000)
     }
 
+    toggleComplete(task){
+        let toggledTask = Object.assign({}, task)
+        toggledTask.complete = !toggledTask.complete;
+        this.props.updateTask(toggledTask)
+        
+    }
+
     renderProjectTasks(){
         return (
             <ul>
@@ -94,14 +102,18 @@ class ProjectList extends React.Component {
                 </li>
                 {Object.values(this.props.tasks).map((task) => (
                     (task.ownerType === "Project" && task.ownerId === this.props.projectId) ? 
-                    <li key={task.title+task.id} className="project-list-task">
-                        <div>
-                            <i className={`fa-regular fa-circle-check ${task.complete ? "complete" : "incomplete"}`}></i> {task.title}
+                    <li key={task.title+task.id} className={`project-list-task task-show-open ${task.complete ? "complete" : "incomplete"}`}
+                        onClick={() => this.props.showUpdateTaskForm(task)}>
+                        <div className="task-show-open">
+                            <i className={`fa-regular fa-circle-check ${task.complete ? "complete" : "incomplete"}`}
+                                    onClick={() => this.toggleComplete(task)}></i> {task.title}
                         </div>
                     </li> : ""
                 ))}
 
-                <li className="project-list-add-task" onClick={this.props.showNewTaskForm}>
+                <li className="project-list-add-task" onClick={() => {
+                                this.props.createTask({ownerId: this.props.projectId, ownerType: "Project"})
+                            }}>
                     <i class="fa-regular fa-plus"></i>Add Task
                 </li>
             </ul>
@@ -141,12 +153,17 @@ class ProjectList extends React.Component {
                             </li>
                             {Object.values(this.props.tasks).map((task)=>(
                                 (task.ownerType === "Section" && task.ownerId === section.id) ? 
-                                <li key={task.title+task.id} className="project-list-task">
-                                    <i className={`fa-regular fa-circle-check ${task.complete ? "complete" : "incomplete"}`}></i> {task.title}
+                                <li key={task.title+task.id} className={`project-list-task task-show-open ${task.complete ? "complete" : "incomplete"}`}
+                                        onClick={() => this.props.showUpdateTaskForm(task)}
+                                >
+                                    <i className={`fa-regular fa-circle-check ${task.complete ? "complete" : "incomplete"}`}
+                                            onClick={() => this.toggleComplete(task)}></i> {task.title}
                                 </li> : ""
                                 
                             ))}
-                            <li className="project-list-add-task" onClick={this.props.showNewTaskForm}>
+                            <li className="project-list-add-task" onClick={() => {
+                                this.props.createTask({ownerId: section.id, ownerType: "Section"})
+                            }}>
                                 <i class="fa-regular fa-plus"></i>Add Task
                             </li>
                         </div> 
