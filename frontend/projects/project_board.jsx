@@ -10,7 +10,7 @@ function ProjectBoard(props) {
     initialColumns['To Do'] = {
         id: 'To Do',
         type: 'project',
-        typeId: props.project ? props.project.id : null,
+        typeId: props.projectId,
         // tasks: ['item 1', 'item 2', 'item 3']
         tasks: []
     }
@@ -33,13 +33,7 @@ function ProjectBoard(props) {
             projectTasks = section.sectionTasks.map((taskId) => (
                 props.tasks[taskId]
             ))
-            
-            // if (Object.values(props.tasks).length > 3){
-            //     debugger;
-            // }
             projectTasks = projectTasks.filter((task) => task)
-            // debugger;
-    
             initialColumns[section.title] = {
                 id: section.title,
                 type: 'section',
@@ -49,22 +43,34 @@ function ProjectBoard(props) {
             }
         }
     })
-    // debugger;
     
+    console.log("here")
     const [columns, setColumns] = useState(initialColumns)
 
     if (Object.keys(initialColumns).length !== Object.keys(columns).length){
         setColumns(initialColumns);
     } else {
+        let sumColTasks = 0;
+        let sumInitialColTasks = 0;
         Object.values(initialColumns).forEach((col) => {
             // debugger;
             if (columns[col.id].tasks === undefined){
+                
                 setColumns(initialColumns);
             } else if (col.tasks.length !== columns[col.id].tasks.length){
-                // debugger;
-                setColumns(initialColumns);
+                // setColumns(initialColumns);
             }
+            sumInitialColTasks += col.tasks.length;
         })
+
+        Object.values(columns).forEach((col) => {
+            sumColTasks += col.tasks.length
+        })
+
+        if (sumColTasks !== sumInitialColTasks){
+            // debugger;
+            setColumns(initialColumns);
+        }
     }
 
 
@@ -87,21 +93,31 @@ function ProjectBoard(props) {
             newTasks.splice(destination.index, 0 , start.tasks[source.index])
             const newCol = {
                 id: start.id,
-                tasks: newTasks
+                tasks: newTasks,
+                type: start.type,
+                typeId: start.typeId
             }
+
+            // debugger;
             setColumns(state => ({...state, [newCol.id]: newCol}))
+            console.log("passed")
+            // debugger;
             return null;
         } else {
             // DIFFERENT COLUMN MIGRATION
-
+            // debugger;
             const newStartTasks = start.tasks.filter((task, idx) => (
                 idx !== source.index
             ))
 
             const newStartCol = {
                 id: start.id,
-                tasks: newStartTasks
+                tasks: newStartTasks,
+                type: start.type,
+                typeId: start.typeId
             }
+
+            // debugger;
 
             const newEndTasks = end.tasks;
 
@@ -109,22 +125,24 @@ function ProjectBoard(props) {
 
             const newEndCol = {
                 id: end.id,
-                tasks: newEndTasks
+                tasks: newEndTasks,
+                type: end.type,
+                typeId: end.typeId
             }
 
             setColumns(state => ({
                 ...state,
+                [newEndCol.id]: newEndCol,
                 [newStartCol.id]: newStartCol,
-                [newEndCol.id]: newEndCol
             }))
+
+            console.log("passed")
+            // debugger
+            return null;
 
         }
 
         return null;
-
-        // const newTasks = tasks.filter((task,index) => index !== source.index)
-        // newTasks.splice(destination.index, 0 , tasks[source.index])
-        // setTasks(newTasks)
     }
 
     return (

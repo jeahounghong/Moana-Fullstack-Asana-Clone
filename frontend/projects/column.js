@@ -7,10 +7,6 @@ const Column = (props) => {
     // console.log(props.showNewTaskForm)
 
     const tasks = props.col.tasks
-    if (props.col.id === "To Do"){
-
-        // debugger;
-    }
     const id = props.col.id
     return(
         <Droppable droppableId={id}>

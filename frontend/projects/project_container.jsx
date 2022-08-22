@@ -38,6 +38,16 @@ class Project extends React.Component {
                 })
             }
         }, 1500)
+        setTimeout(() => {
+            let projects = this.props.projects;
+            // debugger;
+            if (projects) {
+                // debugger
+                projects[this.props.projectId].projectSections.forEach((id) => {
+                    this.props.fetchSectionTasks(id)
+                })
+            }
+        }, 2500)
     }
 
     projectNavbar(){
