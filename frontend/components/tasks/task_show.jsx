@@ -9,6 +9,10 @@ class TaskShow extends React.Component {
         this.handleInput = this.handleInput.bind(this);
     }
 
+    componentWillReceiveProps(nextProps){
+        this.setState(nextProps.task)
+    }
+
     handleInput(type){
         return (e) => {
             this.setState({[type]: e.currentTarget.value})
@@ -16,9 +20,8 @@ class TaskShow extends React.Component {
     }
 
     render(){
-        console.log(this.state)
         return(
-        <div id="task-show-container">
+        <div id="task-show-container" onBlur={() => console.log("blur")}>
             <div className="task-show-header">
                 <div className="complete-button">
                     <div>
