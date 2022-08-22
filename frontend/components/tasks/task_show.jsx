@@ -1,4 +1,5 @@
 import React from "react";
+import { showUpdateTaskForm } from "../../actions/ui_actions";
 import Assignee from "./assignee";
 
 class TaskShow extends React.Component {
@@ -7,37 +8,90 @@ class TaskShow extends React.Component {
         super(props);
         this.state = this.props.task;
         this.handleInput = this.handleInput.bind(this);
+        this.toggleComplete = this.toggleComplete.bind(this);
+        this.updateCurrentTask = this.updateCurrentTask.bind(this)
 
         document.addEventListener("click", (e) => {
-            console.log(document.getElementById("task-show-container").style.width)
-
             if (this.props.show){
-                console.log("time to close")
-                if (e.target.className.indexOf("task-show-open") < 0){
+                if (e.target.className.indexOf("task-show-open") < 0 && e.target.className.indexOf("project-board-task") < 0){
                     this.props.closeTaskShow()
                 }
             }
-
         })
     }
 
     componentWillReceiveProps(nextProps){
+        // debugger;
         this.setState(nextProps.task)
     }
 
     handleInput(type){
         return (e) => {
+            // e.preventDefault()
             this.setState({[type]: e.currentTarget.value})
         }
+    }
+
+    toggleComplete(){
+        const toggledTask = Object.assign({}, this.state)
+        toggledTask.complete = !toggledTask.complete
+        // debugger;
+        // setTimeout(() => {
+        //     this.setState({complete: toggledTask.complete})
+        // },0)
+        this.props.updateTask(toggledTask);
+        this.props.showUpdateTaskForm(toggledTask)
+    }
+
+    componentDidMount(){
+        setTimeout(() => {
+            const contents = $(".task-description")
+            contents.blur(()=>{
+                const currentTask = Object.assign({}, this.state)
+                currentTask.description = contents[0].innerHTML;
+                currentTask.title = $(".task-title")[0].innerHTML;
+                this.props.updateTask(currentTask)
+            })
+            contents.keydown((e) => {
+                if (e.keyCode === 13){
+                    e.preventDefault();
+                }
+            })
+
+
+            const titleContent = $(".task-title")
+            titleContent.blur(() => {
+                const currentTask = Object.assign({}, this.state)
+                currentTask.title = titleContent[0].innerHTML
+                currentTask.description = $(".task-description")[0].innerHTML
+                // debugger;
+                this.props.updateTask(currentTask)
+            })
+        }, 100)
+    }
+
+    updateCurrentTask(){
+        const currentTask = Object.assign({}, this.state)
+        let description = document.querySelector(".task-description")
+        currentTask.description = description
+        // console.log(description.innerHTML)
+        // debugger;
+        setTimeout(() => {
+            console.log("updating...")
+            this.props.updateTask(this.state);
+        }, 100)
+        
     }
 
     render(){
         return(
         <div id="task-show-container" className="task-show-open" >
             <div className="task-show-header task-show-open">
-                <div className="complete-button">
+                <div className={`complete-button ${this.state.complete ? "complete" : ""}`}
+                        onClick={this.toggleComplete}
+                >
                     <div className="task-show-open">
-                        <i class="fa-solid fa-check"></i> Mark Complete
+                        <i class="fa-solid fa-check"></i> { this.state.complete ? "Completed": "Mark Complete"}
                     </div>
                 </div>
 
@@ -49,19 +103,20 @@ class TaskShow extends React.Component {
             </div>
 
         
-            <input className="task-title task-show-open" 
+            <section className="task-title task-show-open" 
                     contentEditable={true} 
-                    value={this.state.title}
-                    placeholder="New Task"
+                    data-placeholder="New Task"
                     onChange={this.handleInput("title")}
-            />
+                    >
+                {this.state.title}
+            </section>
 
             <div className="table task-show-open">
                 <div className="left task-show-open">
                     {/* 1 */}
-                    <p>Assignee</p>
+                    <p className="task-show-open">Assignee</p>
                     {/* 2 */}
-                    <p>Due date</p>
+                    <p className="task-show-open">Due date</p>
                 </div>
                 <div className="right task-show-open">
                     {/* 1 */}
@@ -83,13 +138,15 @@ class TaskShow extends React.Component {
             </label> */}
 
 
-            <label className="task-description-label">
+            <label className="task-description-label task-show-open">
                 <p>Description:</p>
-                <div className="task-description" 
+                <section className="task-description task-show-open" 
                         contentEditable={true}
-                        data-placeholder="Write description here...">
+                        data-placeholder="Write description here..."
+                        // onBlur={this.updateCurrentTask} 
+                    >
                     {this.state.description}
-                </div>
+                </section>
             </label>
         </div>
     )}

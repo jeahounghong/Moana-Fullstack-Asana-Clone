@@ -11,7 +11,8 @@ const Task = (props) => {
             {...provided.draggableProps}
             className="project-board-task"
             onClick={(e) => {
-              setTimeout(() => props.showUpdateTaskForm(props.task), 0)
+              // setTimeout(() => props.showUpdateTaskForm(props.task), 0)
+              props.showUpdateTaskForm(props.task)
             }}
         >
           <i className={`fa-regular fa-circle-check`}></i> {props.task.title}
