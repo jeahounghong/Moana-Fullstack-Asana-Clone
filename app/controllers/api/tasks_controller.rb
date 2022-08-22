@@ -15,10 +15,22 @@ class Api::TasksController < ApplicationController
         end
     end
 
+    def update
+        @task = Task.find_by(id: params[:id])
+        @task.owner_id = params[:task][:ownerId]
+        @task.owner_type = params[:task][:ownerType]
+        if @task.update(task_params)
+            # debugger;
+            render :show
+        else
+            render json: ["not updated"], status: 401
+        end
+    end
+
 
     private
 
     def task_params
-
+        params.require(:task).permit(:id, :title, :owner_type, :owner_id, :description)
     end
 end

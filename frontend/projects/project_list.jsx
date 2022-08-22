@@ -142,7 +142,7 @@ class ProjectList extends React.Component {
                             {Object.values(this.props.tasks).map((task)=>(
                                 (task.ownerType === "Section" && task.ownerId === section.id) ? 
                                 <li key={task.title+task.id} className="project-list-task">
-                                    <i class="fa-regular fa-circle-check"></i> {task.title}
+                                    <i className={`fa-regular fa-circle-check ${task.complete ? "complete" : "incomplete"}`}></i> {task.title}
                                 </li> : ""
                                 
                             ))}
@@ -154,7 +154,7 @@ class ProjectList extends React.Component {
                     ))}
 
                 </ul>
-                <div onClick={() => this.setState({addSection: !this.state.addSection})}>Add Section +</div>
+                <div className="add-section" onClick={() => this.setState({addSection: !this.state.addSection})}>Add Section +</div>
                 {this.state.addSection ? this.addSectionForm() : ""}
             </div>
         </div>

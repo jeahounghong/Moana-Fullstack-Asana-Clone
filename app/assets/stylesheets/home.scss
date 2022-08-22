@@ -40,6 +40,13 @@
         width: 75vw;
         // background-color: green;
 
+        h1{
+            font-weight: bold;
+            padding: 10px;
+            font-size: 20px;
+            border-bottom: solid 1px grey;
+        }
+
         .priorities-projects{
             display: flex;
             justify-content: space-between;
@@ -69,7 +76,7 @@
             // border: solid 1px lightgrey;
             // background-color: red;
             margin-top: 1vw;
-            height: 130px;
+            height: 170px;
             border-radius: 10px;
             background-color: rgba($color: white, $alpha: 0.5);
             backdrop-filter: blur(10px);

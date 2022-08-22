@@ -7,10 +7,11 @@ import { useState } from 'react';
 function ProjectBoard(props) {
     // debugger;
     const initialColumns = {};
-    initialColumns['To Do'] = {
-        id: 'To Do',
-        type: 'project',
+    initialColumns['Project'+props.projectId] = {
+        id: 'Project'+props.projectId,
+        type: 'Project',
         typeId: props.projectId,
+        title: 'To Do',
         // tasks: ['item 1', 'item 2', 'item 3']
         tasks: []
     }
@@ -19,7 +20,7 @@ function ProjectBoard(props) {
         // debugger;
         props.projects[props.projectId].projectTasks.forEach((id) => {
             // debugger;
-            initialColumns['To Do'].tasks.push(props.tasks[id])
+            initialColumns['Project'+props.projectId].tasks.push(props.tasks[id])
         })
         // debugger;
     }
@@ -34,10 +35,11 @@ function ProjectBoard(props) {
                 props.tasks[taskId]
             ))
             projectTasks = projectTasks.filter((task) => task)
-            initialColumns[section.title] = {
-                id: section.title,
-                type: 'section',
+            initialColumns['Section'+section.id] = {
+                id: 'Section'+section.id,
+                type: 'Section',
                 typeId: section.id,
+                title: section.title,
                 // tasks: [],
                 tasks: projectTasks,
             }
@@ -82,6 +84,18 @@ function ProjectBoard(props) {
             return;
         }
 
+        let movedTask = Object.assign({},columns[source.droppableId].tasks[source.index])
+        const finalType = destination.droppableId.substring(0,7);
+        const finalTypeId = parseInt(destination.droppableId.substring(7))
+        // console.log(finalType);
+        // console.log(finalTypeId);
+        console.log(movedTask)
+        movedTask.ownerId = finalTypeId;
+        movedTask.ownerType = finalType;
+        console.log(movedTask)
+        props.updateTask(movedTask);
+        // debugger;
+
         const start = columns[source.droppableId]
         const end = columns[destination.droppableId]
 
@@ -95,7 +109,8 @@ function ProjectBoard(props) {
                 id: start.id,
                 tasks: newTasks,
                 type: start.type,
-                typeId: start.typeId
+                typeId: start.typeId,
+                title: start.title
             }
 
             // debugger;
@@ -114,7 +129,8 @@ function ProjectBoard(props) {
                 id: start.id,
                 tasks: newStartTasks,
                 type: start.type,
-                typeId: start.typeId
+                typeId: start.typeId,
+                title: start.title
             }
 
             // debugger;
@@ -127,7 +143,8 @@ function ProjectBoard(props) {
                 id: end.id,
                 tasks: newEndTasks,
                 type: end.type,
-                typeId: end.typeId
+                typeId: end.typeId,
+                title: end.title
             }
 
             setColumns(state => ({

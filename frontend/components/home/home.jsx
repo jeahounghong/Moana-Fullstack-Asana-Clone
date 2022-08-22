@@ -49,15 +49,18 @@ class Home extends React.Component {
             <div className="priorities-projects-people">
                 <div className="priorities-projects">
                     <div className="priorities">
-                        My Priorities
+                        <h1>My Priorities</h1>
+                        
                     </div>
                     <div className="projects">
-                        My Projects
+                        <h1>My Projects</h1>
+                        
                     </div>
                 </div>
 
                 <div className="people">
-                    People
+                    <h1>People</h1>
+                    
                 </div>
             </div>
         </div>

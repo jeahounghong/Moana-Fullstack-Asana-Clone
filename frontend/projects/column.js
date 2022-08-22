@@ -7,12 +7,13 @@ const Column = (props) => {
     // console.log(props.showNewTaskForm)
 
     const tasks = props.col.tasks
+    const title= props.col.title
     const id = props.col.id
     return(
         <Droppable droppableId={id}>
             {(provided) => (
                 <div className='project-board-column-container'>
-                    <h2 className='project-board-section-title'>{id}</h2>
+                    <h2 className='project-board-section-title'>{title}</h2>
                     <div ref={provided.innerRef} {...provided.droppableProps} className='project-board-column'>
                         {tasks.map((task, index) => (
                             <Task key={task.id} text={task.title} index={index} task={task}/>

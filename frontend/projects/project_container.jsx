@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import ProjectList from "./project_list";
 import { createSection, deleteSection, fetchProjectSections, updateSection } from "../actions/section_actions";
-import { fetchProjectTasks, fetchSectionTasks } from "../actions/task_actions";
+import { fetchProjectTasks, fetchSectionTasks, updateTask } from "../actions/task_actions";
 import { Link } from "react-router-dom";
 import ProjectBoard from "./project_board";
 import { showNewTaskForm } from "../actions/ui_actions";
@@ -126,7 +126,8 @@ const mapDispatchToProps = dispatch => ({
     deleteSection: (sectionId) => dispatch(deleteSection(sectionId)),
     fetchProjectTasks: (projectId) => dispatch(fetchProjectTasks(projectId)),
     fetchSectionTasks: (sectionId) => dispatch(fetchSectionTasks(sectionId)),
-    showNewTaskForm: () => dispatch(showNewTaskForm())
+    showNewTaskForm: () => dispatch(showNewTaskForm()),
+    updateTask: (task) => dispatch(updateTask(task))
 })
 
 const ProjectContainer = connect(mapStateToProps, mapDispatchToProps)(Project);
