@@ -37,7 +37,7 @@ class Project extends React.Component {
                     this.props.fetchSectionTasks(id)
                 })
             }
-        }, 1000)
+        }, 1500)
     }
 
     projectNavbar(){

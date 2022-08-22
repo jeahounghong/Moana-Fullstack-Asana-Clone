@@ -101,7 +101,7 @@ class ProjectList extends React.Component {
                     </li> : ""
                 ))}
 
-                <li className="project-list-add-task">
+                <li className="project-list-add-task" onClick={this.props.showNewTaskForm}>
                     <i class="fa-regular fa-plus"></i>Add Task
                 </li>
             </ul>
@@ -146,7 +146,7 @@ class ProjectList extends React.Component {
                                 </li> : ""
                                 
                             ))}
-                            <li className="project-list-add-task">
+                            <li className="project-list-add-task" onClick={this.props.showNewTaskForm}>
                                 <i class="fa-regular fa-plus"></i>Add Task
                             </li>
                         </div> 

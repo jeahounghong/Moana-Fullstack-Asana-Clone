@@ -5,38 +5,68 @@ import {DragDropContext} from 'react-beautiful-dnd';
 import { useState } from 'react';
 
 function ProjectBoard(props) {
+    // debugger;
     const initialColumns = {};
     initialColumns['To Do'] = {
         id: 'To Do',
         type: 'project',
         typeId: props.project ? props.project.id : null,
-        tasks: ['item 1', 'item 2', 'item 3']
+        // tasks: ['item 1', 'item 2', 'item 3']
+        tasks: []
+    }
+
+    if (Object.keys(props.projects).length > 0){
+        // debugger;
+        props.projects[props.projectId].projectTasks.forEach((id) => {
+            // debugger;
+            initialColumns['To Do'].tasks.push(props.tasks[id])
+        })
+        // debugger;
     }
     
     let sections = Object.values(props.sections).filter((section) => section.projectId === props.projectId)
     
+    
     sections.forEach((section) => {
-
-        let projectTasks;
+        let projectTasks = [];
         if (Object.keys(props.tasks).length > 0){
-            projectTasks = section.sectionTasks.filter((task) => {
-                props.tasks[task.id]
-            })
+            projectTasks = section.sectionTasks.map((taskId) => (
+                props.tasks[taskId]
+            ))
+            
+            // if (Object.values(props.tasks).length > 3){
+            //     debugger;
+            // }
+            projectTasks = projectTasks.filter((task) => task)
+            // debugger;
     
             initialColumns[section.title] = {
-                    id: section.title,
-                    type: 'section',
-                    typeId: section.id,
-                    tasks: []
-                }
+                id: section.title,
+                type: 'section',
+                typeId: section.id,
+                // tasks: [],
+                tasks: projectTasks,
+            }
         }
     })
+    // debugger;
     
     const [columns, setColumns] = useState(initialColumns)
+
     if (Object.keys(initialColumns).length !== Object.keys(columns).length){
-        console.log("difference")
         setColumns(initialColumns);
+    } else {
+        Object.values(initialColumns).forEach((col) => {
+            // debugger;
+            if (columns[col.id].tasks === undefined){
+                setColumns(initialColumns);
+            } else if (col.tasks.length !== columns[col.id].tasks.length){
+                // debugger;
+                setColumns(initialColumns);
+            }
+        })
     }
+
 
     const onDragEnd = ({source, destination}) => {
         if (destination === undefined || destination === null){
