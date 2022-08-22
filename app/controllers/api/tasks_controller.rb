@@ -27,6 +27,19 @@ class Api::TasksController < ApplicationController
         end
     end
 
+    def create
+        # debugger;
+        @task = Task.new(task_params);
+        @task.owner_id = params[:task][:ownerId]
+        @task.owner_type = params[:task][:ownerType]
+        if @task.save
+            # debugger
+            render :show
+        else
+            render json: ["Task was not created"], status: 401
+        end
+    end
+
 
     private
 

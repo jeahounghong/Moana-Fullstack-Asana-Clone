@@ -2,10 +2,10 @@ import React from "react";
 import { connect } from "react-redux";
 import ProjectList from "./project_list";
 import { createSection, deleteSection, fetchProjectSections, updateSection } from "../actions/section_actions";
-import { fetchProjectTasks, fetchSectionTasks, updateTask } from "../actions/task_actions";
+import { createTask, fetchProjectTasks, fetchSectionTasks, updateTask } from "../actions/task_actions";
 import { Link } from "react-router-dom";
 import ProjectBoard from "./project_board";
-import { showNewTaskForm } from "../actions/ui_actions";
+import { showNewTaskForm, showUpdateTaskForm } from "../actions/ui_actions";
 
 class Project extends React.Component {
 
@@ -49,6 +49,7 @@ class Project extends React.Component {
             }
         }, 2500)
     }
+    
 
     projectNavbar(){
 
@@ -127,6 +128,8 @@ const mapDispatchToProps = dispatch => ({
     fetchProjectTasks: (projectId) => dispatch(fetchProjectTasks(projectId)),
     fetchSectionTasks: (sectionId) => dispatch(fetchSectionTasks(sectionId)),
     showNewTaskForm: () => dispatch(showNewTaskForm()),
+    showUpdateTaskForm: (task) => dispatch(showUpdateTaskForm(task)),
+    createTask: (task) => dispatch(createTask(task)),
     updateTask: (task) => dispatch(updateTask(task))
 })
 

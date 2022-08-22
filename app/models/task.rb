@@ -5,7 +5,7 @@
 #  id          :bigint           not null, primary key
 #  owner_id    :integer          not null
 #  owner_type  :string           not null
-#  title       :string           not null
+#  title       :string
 #  description :text
 #  due_date    :datetime
 #  complete    :boolean
@@ -14,7 +14,7 @@
 #
 class Task < ApplicationRecord
 
-    validates :owner_id, :owner_type, :title, presence: true
+    validates :owner_id, :owner_type, presence: true
 
     belongs_to :owner, polymorphic: true
 

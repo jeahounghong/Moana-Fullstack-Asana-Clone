@@ -1,5 +1,5 @@
 import { SHOW_NEW_PROJECT_FORM,SHOW_NEW_TEAM_FORM, CLOSE_MODAL, OPEN_SIDEBAR, CLOSE_SIDEBAR,
-            SHOW_UPDATE_PROJECT_FORM, SHOW_UPDATE_TEAM_FORM, SHOW_NEW_TASK_FORM, CLOSE_TASK_SHOW } from "../actions/ui_actions";
+            SHOW_UPDATE_PROJECT_FORM, SHOW_UPDATE_TEAM_FORM, SHOW_NEW_TASK_FORM, CLOSE_TASK_SHOW, SHOW_UPDATE_TASK_FORM } from "../actions/ui_actions";
 
 const preloadedState = {
     loading: false,
@@ -9,7 +9,12 @@ const preloadedState = {
     modalTeam: null,
     modalProject: null,
     taskShow: false,
-    taskContent: null,
+    taskContent: {
+        title: "",
+        description: "",
+        dueDate: null,
+        complete: false
+    },
 }
 
 const uiReducer = (state = preloadedState, action) => {
@@ -40,8 +45,21 @@ const uiReducer = (state = preloadedState, action) => {
 
         case SHOW_NEW_TASK_FORM:
             nextState.taskShow = true;
-            nextState.taskContent = null;
+            nextState.taskContent = {
+                title: "",
+                description: "",
+                dueDate: null,
+                complete: false
+            };
             let taskform = document.getElementById("task-show-container");
+            taskform.style.width="45%";
+            return nextState;
+
+        case SHOW_UPDATE_TASK_FORM:
+            nextState.taskShow = true;
+            nextState.taskContent = action.task;
+            debugger;
+            taskform = document.getElementById("task-show-container");
             taskform.style.width="45%";
             return nextState;
 

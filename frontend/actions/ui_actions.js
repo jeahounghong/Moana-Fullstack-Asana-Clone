@@ -7,6 +7,7 @@ export const SHOW_UPDATE_TEAM_FORM = "SHOW_UPDATE_TEAM_FORM";
 export const SHOW_UPDATE_PROJECT_FORM = "SHOW_UPDATE_PROJECT_FORM";
 export const SHOW_NEW_TASK_FORM = "SHOW_NEW_TASK_FORM";
 export const CLOSE_TASK_SHOW = "CLOSE_TASK_SHOW";
+export const SHOW_UPDATE_TASK_FORM = "SHOW_UPDATE_TASK_FORM";
 
 export const showNewTeamForm = () => ({
     type: SHOW_NEW_TEAM_FORM
@@ -16,8 +17,14 @@ export const showNewProjectForm = () => ({
     type: SHOW_NEW_PROJECT_FORM
 })
 
+
 export const showNewTaskForm = () => ({
     type: SHOW_NEW_TASK_FORM
+})
+
+export const showUpdateTaskForm = (task) => ({
+    type: SHOW_UPDATE_TASK_FORM,
+    task
 })
 
 export const showUpdateTeamForm = (teamId) => ({

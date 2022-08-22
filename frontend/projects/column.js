@@ -9,6 +9,23 @@ const Column = (props) => {
     const tasks = props.col.tasks
     const title= props.col.title
     const id = props.col.id
+
+    const createNewTaskColumn = () => {
+        let newTask = {
+            ownerId: parseInt(props.col.typeId),
+            ownerType: props.col.type
+        }
+        props.createNewTask(newTask);
+
+        if (newTask.ownerType === "Project"){
+            // debugger;
+            props.fetchProjectTasks(newTask.ownerId)
+        }else {
+            // debugger;
+            props.fetchSectionTasks(newTask.ownerId)
+        }
+    }
+
     return(
         <Droppable droppableId={id}>
             {(provided) => (
@@ -16,10 +33,10 @@ const Column = (props) => {
                     <h2 className='project-board-section-title'>{title}</h2>
                     <div ref={provided.innerRef} {...provided.droppableProps} className='project-board-column'>
                         {tasks.map((task, index) => (
-                            <Task key={task.id} text={task.title} index={index} task={task}/>
+                            <Task key={task.id} text={task.title} index={index} task={task} showUpdateTaskForm={props.showUpdateTaskForm}/>
                         ))}
                         {provided.placeholder}
-                        <div className="add-task" onClick={() => props.showNewTaskForm()}>
+                        <div className="add-task" onClick={() => createNewTaskColumn()}>
                             <label><i class="fa-regular fa-plus"></i>Add Task</label>
                         </div>
                     </div>

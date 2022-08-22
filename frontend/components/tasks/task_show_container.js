@@ -5,12 +5,14 @@ import TaskShow from "./task_show";
 const mapStateToProps = state => ({
     show: state.ui.taskShow,
     content: state.ui.taskContent,
-    task: {
-        title: "",
-        description: "",
-        dueDate: null,
-        complete: false
-    }
+    task: state.ui.taskContent,
+    // ? state.ui.taskContent : {
+    //     title: "",
+    //     description: "",
+    //     dueDate: null,
+    //     complete: false
+    // },
+    tasks: state.entities.tasks
 })
 
 const mapDispatchToProps = dispatch => ({

@@ -5,7 +5,11 @@ import {DragDropContext} from 'react-beautiful-dnd';
 import { useState } from 'react';
 
 function ProjectBoard(props) {
-    // debugger;
+    
+    const [tasks, setTasks] = useState(props.tasks)
+    console.log("board tasks")
+    console.log(props.tasks)
+
     const initialColumns = {};
     initialColumns['Project'+props.projectId] = {
         id: 'Project'+props.projectId,
@@ -46,7 +50,6 @@ function ProjectBoard(props) {
         }
     })
     
-    console.log("here")
     const [columns, setColumns] = useState(initialColumns)
 
     if (Object.keys(initialColumns).length !== Object.keys(columns).length){
@@ -162,11 +165,35 @@ function ProjectBoard(props) {
         return null;
     }
 
+    const createNewTask = (task) => {
+        console.log("hello?")
+        props.createTask(task);
+
+
+        setTimeout(() => {
+            console.log("timouet")
+            console.log(columns)
+            console.log(setColumns)
+            console.log(props.tasks)
+            setColumns(columns)
+        }, 1500)
+
+        setTimeout(() => {
+            console.log(props.tasks)
+        }, 5000)
+    }
+
     return (
         <DragDropContext onDragEnd={onDragEnd}>
             <div className='project-board right-most'>
                 {Object.values(columns).map((col) => (
-                    <Column col={col} key={col.id} showNewTaskForm={props.showNewTaskForm}/>
+                    <Column col={col} key={col.id} 
+                            showNewTaskForm={props.showNewTaskForm} 
+                            createNewTask={createNewTask}
+                            fetchSectionTasks={props.fetchSectionTasks}
+                            fetchProjectTasks={props.fetchProjectTasks}
+                            showUpdateTaskForm={props.showUpdateTaskForm}
+                            />
                 ))}
             </div>
         </DragDropContext>

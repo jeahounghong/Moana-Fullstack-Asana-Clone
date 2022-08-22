@@ -5,7 +5,7 @@
 #  id          :bigint           not null, primary key
 #  owner_id    :integer          not null
 #  owner_type  :string           not null
-#  title       :string           not null
+#  title       :string
 #  description :text
 #  due_date    :datetime
 #  complete    :boolean

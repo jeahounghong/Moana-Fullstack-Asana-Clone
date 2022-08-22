@@ -5,7 +5,6 @@ class TaskShow extends React.Component {
 
     constructor(props){
         super(props);
-
         this.state = this.props.task;
         this.handleInput = this.handleInput.bind(this);
     }
@@ -17,7 +16,7 @@ class TaskShow extends React.Component {
     }
 
     render(){
-    
+        console.log(this.state)
         return(
         <div id="task-show-container">
             <div className="task-show-header">
