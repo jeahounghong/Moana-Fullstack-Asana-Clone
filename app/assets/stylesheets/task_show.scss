@@ -180,6 +180,7 @@
                 border-radius: 10px;
                 padding-left: 5px;
                 padding-right: 5px;
+                font-size: 20px;
 
                 .profile-circle{
                     color: white;
@@ -193,12 +194,35 @@
                     font-size: 15px;
                     margin-right: 5px;
                 }
+
+                .fa-circle-xmark{
+                    padding-left: 5px;
+                    padding-right: 5px;
+                    color: grey;
+                }
+
             }
 
             .profile-box:hover{
                 background-color: rgb(184, 183, 183);
                 cursor: default;
                 transition: 0.3s;
+            }
+
+
+            .dropdown{
+                // background-color: yellow;
+                position: absolute;
+                // top: 5px;
+                border: solid 1px lightgrey;
+                background-color: white;
+                padding: 5px;
+                padding-bottom: 0px;
+
+                .profile-box{
+                    margin-bottom: 5px;
+                }
+
             }
         }
 

@@ -24,6 +24,7 @@ class Assignee extends React.Component {
                     {user.firstName[0] + user.lastName[0]}
                 </div>
                 <span className="task-show-open">{user.firstName + " " + user.lastName}</span>
+                <i class="fa-solid fa-circle-xmark task-show-open"></i>
             </div>)
         } else {
             return (<div className="profile-box task-show-open">
@@ -31,6 +32,7 @@ class Assignee extends React.Component {
                     <i class="fa-solid fa-user task-show-open"></i>
                 </div>
                 <span className="task-show-open">No User</span>
+                
             </div>)
         }
     }
@@ -65,8 +67,11 @@ class Assignee extends React.Component {
             return(<div className="dropdown">
                 {validUsers.map((user) => (
                     (user.firstName + " " + user.lastName).substring(0,this.state.value.length) === this.state.value ?
-                    <div>
-                        {user.firstName + " " + user.lastName}
+                    <div className="profile-box task-show-open">
+                        <div className="profile-circle task-show-open">
+                            {user.firstName[0] + user.lastName[0]}
+                        </div>
+                        <span className="task-show-open">{user.firstName + " " + user.lastName}</span>
                     </div> : ""
                 ))}
             </div>)
