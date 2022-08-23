@@ -15,7 +15,8 @@ const mapStateToProps = state => ({
     //     complete: false
     // },
     tasks: state.entities.tasks,
-    users: state.entities.users
+    users: state.entities.users,
+    projects: state.entities.projects
 })
 
 const mapDispatchToProps = dispatch => ({

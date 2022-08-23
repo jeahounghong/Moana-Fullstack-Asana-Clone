@@ -127,8 +127,8 @@ class TaskShow extends React.Component {
                         <Assignee {...this.props}/>
                     </div>
                     {/* 2 */}
-                    <div className="date">
-                        <input id="due-date" type="date" defaultValue="2014-02-09" />
+                    <div className="date task-show-open">
+                        <input id="due-date" type="date" defaultValue="2014-02-09" className="task-show-open" />
 
                         {console.log(document.getElementById("due-date"))}
                     </div>

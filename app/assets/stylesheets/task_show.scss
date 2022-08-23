@@ -154,7 +154,7 @@
         .left {
             width: 150px;
             p {
-                height: 40px;
+                height: 50px;
                 display: flex;
                 align-items: center;
             }
@@ -162,13 +162,43 @@
 
         .right {
             > div {
-                height: 40px;
+                height: 50px;
                 display: flex;
                 align-items: center;
             }
 
             .date {
                 font-family: avenir;
+            }
+
+            .profile-box{
+                // background-color: red;
+                display: flex;
+                height: 40px;
+                align-items: center;
+                background-color: lightgray;
+                border-radius: 10px;
+                padding-left: 5px;
+                padding-right: 5px;
+
+                .profile-circle{
+                    color: white;
+                    background-color: #78A2CC;
+                    height: 30px;
+                    width: 30px;
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 15px;
+                    margin-right: 5px;
+                }
+            }
+
+            .profile-box:hover{
+                background-color: rgb(184, 183, 183);
+                cursor: default;
+                transition: 0.3s;
             }
         }
 
