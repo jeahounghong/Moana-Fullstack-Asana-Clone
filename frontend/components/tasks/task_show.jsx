@@ -139,6 +139,7 @@ class TaskShow extends React.Component {
                     let idx = this.path.indexOf("/")
                     this.path = parseInt(this.path.substring(0,idx))
                     setTimeout(() =>this.props.fetchProjectTasks(this.path),100)
+                    setTimeout(() => {this.props.showUpdateTaskForm(this.props.tasks[this.state.id])}, 200)
                 }}>
                     <i class="fa-regular fa-plus task-show-open"></i>
                     <span className="task-show-open">
