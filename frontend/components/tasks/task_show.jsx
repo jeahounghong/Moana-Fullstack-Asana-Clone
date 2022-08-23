@@ -195,6 +195,12 @@ class TaskShow extends React.Component {
             </div>
             
             <div className="task-show-open scrollable">
+                {this.state.ownerType === "Task" ? <div className="task-show-open sub-task-owner"
+                    onClick={() => this.props.showUpdateTaskForm(this.props.tasks[this.state.ownerId])}
+                >
+                    {this.props.tasks[this.state.ownerId].title ? this.props.tasks[this.state.ownerId].title : "Previous Task"}
+                </div> : ""}
+
                 <section className="task-title task-show-open" 
                         contentEditable={true} 
                         data-placeholder="New Task"
