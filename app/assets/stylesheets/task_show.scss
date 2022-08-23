@@ -174,14 +174,37 @@
 
         .subtask-list-item{
             padding: 10px;
-            //  background-color: yellow;
             border-bottom: solid 1px lightgrey;
-            // margin-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+
+            .complete {
+                color: lightgreen;
+            }
+            .incomplete {
+                color: gray;
+            }
+
+            .incomplete:hover{
+                color: lightgreen;
+                transition: 0.3s;
+            }
+
+            .right{
+                visibility: hidden;
+                .fa-trash-can{
+                    color:red;
+                }
+            }
         }
 
         .subtask-list-item:hover{
-            background-color: rgb(207, 207, 207);
+            background-color: rgb(238,238,238);
             transition: 0.3s;
+
+            .right{
+                visibility: visible;
+            }
         }
 
         .subtask-add{

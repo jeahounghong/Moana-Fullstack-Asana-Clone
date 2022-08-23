@@ -12,6 +12,7 @@ class TaskShow extends React.Component {
         this.toggleComplete = this.toggleComplete.bind(this);
         this.updateCurrentTask = this.updateCurrentTask.bind(this);
         this.subtasks = this.subtasks.bind(this);
+        this.toggleSubtaskComplete = this.toggleSubtaskComplete.bind(this)
 
         document.addEventListener("click", (e) => {
             if (this.props.show){
@@ -121,15 +122,34 @@ class TaskShow extends React.Component {
         }, 100)
     }
 
+    toggleSubtaskComplete(task){
+        let currentTask = Object.assign({}, task);
+        currentTask.owner_id = currentTask.ownerId;
+        delete currentTask.ownerId;
+        currentTask.due_date = currentTask.dueDate;
+        delete currentTask.dueDate;
+        currentTask.owner_type = currentTask.ownerType;
+        delete currentTask.ownerType;
+        currentTask.user_id = currentTask.userId;
+        delete currentTask.userId;
+
+        currentTask.complete = !currentTask.complete;
+        this.props.updateTask(currentTask)
+    }
+
     subtasks(){
         if (this.state.subtasks){
             return (<ul className="task-show-open subtask-list">
                 {this.state.subtasks.map((taskId) => (
-                    this.props.tasks[taskId] ? <li className="task-show-open subtask-list-item">
+                    this.props.tasks[taskId] ? <li className="task-show-open subtask-list-item" onClick={() => this.props.showUpdateTaskForm(this.props.tasks[taskId])}>
                         <div className="left task-show-open">
-                            <i className={`fa-regular fa-circle-check ${this.props.tasks[taskId].complete ? "complete" : "incomplete"}`}
-                                onClick={() => console.log("toggle")}></i>
-                            <span>{" " + this.props.tasks[taskId].title}</span>
+                            <i className={`fa-regular fa-circle-check task-show-open ${this.props.tasks[taskId].complete ? "complete" : "incomplete"}`}
+                                onClick={() => this.toggleSubtaskComplete(this.props.tasks[taskId])}></i>
+                            <span className={`task-show-open ${this.props.tasks[taskId].complete ? "complete" : ""}`}>{" " + this.props.tasks[taskId].title}</span>
+                        </div>
+
+                        <div className="right task-show-open">
+                            <i className="fa-solid fa-trash-can task-show-open"></i>
                         </div>
                     </li> : ""
                 ))}
