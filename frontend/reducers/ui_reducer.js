@@ -13,7 +13,8 @@ const preloadedState = {
         title: "",
         description: "",
         due_date: null,
-        complete: false
+        complete: false,
+        subtasks: []
     },
 }
 
@@ -49,7 +50,8 @@ const uiReducer = (state = preloadedState, action) => {
                 title: "",
                 description: "",
                 dueDate: null,
-                complete: false
+                complete: false,
+                
             };
             let taskform = document.getElementById("task-show-container");
             taskform.style.width="45%";

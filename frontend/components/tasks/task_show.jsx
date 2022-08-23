@@ -29,6 +29,7 @@ class TaskShow extends React.Component {
                 this.props.fetchSubtasks(nextProps.task.id)
             }
         }
+        let state = this.state;
         // debugger;
         this.setState(nextProps.task)
     }
@@ -145,7 +146,9 @@ class TaskShow extends React.Component {
                     </span>
                 </li>
             </ul>)
-        } 
+        } else {
+            debugger;
+        }
     }
 
     render(){
