@@ -68,11 +68,11 @@ export default class ProjectOverview extends React.Component {
                 {this.props.projects[this.props.projectId].projectSections.map((sectionId) => (
                     <div>
                         {this.props.sections[sectionId] ? this.props.sections[sectionId].sectionTasks.map((taskId) => (
-                            <li>
+                            <li onClick={() => this.props.showUpdateTaskForm(this.props.tasks[taskId])} className="task-show-open">
                                 {this.props.tasks[taskId] ? 
                                     <div onClick={() => console.log(this.props.tasks[taskId])}
                                                 className="task-show-open"
-                                    ><i className={`fa-regular fa-circle-check 
+                                    ><i className={`fa-regular fa-circle-check
                                         ${this.props.tasks[taskId].complete ? "complete" : "incomplete"}`}></i> 
                                     {" " + this.props.tasks[taskId].title}</div>  
                                 : ""}
