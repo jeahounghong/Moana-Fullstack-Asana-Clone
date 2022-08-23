@@ -96,6 +96,9 @@ class TaskShow extends React.Component {
                 </div>
 
                 <div className="task-show-right">
+                    <div className="delete-task" onClick={() => this.props.deleteTask(this.state.id)}>
+                        <i className="fa-solid fa-trash-can"></i>
+                    </div>
                     <div className="close-task" onClick={this.props.closeTaskShow}>
                         <i className="fa-solid fa-xmark"></i>
                     </div>

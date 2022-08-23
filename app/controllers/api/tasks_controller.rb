@@ -40,6 +40,15 @@ class Api::TasksController < ApplicationController
         end
     end
 
+    def destroy
+        @task = Task.find(params[:id])
+        if @task.destroy
+            # debugger
+            render json: ["Task was successfully deleted"]
+        else
+            render json: ["Task was not deleted"], status: 401
+        end
+    end
 
     private
 

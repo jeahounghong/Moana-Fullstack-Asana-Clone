@@ -5,7 +5,8 @@ export default class ProjectOverview extends React.Component {
     constructor(props){
         super(props);
         this.description = this.description.bind(this);
-        this.people.bind(this);
+        this.people = this.people.bind(this);
+        this.tasks = this.tasks.bind(this)
     }
 
     description(){
@@ -47,6 +48,36 @@ export default class ProjectOverview extends React.Component {
         }
     }
 
+    tasks(){
+        if (this.props.projects[this.props.projectId]){
+            return (<ul>
+                {this.props.projects[this.props.projectId].projectTasks.map((taskId) => (
+                    <li>
+                        {this.props.tasks[taskId] ? 
+                            <div><i className={`fa-regular fa-circle-check 
+                            ${this.props.tasks[taskId].complete ? "complete" : "incomplete"}`}></i> 
+                            {" " + this.props.tasks[taskId].title}</div>  
+                        : ""}
+                    </li>
+                ))}
+
+                {this.props.projects[this.props.projectId].projectSections.map((sectionId) => (
+                    <div>
+                        {this.props.sections[sectionId] ? this.props.sections[sectionId].sectionTasks.map((taskId) => (
+                            <li>
+                                {this.props.tasks[taskId] ? 
+                                    <div><i className={`fa-regular fa-circle-check 
+                                        ${this.props.tasks[taskId].complete ? "complete" : "incomplete"}`}></i> 
+                                    {" " + this.props.tasks[taskId].title}</div>  
+                                : ""}
+                            </li>
+                        )) : ""}
+                    </div>
+                ))}
+            </ul>)
+        }
+    }
+
 
     render(){return(
         <div id="project-overview" className="right-most">
@@ -65,6 +96,7 @@ export default class ProjectOverview extends React.Component {
 
                 <div className="right-content">
                     <h1>Project Tasks</h1>
+                    {this.tasks()}
                 </div>
 
             </div>

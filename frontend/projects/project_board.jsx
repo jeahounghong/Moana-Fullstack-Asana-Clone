@@ -5,10 +5,8 @@ import {DragDropContext} from 'react-beautiful-dnd';
 import { useState } from 'react';
 
 function ProjectBoard(props) {
-    
-    // const [tasks, setTasks] = useState(props.tasks)
-    console.log("board tasks")
-    console.log(props.tasks)
+    console.log("board rerender")
+    console.log(props)
 
     const initialColumns = {};
     initialColumns['Project'+props.projectId] = {
@@ -16,17 +14,13 @@ function ProjectBoard(props) {
         type: 'Project',
         typeId: props.projectId,
         title: 'To Do',
-        // tasks: ['item 1', 'item 2', 'item 3']
         tasks: []
     }
 
     if (Object.keys(props.projects).length > 0){
-        // debugger;
         props.projects[props.projectId].projectTasks.forEach((id) => {
-            // debugger;
             initialColumns['Project'+props.projectId].tasks.push(props.tasks[id])
         })
-        // debugger;
     }
     
     let sections = Object.values(props.sections).filter((section) => section.projectId === props.projectId)
@@ -52,6 +46,10 @@ function ProjectBoard(props) {
     
     const [columns, setColumns] = useState(initialColumns)
 
+    // if (columns !== initialColumns){
+    //     setColumns(initialColumns)
+    // }
+
     if (Object.keys(initialColumns).length !== Object.keys(columns).length){
         setColumns(initialColumns);
     } else {
@@ -67,16 +65,37 @@ function ProjectBoard(props) {
             }
             sumInitialColTasks += col.tasks.length;
         })
-
         Object.values(columns).forEach((col) => {
             sumColTasks += col.tasks.length
         })
-
         if (sumColTasks !== sumInitialColTasks){
-            // debugger;
             setColumns(initialColumns);
+        } else {
+            Object.values(initialColumns).forEach((col) => {
+                col.tasks.forEach((task) => {
+                    if (columns[col.id].tasks[task.id]){
+                        if (columns[col.id].tasks[task.id].title !== task.title){
+
+                            // debugger;
+                            // setColumns(initialColumns)
+                        }
+                    }
+                })
+            })
         }
     }
+
+    // Object.values(initialColumns).forEach((col) => {
+    //     col.tasks.forEach((task) => {
+    //         if (columns[col.id].tasks[task.id]){
+    //             if (columns[col.id].tasks[task.id].title !== task.title){
+    //                 setColumns(initialColumns)
+    //             }
+    //         }
+    //     })
+    // })
+
+
 
 
     const onDragEnd = ({source, destination}) => {
