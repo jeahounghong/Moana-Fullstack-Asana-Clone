@@ -81,6 +81,7 @@ class TaskShow extends React.Component {
 
             const titleContent = $(".task-title")
             titleContent.blur(() => {
+                const currentTask = Object.assign({}, this.state)
                 currentTask.title = titleContent[0].innerHTML
                 currentTask.description = $(".task-description")[0].innerHTML
                 

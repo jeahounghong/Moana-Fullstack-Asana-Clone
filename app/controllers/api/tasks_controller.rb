@@ -23,6 +23,7 @@ class Api::TasksController < ApplicationController
             # debugger;
             render :show
         else
+            debugger;
             render json: ["not updated"], status: 401
         end
     end
@@ -53,6 +54,6 @@ class Api::TasksController < ApplicationController
     private
 
     def task_params
-        params.require(:task).permit(:id, :title, :owner_type, :owner_id, :description, :complete, :due_date, :userId )
+        params.require(:task).permit(:id, :title, :owner_type, :owner_id, :description, :complete, :due_date, :user_id )
     end
 end
