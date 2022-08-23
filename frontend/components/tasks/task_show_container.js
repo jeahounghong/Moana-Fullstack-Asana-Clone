@@ -1,8 +1,9 @@
 import { connect } from "react-redux";
 import { closeTaskShow, showUpdateTaskForm } from "../../actions/ui_actions";
 // import { closeTaskShow } from "../../actions/ui_actions";
-import {deleteTask, updateTask} from "../../actions/task_actions"
+import {deleteTask, updateTask, fetchSubtasks, createTask, fetchProjectTasks} from "../../actions/task_actions"
 import TaskShow from "./task_show";
+
 
 const mapStateToProps = state => ({
     show: state.ui.taskShow,
@@ -23,7 +24,10 @@ const mapDispatchToProps = dispatch => ({
     closeTaskShow: () => dispatch(closeTaskShow()),
     showUpdateTaskForm: (task) => dispatch(showUpdateTaskForm(task)),
     updateTask: (task) => dispatch(updateTask(task)),
-    deleteTask: (taskId) => dispatch(deleteTask(taskId))
+    deleteTask: (taskId) => dispatch(deleteTask(taskId)),
+    fetchSubtasks: (taskId) => dispatch(fetchSubtasks(taskId)),
+    createTask: (task) => dispatch(createTask(task)),
+    fetchProjectTasks: (projectId) => dispatch(fetchProjectTasks(projectId))
 })
 
 const TaskShowContainer = connect(mapStateToProps,mapDispatchToProps)(TaskShow)

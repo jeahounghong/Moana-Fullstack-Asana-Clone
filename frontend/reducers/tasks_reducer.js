@@ -6,6 +6,7 @@ const TaskReducer = (state = {}, action) => {
 
     switch(action.type){
         case RECEIVE_TASK:
+            // debugger;
             nextState[action.task.id] = action.task;
             return nextState;
 

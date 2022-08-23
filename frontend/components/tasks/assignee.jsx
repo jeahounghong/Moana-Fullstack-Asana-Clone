@@ -11,7 +11,7 @@ class Assignee extends React.Component {
         }
         
         this.path = props.location.pathname.substring(0);
-        console.log(this.path)
+        // console.log(this.path)
         this.toggleInput = this.toggleInput.bind(this);
         this.taskUser = this.taskUser.bind(this);
         this.dropdown = this.dropdown.bind(this);

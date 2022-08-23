@@ -24,6 +24,9 @@ export const fetchProjectTasks = (projectId) => dispatch => TaskApiUtil.fetchPro
 export const fetchSectionTasks = (sectionId) => dispatch => TaskApiUtil.fetchSectionTasks(sectionId)
     .then(tasks => dispatch(receiveTasks(tasks)));
 
+export const fetchSubtasks = (taskId) => dispatch => TaskApiUtil.fetchSubtasks(taskId)
+    .then(tasks => dispatch(receiveTasks(tasks)));
+
 export const createTask = (task) => dispatch => TaskApiUtil.createTask(task)
     .then(task => dispatch(receiveTask(task)));
 

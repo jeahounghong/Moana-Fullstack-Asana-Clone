@@ -12,6 +12,13 @@ export const fetchSectionTasks = (sectionId) => (
     })
 )
 
+export const fetchSubtasks = (taskId) => (
+    $.ajax({
+        url: `/api/tasks/${taskId}/tasks`,
+        method: `GET`
+    })
+)
+
 export const createTask = (task) => (
     $.ajax({
         url: `/api/tasks`,

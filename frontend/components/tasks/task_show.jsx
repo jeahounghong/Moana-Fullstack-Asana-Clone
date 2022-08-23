@@ -10,7 +10,8 @@ class TaskShow extends React.Component {
         this.state = this.props.task;
         this.handleInput = this.handleInput.bind(this);
         this.toggleComplete = this.toggleComplete.bind(this);
-        this.updateCurrentTask = this.updateCurrentTask.bind(this)
+        this.updateCurrentTask = this.updateCurrentTask.bind(this);
+        this.subtasks = this.subtasks.bind(this);
 
         document.addEventListener("click", (e) => {
             if (this.props.show){
@@ -22,6 +23,12 @@ class TaskShow extends React.Component {
     }
 
     componentWillReceiveProps(nextProps){
+        // debugger;
+        if (nextProps.task && (nextProps.task !== this.props.task)){
+            if (nextProps.task.id){
+                this.props.fetchSubtasks(nextProps.task.id)
+            }
+        }
         // debugger;
         this.setState(nextProps.task)
     }
@@ -111,7 +118,34 @@ class TaskShow extends React.Component {
             console.log("updating...")
             this.props.updateTask(this.state);
         }, 100)
-        
+    }
+
+    subtasks(){
+        if (this.state.subtasks){
+            return (<ul className="task-show-open subtask-list">
+                {this.state.subtasks.map((taskId) => (
+                    this.props.tasks[taskId] ? <li className="task-show-open subtask-list-item">
+                        <div className="left task-show-open">
+                            <i className={`fa-regular fa-circle-check ${this.props.tasks[taskId].complete ? "complete" : "incomplete"}`}
+                                onClick={() => console.log("toggle")}></i>
+                            <span>{" " + this.props.tasks[taskId].title}</span>
+                        </div>
+                    </li> : ""
+                ))}
+                <li className="task-show-open subtask-add" onClick={() => {
+                    this.props.createTask({owner_id: this.state.id, owner_type: "Task"});
+                    this.path = this.props.location.pathname.substring(10);
+                    let idx = this.path.indexOf("/")
+                    this.path = parseInt(this.path.substring(0,idx))
+                    setTimeout(() =>this.props.fetchProjectTasks(this.path),100)
+                }}>
+                    <i class="fa-regular fa-plus task-show-open"></i>
+                    <span className="task-show-open">
+                        Add Task
+                    </span>
+                </li>
+            </ul>)
+        } 
     }
 
     render(){
@@ -172,7 +206,7 @@ class TaskShow extends React.Component {
 
 
             <label className="task-description-label task-show-open">
-                <p>Description:</p>
+                <p className="task-show-open">Description</p>
                 <section className="task-description task-show-open" 
                         contentEditable={true}
                         data-placeholder="Write description here..."
@@ -180,6 +214,11 @@ class TaskShow extends React.Component {
                     >
                     {this.state.description}
                 </section>
+            </label>
+
+            <label className="sub-tasks-label task-show-open">
+                <p className="task-show-open">Subtasks</p>
+                {this.subtasks()}
             </label>
         </div>
     )}
