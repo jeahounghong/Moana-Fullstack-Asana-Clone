@@ -23,8 +23,6 @@ class Assignee extends React.Component {
             // debugger;
             this.setState({user:null})
         }
-
-        // this.setState({user: this.nextProps.users[this.nextProps.task.userId]})
     }
 
     taskUser(explicitUser){
@@ -34,7 +32,7 @@ class Assignee extends React.Component {
                         {explicitUser.firstName[0] + explicitUser.lastName[0]}
                     </div>
                     <span className="task-show-open">{explicitUser.firstName + " " + explicitUser.lastName}</span>
-                    <i class="fa-solid fa-circle-xmark task-show-open"></i>
+                    <i class="fa-solid fa-circle-xmark task-show-open" onMouseDown={() => this.reassign(null)}></i>
             </div>)
         } else {
             if (this.props.task && this.props.task.userId && this.props.users[this.props.task.userId]){
@@ -44,7 +42,7 @@ class Assignee extends React.Component {
                         {user.firstName[0] + user.lastName[0]}
                     </div>
                     <span className="task-show-open">{user.firstName + " " + user.lastName}</span>
-                    <i class="fa-solid fa-circle-xmark task-show-open"></i>
+                    <i class="fa-solid fa-circle-xmark task-show-open" onMouseDown={() => this.reassign(null)}></i>
                 </div>)
             } else {
                 return (<div className="profile-box task-show-open">
@@ -65,7 +63,7 @@ class Assignee extends React.Component {
     }
 
     toggleInput(e){
-        console.log(e)
+        console.log(e.currentTarget)
         this.path = this.props.location.pathname.substring(10);
         let idx = this.path.indexOf("/")
         this.path = parseInt(this.path.substring(0,idx))
@@ -82,6 +80,8 @@ class Assignee extends React.Component {
 
     reassign(user){
         console.log("reassign")
+
+        
         // debugger;
         let currentTask = Object.assign({},this.props.task);
 
@@ -91,13 +91,20 @@ class Assignee extends React.Component {
         delete currentTask.dueDate;
         currentTask.owner_type = currentTask.owner_type || currentTask.ownerType;
         delete currentTask.ownerType;
-        currentTask.user_id = currentTask.user_id || user.id;
+        currentTask.user_id = currentTask.user_id || (user ? user.id : user);
         delete currentTask.userId;
+
+        
 
         this.props.updateTask(currentTask)
 
         this.setState({value: ""})
         this.setState({user: user})
+
+        if (user === null){
+            this.toggleInput()
+        }
+
     }
 
     dropdown(){

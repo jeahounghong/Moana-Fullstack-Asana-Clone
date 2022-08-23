@@ -72,15 +72,15 @@ function ProjectBoard(props) {
             setColumns(initialColumns);
         } else {
             Object.values(initialColumns).forEach((col) => {
-                col.tasks.forEach((task) => {
-                    if (columns[col.id].tasks[task.id]){
-                        if (columns[col.id].tasks[task.id].title !== task.title){
+                // col.tasks.forEach((task) => {
+                //     if (columns[col.id].tasks[task.id]){
+                //         if (columns[col.id].tasks[task.id].title !== task.title){
 
-                            // debugger;
-                            // setColumns(initialColumns)
-                        }
-                    }
-                })
+                //             // debugger;
+                //             // setColumns(initialColumns)
+                //         }
+                //     }
+                // })
             })
         }
     }

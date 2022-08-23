@@ -1,6 +1,7 @@
 import React from "react";
 import { showUpdateTaskForm } from "../../actions/ui_actions";
 import Assignee from "./assignee";
+import DateComponent from "./date";
 
 class TaskShow extends React.Component {
 
@@ -157,11 +158,10 @@ class TaskShow extends React.Component {
                         <Assignee {...this.props}/>
                     </div>
                     {/* 2 */}
-                    <div className="date task-show-open">
-                        <input id="due-date" type="date" defaultValue="2014-02-09" className="task-show-open" />
-
-                        {console.log(document.getElementById("due-date"))}
-                    </div>
+                    <DateComponent {...this.props}/>
+                    {/* <div className="date task-show-open">
+                        <input id="due-date" type="date" defaultValue={(this.props.task ? this.props.task.dueDate : "")} className="task-show-open" />
+                    </div> */}
                 </div>
             </div>
 

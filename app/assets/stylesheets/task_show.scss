@@ -176,7 +176,7 @@
                 display: flex;
                 height: 40px;
                 align-items: center;
-                background-color: lightgray;
+                background-color: rgb(238, 238, 238);
                 border-radius: 10px;
                 padding-left: 5px;
                 padding-right: 5px;
@@ -204,7 +204,7 @@
             }
 
             .profile-box:hover{
-                background-color: rgb(184, 183, 183);
+                background-color: lightgrey;
                 cursor: default;
                 transition: 0.3s;
             }
@@ -224,6 +224,25 @@
                 }
 
             }
+
+            .date-box{
+                .not-null{
+                    background-color: rgb(238, 238, 238);
+                    padding: 10px;
+                    border-radius: 10px;
+                }
+
+                .not-null:hover{
+                    background-color: lightgrey;
+                    cursor: default;
+                    transition: 0.3s;
+                }
+            }
+            
+            .late{
+                color: red;
+            }
+            
         }
 
         
