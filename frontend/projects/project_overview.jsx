@@ -52,11 +52,15 @@ export default class ProjectOverview extends React.Component {
         if (this.props.projects[this.props.projectId]){
             return (<ul>
                 {this.props.projects[this.props.projectId].projectTasks.map((taskId) => (
-                    <li>
+                    <li className="task-show-open" onClick={() => this.props.showUpdateTaskForm(this.props.tasks[taskId])}> 
                         {this.props.tasks[taskId] ? 
-                            <div><i className={`fa-regular fa-circle-check 
-                            ${this.props.tasks[taskId].complete ? "complete" : "incomplete"}`}></i> 
-                            {" " + this.props.tasks[taskId].title}</div>  
+                            <div
+                                    className="task-show-open"
+                            >
+                                <i className={`fa-regular fa-circle-check task-show-open
+                                ${this.props.tasks[taskId].complete ? "complete" : "incomplete"}`}></i> 
+                                {" " + this.props.tasks[taskId].title}
+                            </div>  
                         : ""}
                     </li>
                 ))}
@@ -66,7 +70,9 @@ export default class ProjectOverview extends React.Component {
                         {this.props.sections[sectionId] ? this.props.sections[sectionId].sectionTasks.map((taskId) => (
                             <li>
                                 {this.props.tasks[taskId] ? 
-                                    <div><i className={`fa-regular fa-circle-check 
+                                    <div onClick={() => console.log(this.props.tasks[taskId])}
+                                                className="task-show-open"
+                                    ><i className={`fa-regular fa-circle-check 
                                         ${this.props.tasks[taskId].complete ? "complete" : "incomplete"}`}></i> 
                                     {" " + this.props.tasks[taskId].title}</div>  
                                 : ""}

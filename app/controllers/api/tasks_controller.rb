@@ -30,12 +30,12 @@ class Api::TasksController < ApplicationController
     def create
         # debugger;
         @task = Task.new(task_params);
-        @task.owner_id = params[:task][:ownerId]
-        @task.owner_type = params[:task][:ownerType]
+        
         if @task.save
             # debugger
             render :show
         else
+            # debugger;
             render json: ["Task was not created"], status: 401
         end
     end
@@ -53,6 +53,6 @@ class Api::TasksController < ApplicationController
     private
 
     def task_params
-        params.require(:task).permit(:id, :title, :owner_type, :owner_id, :description, :complete)
+        params.require(:task).permit(:id, :title, :owner_type, :owner_id, :description, :complete, :due_date, :userId )
     end
 end

@@ -18,7 +18,7 @@ class Task < ApplicationRecord
     validates :owner_id, :owner_type, presence: true
 
     belongs_to :owner, polymorphic: true
-    belongs_to :user
+    belongs_to :user, optional: true
 
     has_many :tasks, as: :owner
 end

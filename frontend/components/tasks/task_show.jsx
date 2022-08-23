@@ -35,10 +35,18 @@ class TaskShow extends React.Component {
     toggleComplete(){
         const toggledTask = Object.assign({}, this.state)
         toggledTask.complete = !toggledTask.complete
-        // debugger;
-        // setTimeout(() => {
-        //     this.setState({complete: toggledTask.complete})
-        // },0)
+        
+
+        toggledTask.owner_id = toggledTask.ownerId;
+        delete toggledTask.ownerId;
+        toggledTask.due_date = toggledTask.dueDate;
+        delete toggledTask.dueDate;
+        toggledTask.owner_type = toggledTask.ownerType;
+        delete toggledTask.ownerType;
+        toggledTask.user_id = toggledTask.userId;
+        delete toggledTask.userId;
+
+
         this.props.updateTask(toggledTask);
         this.props.showUpdateTaskForm(toggledTask)
     }
@@ -46,10 +54,22 @@ class TaskShow extends React.Component {
     componentDidMount(){
         setTimeout(() => {
             const contents = $(".task-description")
+            // const currentTask = Object.assign({}, this.state)
+            
             contents.blur(()=>{
                 const currentTask = Object.assign({}, this.state)
                 currentTask.description = contents[0].innerHTML;
                 currentTask.title = $(".task-title")[0].innerHTML;
+
+                currentTask.owner_id = currentTask.ownerId;
+                delete currentTask.ownerId;
+                currentTask.due_date = currentTask.dueDate;
+                delete currentTask.dueDate;
+                currentTask.owner_type = currentTask.ownerType;
+                delete currentTask.ownerType;
+                currentTask.user_id = currentTask.userId;
+                delete currentTask.userId;
+
                 this.props.updateTask(currentTask)
             })
             contents.keydown((e) => {
@@ -61,10 +81,18 @@ class TaskShow extends React.Component {
 
             const titleContent = $(".task-title")
             titleContent.blur(() => {
-                const currentTask = Object.assign({}, this.state)
                 currentTask.title = titleContent[0].innerHTML
                 currentTask.description = $(".task-description")[0].innerHTML
-                // debugger;
+                
+                currentTask.owner_id = currentTask.ownerId;
+                delete currentTask.ownerId;
+                currentTask.due_date = currentTask.dueDate;
+                delete currentTask.dueDate;
+                currentTask.owner_type = currentTask.ownerType;
+                delete currentTask.ownerType;
+                currentTask.user_id = currentTask.userId;
+                delete currentTask.userId;
+
                 this.props.updateTask(currentTask)
             })
         }, 100)
@@ -77,6 +105,7 @@ class TaskShow extends React.Component {
         // console.log(description.innerHTML)
         // debugger;
         setTimeout(() => {
+            // debugger;
             console.log("updating...")
             this.props.updateTask(this.state);
         }, 100)

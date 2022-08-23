@@ -90,6 +90,17 @@ class ProjectList extends React.Component {
     toggleComplete(task){
         let toggledTask = Object.assign({}, task)
         toggledTask.complete = !toggledTask.complete;
+
+        toggledTask.owner_id = toggledTask.ownerId;
+        delete toggledTask.ownerId;
+        toggledTask.due_date = toggledTask.dueDate;
+        delete toggledTask.dueDate;
+        toggledTask.owner_type = toggledTask.ownerType;
+        delete toggledTask.ownerType;
+        toggledTask.user_id = toggledTask.userId;
+        delete toggledTask.userId;
+
+
         this.props.updateTask(toggledTask)
         
     }
@@ -112,7 +123,7 @@ class ProjectList extends React.Component {
                 ))}
 
                 <li className="project-list-add-task" onClick={() => {
-                                this.props.createTask({ownerId: this.props.projectId, ownerType: "Project"})
+                                this.props.createTask({owner_id: this.props.projectId, owner_type: "Project"})
                             }}>
                     <i class="fa-regular fa-plus"></i>Add Task
                 </li>
@@ -162,7 +173,7 @@ class ProjectList extends React.Component {
                                 
                             ))}
                             <li className="project-list-add-task" onClick={() => {
-                                this.props.createTask({ownerId: section.id, ownerType: "Section"})
+                                this.props.createTask({owner_id: section.id, owner_type: "Section"})
                             }}>
                                 <i class="fa-regular fa-plus"></i>Add Task
                             </li>

@@ -12,7 +12,7 @@ const preloadedState = {
     taskContent: {
         title: "",
         description: "",
-        dueDate: null,
+        due_date: null,
         complete: false
     },
 }
@@ -64,6 +64,7 @@ const uiReducer = (state = preloadedState, action) => {
             return nextState;
 
         case CLOSE_TASK_SHOW:
+            // debugger;
             nextState.taskShow = false;
             nextState.taskContent = null;
             taskform = document.getElementById("task-show-container");
