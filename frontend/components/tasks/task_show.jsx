@@ -173,57 +173,58 @@ class TaskShow extends React.Component {
                     </div>
                 </div>
             </div>
-
-        
-            <section className="task-title task-show-open" 
-                    contentEditable={true} 
-                    data-placeholder="New Task"
-                    onChange={this.handleInput("title")}
-                    >
-                {this.state.title}
-            </section>
-
-            <div className="table task-show-open">
-                <div className="left task-show-open">
-                    {/* 1 */}
-                    <p className="task-show-open">Assignee</p>
-                    {/* 2 */}
-                    <p className="task-show-open">Due date</p>
-                </div>
-                <div className="right task-show-open">
-                    {/* 1 */}
-                    <div className="assignee">
-                        <Assignee {...this.props}/>
-                    </div>
-                    {/* 2 */}
-                    <DateComponent {...this.props}/>
-                    {/* <div className="date task-show-open">
-                        <input id="due-date" type="date" defaultValue={(this.props.task ? this.props.task.dueDate : "")} className="task-show-open" />
-                    </div> */}
-                </div>
-            </div>
-
-            {/* <label className="assignee-label">
-                <p>Assignee:</p>
-                <input type="select" />
-            </label> */}
-
-
-            <label className="task-description-label task-show-open">
-                <p className="task-show-open">Description</p>
-                <section className="task-description task-show-open" 
-                        contentEditable={true}
-                        data-placeholder="Write description here..."
-                        // onBlur={this.updateCurrentTask} 
-                    >
-                    {this.state.description}
+            
+            <div className="task-show-open scrollable">
+                <section className="task-title task-show-open" 
+                        contentEditable={true} 
+                        data-placeholder="New Task"
+                        onChange={this.handleInput("title")}
+                        >
+                    {this.state.title}
                 </section>
-            </label>
+                <div className="table task-show-open">
+                    <div className="left task-show-open">
+                        {/* 1 */}
+                        <p className="task-show-open">Assignee</p>
+                        {/* 2 */}
+                        <p className="task-show-open">Due date</p>
+                    </div>
+                    <div className="right task-show-open">
+                        {/* 1 */}
+                        <div className="assignee">
+                            <Assignee {...this.props}/>
+                        </div>
+                        {/* 2 */}
+                        <DateComponent {...this.props}/>
+                        {/* <div className="date task-show-open">
+                            <input id="due-date" type="date" defaultValue={(this.props.task ? this.props.task.dueDate : "")} className="task-show-open" />
+                        </div> */}
+                    </div>
+                </div>
 
-            <label className="sub-tasks-label task-show-open">
-                <p className="task-show-open">Subtasks</p>
-                {this.subtasks()}
-            </label>
+                {/* <label className="assignee-label">
+                    <p>Assignee:</p>
+                    <input type="select" />
+                </label> */}
+
+
+                <label className="task-description-label task-show-open">
+                    <p className="task-show-open">Description</p>
+                    <section className="task-description task-show-open" 
+                            contentEditable={true}
+                            data-placeholder="Write description here..."
+                            // onBlur={this.updateCurrentTask} 
+                        >
+                        {this.state.description}
+                    </section>
+                </label>
+
+                <label className="sub-tasks-label task-show-open">
+                    <p className="task-show-open">Subtasks</p>
+                    {this.subtasks()}
+                </label>
+            </div>
+            
         </div>
     )}
         

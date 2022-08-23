@@ -111,6 +111,13 @@
         color: grey;
     }
 
+    .scrollable{
+        // background-color: red;
+        overflow-y: scroll;
+        height: 75vh;
+        padding-bottom: 40px;
+    }
+
     .task-description-label{
         display: flex;
         flex-direction: column;
