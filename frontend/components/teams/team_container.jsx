@@ -5,20 +5,23 @@ import { fetchUserProjects } from "../../actions/project_actions";
 import { updateTeam } from "../../actions/team_actions";
 import { showNewProjectForm } from "../../actions/ui_actions";
 import { deleteSection, fetchProjectSections } from "../../actions/section_actions";
+import {fetchUser} from "../../actions/user_actions";
 import { Link } from "react-router-dom";
 
 const mapStateToProps = (state, ownProps) => ({
     team: state.entities.teams[ownProps.match.params.team_id],
     projects: state.entities.projects,
     currentUser: state.session.id,
-    teamId: ownProps.match.params.team_id
+    teamId: ownProps.match.params.team_id,
+    users: state.entities.users
 })
 
 const mapDispatchToProps = (dispatch) => ({
     fetchUserProjects: (userId) => dispatch(fetchUserProjects(userId)),
     showNewProjectForm: (teamId) => dispatch(showNewProjectForm(teamId)),
     fetchProjectSections: (projectId) => dispatch(fetchProjectSections(projectId)),
-    updateTeam: (team) => dispatch(updateTeam(team))
+    updateTeam: (team) => dispatch(updateTeam(team)),
+    fetchUser: (userId) => dispatch(fetchUser(userId))
 })
 
 class Team extends React.Component{

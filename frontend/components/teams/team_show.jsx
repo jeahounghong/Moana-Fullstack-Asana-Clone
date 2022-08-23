@@ -5,12 +5,20 @@ class TeamShow extends React.Component {
 
     constructor(props){
         super(props);
-        console.log(props)
+        // console.log(props)
+        this.people = this.people.bind(this);
+
     }
 
     componentDidMount(){
         // console.log(this.props.currentUser)
         this.props.fetchUserProjects(this.props.currentUser)
+        if (this.props.team && this.props.team.teamUsers){
+            debugger;
+            this.team.teamUsers.forEach((user)=>{
+                this.props.fetchUser(user)
+            })
+        }
 
         setTimeout(() => {
             const contents = $(".team-show-description")
@@ -25,19 +33,72 @@ class TeamShow extends React.Component {
                     e.preventDefault();
                 }
             })
+
+            if (this.props.team && this.props.team.teamUsers){
+                this.props.team.teamUsers.forEach((user)=>{
+                    this.props.fetchUser(user)
+                })
+            }
+
         }, 500)
 
-        
-
+        setTimeout(() => {
+            if (this.props.team && this.props.team.teamUsers){
+                this.props.team.teamUsers.forEach((user)=>{
+                    this.props.fetchUser(user)
+                })
+            }
+        },2000)
     }
+
+    people(){
+        if (this.props.team && this.props.team.teamUsers){
+            // debugger;
+            return (
+                <ul className="people-box-container">
+                    <li className="add-box"> 
+                        <div className="add-icon">
+                            <i className="fa-solid fa-plus"></i>
+                        </div>
+                        <div>
+                            Add User
+                        </div>
+                    </li>
+                    {this.props.team.teamUsers.map((userId) => (
+                        this.props.users && this.props.users[userId] ? 
+                            <li className="people-box">
+                            <div className="initials">
+                                {this.props.users[userId].firstName[0] + this.props.users[userId].lastName[0]}
+                            </div>
+                            <div >
+                                {this.props.users[userId].firstName}
+                            </div>
+                            <div >
+                                {this.props.users[userId].lastName}
+                            </div>
+                        </li> : ""
+                    ))}
+                </ul>
+            )
+        }
+    }
+
 
     render(){return(
         <div className="team-show">
             <div className="team-show-left">
-                <h3>Description:</h3>
-                <section className="team-show-description" contentEditable={true}>
-                    {this.props.team ? this.props.team.description : ""}
-                </section>
+                <div>
+                    <h3>Description:</h3>
+                    <section className="team-show-description" contentEditable={true}>
+                        {this.props.team ? this.props.team.description : ""}
+                    </section>
+                </div>
+                <div className="people">
+                    <h3>People</h3>
+                    <div >
+                        {this.people()}
+                    </div>
+                </div>
             </div>
 
             <div className="team-show-projects right-most">
