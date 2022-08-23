@@ -27,6 +27,7 @@ class User < ApplicationRecord
     has_many :team_users, dependent: :destroy
     has_many :project_users, dependent: :destroy
     has_many :joined_projects, through: :project_users, source: :project
+    has_many :tasks
 
     
     has_many :teams, through: :team_users

@@ -13,6 +13,7 @@ class Assignee extends React.Component {
 
     toggleInput(){
         this.setState({input: !this.state.input})
+        console.log(this.props)
         setTimeout(() => {
             let input = document.getElementById("assignee-input")
             if (input){
@@ -23,11 +24,11 @@ class Assignee extends React.Component {
 
     render(){
         if (this.state.input){
-            return (<div onBlur={this.toggleInput}>
-                <input id="assignee-input" />
+            return (<div onBlur={this.toggleInput} className="task-show-open">
+                <input id="assignee-input" className="task-show-open"/>
             </div>)
         } else {
-            return (<div onClick={this.toggleInput} >
+            return (<div onClick={this.toggleInput} className="task-show-open">
                 erhehrerherh
             </div>)
         }

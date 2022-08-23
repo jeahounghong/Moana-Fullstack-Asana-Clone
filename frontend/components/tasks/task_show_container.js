@@ -14,7 +14,8 @@ const mapStateToProps = state => ({
     //     dueDate: null,
     //     complete: false
     // },
-    tasks: state.entities.tasks
+    tasks: state.entities.tasks,
+    users: state.entities.users
 })
 
 const mapDispatchToProps = dispatch => ({
