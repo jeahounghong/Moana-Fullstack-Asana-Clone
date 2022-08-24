@@ -51,12 +51,12 @@ export default class AddProjectUserForm extends React.Component{
             return (<div className="project-dropdown">
                 <ul>
                     {teamUsersArray.map((user) => (
-                        <li onMouseDown={() => this.handleMouseDown(user)} className="dropdown-list-item">
+                        (user.firstName + " " + user.lastName).indexOf(this.state.value) >=0 ? <li onMouseDown={() => this.handleMouseDown(user)} className="dropdown-list-item">
                             <div className={"profile-circle"}>
                                 {user.firstName[0] + user.lastName[0]}
                             </div>
                             <span>{" " + user.firstName + " " + user.lastName}</span>
-                        </li>
+                        </li> : ""
                     ))}
                 </ul>
             </div>)
