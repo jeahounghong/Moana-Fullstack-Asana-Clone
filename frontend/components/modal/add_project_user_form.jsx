@@ -48,11 +48,14 @@ export default class AddProjectUserForm extends React.Component{
             let teamUsers = teamUsersIds.map((userId) => this.props.users[userId])
             let teamUsersArray = Object.values(teamUsers);
             // debugger;
-            return (<div>
+            return (<div className="project-dropdown">
                 <ul>
                     {teamUsersArray.map((user) => (
                         <li onMouseDown={() => this.handleMouseDown(user)} className="dropdown-list-item">
-                            {" " + user.firstName + " " + user.lastName}
+                            <div className={"profile-circle"}>
+                                {user.firstName[0] + user.lastName[0]}
+                            </div>
+                            <span>{" " + user.firstName + " " + user.lastName}</span>
                         </li>
                     ))}
                 </ul>
@@ -66,7 +69,7 @@ export default class AddProjectUserForm extends React.Component{
             <h3>{this.props.projects[this.props.modalProject].title}</h3>
             {/* Projectsss */}
             <span>Please select a teammate to be added to the project:</span>
-            <label>
+            <label className="add-project-label">
                 <p>Type name here:</p>
                 <input type="text" value={this.state.value} onChange={this.handleInput("value")} id="user-search" onFocus={this.toggleDropdown} onBlur={this.toggleDropdown}/>
                 {this.dropdown()}
