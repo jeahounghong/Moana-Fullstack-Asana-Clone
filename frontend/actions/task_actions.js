@@ -27,6 +27,9 @@ export const fetchSectionTasks = (sectionId) => dispatch => TaskApiUtil.fetchSec
 export const fetchSubtasks = (taskId) => dispatch => TaskApiUtil.fetchSubtasks(taskId)
     .then(tasks => dispatch(receiveTasks(tasks)));
 
+export const fetchTask = (taskId) => dispatch => TaskApiUtil.fetchTask(taskId)
+    .then(task => dispatch(receiveTask(task)))
+
 export const createTask = (task) => dispatch => TaskApiUtil.createTask(task)
     .then(task => dispatch(receiveTask(task)));
 

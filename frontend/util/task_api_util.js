@@ -19,6 +19,13 @@ export const fetchSubtasks = (taskId) => (
     })
 )
 
+export const fetchTask = (taskId) => (
+    $.ajax({
+        url: `/api/tasks/${taskId}`,
+        method: `GET`
+    })
+)
+
 export const createTask = (task) => (
     $.ajax({
         url: `/api/tasks`,

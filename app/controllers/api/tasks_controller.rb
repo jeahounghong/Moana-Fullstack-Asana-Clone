@@ -19,6 +19,15 @@ class Api::TasksController < ApplicationController
         end
     end
 
+    def show
+        @task = Task.find_by(id: params[:id])
+        if @task 
+            render :show
+        else
+            render json: ["Task not found"], status: 404
+        end 
+    end
+
     def update
         @task = Task.find_by(id: params[:id])
         @task.owner_id = params[:task][:ownerId]

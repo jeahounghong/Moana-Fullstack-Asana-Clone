@@ -141,14 +141,20 @@ class TaskShow extends React.Component {
         if (this.state.subtasks){
             return (<ul className="task-show-open subtask-list">
                 {this.state.subtasks.map((taskId) => (
-                    this.props.tasks[taskId] ? <li className="task-show-open subtask-list-item" onClick={() => this.props.showUpdateTaskForm(this.props.tasks[taskId])}>
+                    this.props.tasks[taskId] ? <li className="task-show-open subtask-list-item" onClick={(e) => {
+                        // debugger;
+
+                        if (e.target.className.indexOf("fa-trash-can") < 0 && e.target.className.indexOf("fa-circle-check") < 0){
+                            this.props.showUpdateTaskForm(this.props.tasks[taskId])
+                        }
+                        }}>
                         <div className="left task-show-open">
                             <i className={`fa-regular fa-circle-check task-show-open ${this.props.tasks[taskId].complete ? "complete" : "incomplete"}`}
                                 onClick={() => this.toggleSubtaskComplete(this.props.tasks[taskId])}></i>
                             <span className={`task-show-open ${this.props.tasks[taskId].complete ? "complete" : ""}`}>{" " + this.props.tasks[taskId].title}</span>
                         </div>
 
-                        <div className="right task-show-open">
+                        <div className="right task-show-open" onClick={() => this.props.deleteTask(taskId)}>
                             <i className="fa-solid fa-trash-can task-show-open"></i>
                         </div>
                     </li> : ""
@@ -158,7 +164,7 @@ class TaskShow extends React.Component {
                     this.path = this.props.location.pathname.substring(10);
                     let idx = this.path.indexOf("/")
                     this.path = parseInt(this.path.substring(0,idx))
-                    setTimeout(() =>this.props.fetchProjectTasks(this.path),100)
+                    setTimeout(() =>this.props.fetchTask(this.state.id),100)
                     setTimeout(() => {this.props.showUpdateTaskForm(this.props.tasks[this.state.id])}, 200)
                 }}>
                     <i class="fa-regular fa-plus task-show-open"></i>
