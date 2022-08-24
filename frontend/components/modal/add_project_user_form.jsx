@@ -44,7 +44,7 @@ export default class AddProjectUserForm extends React.Component{
                 <ul>
                     {teamUsersArray.map((user) => (
                         <li>
-                            {user.firstName}
+                            {user.firstName + " " + user.lastName}
                         </li>
                     ))}
                 </ul>
