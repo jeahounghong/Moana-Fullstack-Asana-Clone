@@ -7,6 +7,7 @@ export default class ProjectOverview extends React.Component {
         this.description = this.description.bind(this);
         this.people = this.people.bind(this);
         this.tasks = this.tasks.bind(this)
+        this.toggleComplete = this.toggleComplete.bind(this)
     }
 
     description(){
@@ -48,6 +49,22 @@ export default class ProjectOverview extends React.Component {
         }
     }
 
+    toggleComplete(task){
+        let currentTask = Object.assign({},task);
+
+
+        currentTask.complete = !currentTask.complete;
+        currentTask.owner_id = currentTask.owner_id || currentTask.ownerId;
+        delete currentTask.ownerId;
+        currentTask.due_date = currentTask.due_date || currentTask.dueDate;
+        delete currentTask.dueDate;
+        currentTask.owner_type = currentTask.owner_type || currentTask.ownerType;
+        delete currentTask.ownerType;
+        currentTask.user_id = currentTask.user_id;
+        delete currentTask.userId;
+        this.props.updateTask(currentTask);
+    }
+
     tasks(){
         if (this.props.projects[this.props.projectId]){
             return (<ul>
@@ -55,11 +72,15 @@ export default class ProjectOverview extends React.Component {
                     <li className="task-show-open" onClick={() => this.props.showUpdateTaskForm(this.props.tasks[taskId])}> 
                         {this.props.tasks[taskId] ? 
                             <div
-                                    className="task-show-open"
+                                    className="task-show-open overview-tasks"
                             >
-                                <i className={`fa-regular fa-circle-check task-show-open
-                                ${this.props.tasks[taskId].complete ? "complete" : "incomplete"}`}></i> 
-                                {" " + this.props.tasks[taskId].title}
+                                <i className={`fa-regular fa-circle-check
+                                ${this.props.tasks[taskId].complete ? "complete" : "incomplete"}`}
+                                    onMouseDown={() => this.toggleComplete(this.props.tasks[taskId])}
+                                
+                                ></i> 
+                                <span className={`${this.props.tasks[taskId].complete ? "complete" : "" }`}>
+                                    {" " + this.props.tasks[taskId].title}</span>
                             </div>  
                         : ""}
                     </li>
@@ -70,11 +91,14 @@ export default class ProjectOverview extends React.Component {
                         {this.props.sections[sectionId] ? this.props.sections[sectionId].sectionTasks.map((taskId) => (
                             <li onClick={() => this.props.showUpdateTaskForm(this.props.tasks[taskId])} className="task-show-open">
                                 {this.props.tasks[taskId] ? 
-                                    <div onClick={() => console.log(this.props.tasks[taskId])}
-                                                className="task-show-open"
-                                    ><i className={`fa-regular fa-circle-check
-                                        ${this.props.tasks[taskId].complete ? "complete" : "incomplete"}`}></i> 
-                                    {" " + this.props.tasks[taskId].title}</div>  
+                                    <div className="task-show-open overview-tasks">
+                                        <i className={`fa-regular fa-circle-check
+                                        ${this.props.tasks[taskId].complete ? "complete" : "incomplete"}`}
+                                        onMouseDown={() => this.toggleComplete(this.props.tasks[taskId])}
+                                    ></i> 
+                                    <span className={`${this.props.tasks[taskId].complete ? "complete" : "" }`}>
+                                    {" " + this.props.tasks[taskId].title}</span>
+                                    </div>  
                                 : ""}
                             </li>
                         )) : ""}

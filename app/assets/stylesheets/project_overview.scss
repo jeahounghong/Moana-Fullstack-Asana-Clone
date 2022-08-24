@@ -7,6 +7,12 @@
     transition: 0.5s;
     margin-top: 40px;
 
+    .overview-tasks{
+        .complete {
+            color: lightgreen;
+        }
+    }
+
     .project-overview-content{
         width: 75%;
         // background-color: red;
@@ -176,6 +182,7 @@
 
         li:hover{
             background-color: rgb(207, 207, 207);
+            transition: 0.3s;
         }
 
         i:hover{
