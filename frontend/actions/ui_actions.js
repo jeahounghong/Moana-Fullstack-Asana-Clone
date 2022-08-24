@@ -8,6 +8,8 @@ export const SHOW_UPDATE_PROJECT_FORM = "SHOW_UPDATE_PROJECT_FORM";
 export const SHOW_NEW_TASK_FORM = "SHOW_NEW_TASK_FORM";
 export const CLOSE_TASK_SHOW = "CLOSE_TASK_SHOW";
 export const SHOW_UPDATE_TASK_FORM = "SHOW_UPDATE_TASK_FORM";
+export const SHOW_ADD_PROJECT_USER_FORM = "SHOW_ADD_PROJECT_USER_FORM";
+export const SHOW_ADD_TEAM_USER_FORM = "SHOW_ADD_TEAM_USER_FORM";
 
 export const showNewTeamForm = () => ({
     type: SHOW_NEW_TEAM_FORM
@@ -17,6 +19,14 @@ export const showNewProjectForm = () => ({
     type: SHOW_NEW_PROJECT_FORM
 })
 
+export const showAddProjectUserForm = () => ({
+    type: SHOW_ADD_PROJECT_USER_FORM
+})
+
+export const showAddTeamUserForm = (teamId) => ({
+    type: SHOW_ADD_TEAM_USER_FORM,
+    teamId: teamId
+})
 
 export const showNewTaskForm = () => ({
     type: SHOW_NEW_TASK_FORM

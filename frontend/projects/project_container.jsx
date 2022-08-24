@@ -157,7 +157,7 @@ const mapDispatchToProps = dispatch => ({
     showUpdateTaskForm: (task) => dispatch(showUpdateTaskForm(task)),
     createTask: (task) => dispatch(createTask(task)),
     updateTask: (task) => dispatch(updateTask(task)),
-    fetchUser: (userId) => dispatch(fetchUser(userId))
+    fetchUser: (userId) => dispatch(fetchUser(userId)),
 })
 
 const ProjectContainer = connect(mapStateToProps, mapDispatchToProps)(Project);

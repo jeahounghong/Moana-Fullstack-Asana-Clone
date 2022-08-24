@@ -56,7 +56,9 @@ class TeamShow extends React.Component {
             // debugger;
             return (
                 <ul className="people-box-container">
-                    <li className="add-box"> 
+                    <li className="add-box" onClick={() => {
+                        this.props.showAddTeamUserForm(this.props.team.id)}
+                    }> 
                         <div className="add-icon">
                             <i className="fa-solid fa-plus"></i>
                         </div>
@@ -112,7 +114,7 @@ class TeamShow extends React.Component {
                         <p>New Project</p>
                     </li>
                     {
-                        Object.values(this.props.projects).map((project) => {
+                        (this.props.team && this.props.team.id) ? Object.values(this.props.projects).map((project) => {
                             if (project.teamId === this.props.team.id){
                                 return (
                                     <Link to={`/projects/${project.id}/list`} key={project.id} onClick={()=> this.props.fetchProjectSections(project.id)}>
@@ -125,7 +127,7 @@ class TeamShow extends React.Component {
                                     </Link>
                                 )
                             }
-                        })
+                        }) : ""
                     }
                 </ul>
                 

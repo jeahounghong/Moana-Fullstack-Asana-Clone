@@ -28,3 +28,11 @@ export const updateTeam = (team) => (
         data: {team: team}
     })
 )
+
+export const addTeamUser = (userData) => (
+    $.ajax({
+        url: `/api/team_users`,
+        method: `POST`,
+        data: {userData: userData}
+    })
+)

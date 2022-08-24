@@ -36,7 +36,6 @@ export default class MyTasks extends React.Component {
         day = day.getFullYear() + "-" + ((day.getMonth() + 1) < 10 ? "0" + (day.getMonth() + 1) : (day.getMonth() + 1)) + "-" + 
                         (day.getDate() < 10 ? ("0" + day.getDate()) : day.getDate())
         return (<div>
-            <i className="fa-regular fa-calendar task-show-open"></i>
             {date ? (" " + this.MONTHS[date.substring(5,7) - 1] + " " + date.substring(8,10)) : " No Due Date"}
         </div>)
 
@@ -73,7 +72,9 @@ export default class MyTasks extends React.Component {
                     </div>
                 </div>
                 <div className='right'>
-                    Due Date
+                    <i className="fa-regular fa-calendar task-show-open"></i>
+                    <span> Due Date</span>
+                    
                 </div>
             </div>
             {this.tasks()}

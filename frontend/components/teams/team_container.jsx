@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import TeamShow from "./team_show";
 import { fetchUserProjects } from "../../actions/project_actions";
 import { updateTeam } from "../../actions/team_actions";
-import { showNewProjectForm } from "../../actions/ui_actions";
+import { showAddTeamUserForm, showNewProjectForm } from "../../actions/ui_actions";
 import { deleteSection, fetchProjectSections } from "../../actions/section_actions";
 import {fetchUser} from "../../actions/user_actions";
 import { Link } from "react-router-dom";
@@ -21,7 +21,8 @@ const mapDispatchToProps = (dispatch) => ({
     showNewProjectForm: (teamId) => dispatch(showNewProjectForm(teamId)),
     fetchProjectSections: (projectId) => dispatch(fetchProjectSections(projectId)),
     updateTeam: (team) => dispatch(updateTeam(team)),
-    fetchUser: (userId) => dispatch(fetchUser(userId))
+    fetchUser: (userId) => dispatch(fetchUser(userId)),
+    showAddTeamUserForm: (teamId) => dispatch(showAddTeamUserForm(teamId))
 })
 
 class Team extends React.Component{

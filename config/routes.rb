@@ -27,6 +27,8 @@ Rails.application.routes.draw do
       resources :tasks, only: [:index]
     end
 
+    resources :team_users, only: [:create, :destroy]
+
     resource :session, only: [:create, :destroy]
   end
 end
