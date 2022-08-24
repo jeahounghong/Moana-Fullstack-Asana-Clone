@@ -70,6 +70,7 @@ const uiReducer = (state = preloadedState, action) => {
             nextState.taskShow = false;
             nextState.taskContent = null;
             taskform = document.getElementById("task-show-container");
+            // debugger;
             taskform.style.width="0%";
             return nextState;
 

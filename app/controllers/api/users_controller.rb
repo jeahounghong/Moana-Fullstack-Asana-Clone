@@ -11,6 +11,17 @@ class Api::UsersController < ApplicationController
         end
     end
 
+    def index
+        project = Project.find_by(id: params[:project_id])
+        # debugger;
+        if project && current_user
+            @users = project.users
+            render :index
+        else
+            render json: ["Project not found"], status: 404
+        end
+    end
+
     def show
         @user = User.find(params[:id])
         if @user

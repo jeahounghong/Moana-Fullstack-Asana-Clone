@@ -26,6 +26,9 @@ export default class MyTasks extends React.Component {
         this.props.users[this.props.currentUser].userTasks.forEach((taskId) => {
             this.props.fetchTask(taskId)
         })
+        this.props.users[this.props.currentUser].userProjectsIds.forEach(projectId => {
+            this.props.fetchProjectUsers(projectId)
+        })
     }
 
     dueDate(date){
@@ -49,7 +52,8 @@ export default class MyTasks extends React.Component {
                     tasks[taskId] ? <li className='task-list-item task-show-open' onClick={() => this.props.showUpdateTaskForm(tasks[taskId])}>
                         <div className='left'>
                             <i className={`fa-regular fa-circle-check ${tasks[taskId].complete ? "complete" : "incomplete"}`}></i>
-                            <span className={`${tasks[taskId].complete ? "complete" : ""}`}>{" " + tasks[taskId].title}</span>
+                            <span className={`${tasks[taskId].complete ? "complete" : ""}`}>{" " + tasks[taskId].title + " "}</span>
+                            {tasks[taskId].subtasks.length > 0 ? <i class="fa-solid fa-folder-tree"></i> : ""}
                         </div>
                         <div className='right'>
                             {this.dueDate(tasks[taskId].dueDate)}

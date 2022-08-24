@@ -29,3 +29,10 @@ export const fetchUser = (userId) => (
         method: `GET`
     })
 )
+
+export const fetchProjectUsers = (projectId) => (
+    $.ajax({
+        url: `/api/projects/${projectId}/users`,
+        method: `GET`
+    })
+)

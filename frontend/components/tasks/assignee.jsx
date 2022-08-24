@@ -112,6 +112,7 @@ class Assignee extends React.Component {
             let validUsers = Object.values(this.props.users).filter((user) => (
                 this.props.projects[this.props.task.projectId].projectUsers.includes(user.id)
             ))
+            // debugger;
             console.log(this.state.value)
             return(<div className="dropdown">
                 {validUsers.map((user) => (

@@ -204,7 +204,8 @@ class TaskShow extends React.Component {
                 {this.state.ownerType === "Task" ? <div className="task-show-open sub-task-owner"
                     onClick={() => this.props.showUpdateTaskForm(this.props.tasks[this.state.ownerId])}
                 >
-                    {this.props.tasks[this.state.ownerId].title ? this.props.tasks[this.state.ownerId].title : "Previous Task"}
+                    {(this.props.tasks[this.state.ownerId] &&  this.props.tasks[this.state.ownerId].title) ? 
+                    this.props.tasks[this.state.ownerId].title : "Previous Task"}
                 </div> : ""}
 
                 <section className="task-title task-show-open" 
@@ -212,7 +213,7 @@ class TaskShow extends React.Component {
                         data-placeholder="New Task"
                         onChange={this.handleInput("title")}
                         >
-                    {this.state.title}
+                    {this.state ? this.state.title : ""}
                 </section>
                 <div className="table task-show-open">
                     <div className="left task-show-open">
