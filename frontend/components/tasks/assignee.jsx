@@ -108,9 +108,9 @@ class Assignee extends React.Component {
     }
 
     dropdown(){
-        if (this.props.projects[this.path] && this.props.projects[this.path].projectUsers){
+        if (this.props.projects[this.props.task.projectId] && this.props.projects[this.props.task.projectId].projectUsers){
             let validUsers = Object.values(this.props.users).filter((user) => (
-                this.props.projects[this.path].projectUsers.includes(user.id)
+                this.props.projects[this.props.task.projectId].projectUsers.includes(user.id)
             ))
             console.log(this.state.value)
             return(<div className="dropdown">
