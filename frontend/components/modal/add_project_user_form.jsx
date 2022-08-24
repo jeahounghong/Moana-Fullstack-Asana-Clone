@@ -34,7 +34,9 @@ export default class AddProjectUserForm extends React.Component{
     dropdown(){
         if (this.state.showDropdown){
             let projectTeam = this.props.teams[this.props.modalTeam];
-            let teamUsersIds = projectTeam.teamUsers.filter((userId) => this.props.users[userId])
+            let project = this.props.projects[this.props.modalProject];
+            // debugger;
+            let teamUsersIds = projectTeam.teamUsers.filter((userId) => this.props.users[userId] && project.projectUsers.indexOf(userId) < 0)
             let teamUsers = teamUsersIds.map((userId) => this.props.users[userId])
             let teamUsersArray = Object.values(teamUsers);
             // debugger;
