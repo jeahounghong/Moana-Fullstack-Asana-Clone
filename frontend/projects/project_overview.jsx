@@ -21,7 +21,7 @@ export default class ProjectOverview extends React.Component {
         if (this.props.projects[this.props.projectId] && Object.keys(this.props.users).length > 0){
             return (<ul>
                 {/* lskdnlksdg */}
-                <li className="add-box"> 
+                <li className="add-box" onClick={() => this.props.showAddProjectUserForm(this.props.projectId, this.props.projects[this.props.projectId].teamId)}> 
                     <div className="add-icon">
                         <i className="fa-solid fa-plus"></i>
                     </div>

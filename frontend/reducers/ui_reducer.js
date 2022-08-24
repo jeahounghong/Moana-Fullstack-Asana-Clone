@@ -74,6 +74,14 @@ const uiReducer = (state = preloadedState, action) => {
             // debugger;
             return nextState;
 
+        case SHOW_ADD_PROJECT_USER_FORM:
+            nextState.modalContent = SHOW_ADD_PROJECT_USER_FORM;
+            nextState.modalProject = action.projectId;
+            nextState.modalTeam = action.teamId;
+            nextState.modal = true;
+            // debugger;
+            return nextState
+
         case CLOSE_TASK_SHOW:
             // debugger;
             nextState.taskShow = false;

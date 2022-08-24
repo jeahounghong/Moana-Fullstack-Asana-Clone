@@ -19,8 +19,10 @@ export const showNewProjectForm = () => ({
     type: SHOW_NEW_PROJECT_FORM
 })
 
-export const showAddProjectUserForm = () => ({
-    type: SHOW_ADD_PROJECT_USER_FORM
+export const showAddProjectUserForm = (projectId, teamId) => ({
+    type: SHOW_ADD_PROJECT_USER_FORM,
+    projectId: projectId,
+    teamId: teamId
 })
 
 export const showAddTeamUserForm = (teamId) => ({

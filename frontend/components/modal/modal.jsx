@@ -5,6 +5,7 @@ import NewProjectFormContainer from "./new_project_form_container";
 import UpdateTeamFormContainer from "./update_team_form_container";
 import UpdateProjectFormContainer from "./update_project_form_container";
 import AddTeamUserFormContainer from "./add_team_user_form_container";
+import AddProjectUserFormContainer from "./add_project_user_form_container";
 import { SHOW_NEW_TEAM_FORM, SHOW_NEW_PROJECT_FORM, SHOW_UPDATE_TEAM_FORM, SHOW_UPDATE_PROJECT_FORM , 
     SHOW_ADD_TEAM_USER_FORM,SHOW_ADD_PROJECT_USER_FORM,closeModal } from "../../actions/ui_actions"
 
@@ -33,7 +34,8 @@ class Modal extends React.Component{
                 return <UpdateProjectFormContainer />
             case SHOW_ADD_TEAM_USER_FORM:
                 return <AddTeamUserFormContainer />
-            
+            case SHOW_ADD_PROJECT_USER_FORM:
+                return <AddProjectUserFormContainer/>
             default:
                 return null;
         }
