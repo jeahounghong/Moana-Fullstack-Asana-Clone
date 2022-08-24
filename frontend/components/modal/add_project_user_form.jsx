@@ -11,7 +11,8 @@ export default class AddProjectUserForm extends React.Component{
 
         this.handleInput = this.handleInput.bind(this);
         this.dropdown = this.dropdown.bind(this);
-        this.toggleDropdown = this.toggleDropdown.bind(this)
+        this.toggleDropdown = this.toggleDropdown.bind(this);
+        this.handleMouseDown = this.handleMouseDown.bind(this);
     }
 
     componentWillReceiveProps(nextProps){
@@ -23,12 +24,19 @@ export default class AddProjectUserForm extends React.Component{
         }
     }
 
-    toggleDropdown(){
-        // debugger;
+    toggleDropdown(e){
         this.props.teams[this.props.modalTeam].teamUsers.forEach((userId) => {
             this.props.fetchUser(userId)
         })
         this.setState({showDropdown: !this.state.showDropdown})
+    }
+
+    handleMouseDown(user){
+        // debugger;
+        this.props.addProjectUser({userId: user.id, projectId: this.props.modalProject});
+        setTimeout(() => {
+            this.props.fetchUser(user.id)
+        }, 300)
     }
 
     dropdown(){
@@ -43,8 +51,8 @@ export default class AddProjectUserForm extends React.Component{
             return (<div>
                 <ul>
                     {teamUsersArray.map((user) => (
-                        <li>
-                            {user.firstName + " " + user.lastName}
+                        <li onMouseDown={() => this.handleMouseDown(user)} className="dropdown-list-item">
+                            {" " + user.firstName + " " + user.lastName}
                         </li>
                     ))}
                 </ul>

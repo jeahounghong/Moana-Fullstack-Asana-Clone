@@ -11,14 +11,7 @@ class TeamShow extends React.Component {
     }
 
     componentDidMount(){
-        // console.log(this.props.currentUser)
         this.props.fetchUserProjects(this.props.currentUser)
-        // if (this.props.team && this.props.team.teamUsers){
-        //     debugger;
-        //     this.team.teamUsers.forEach((user)=>{
-        //         this.props.fetchUser(user)
-        //     })
-        // }
 
         setTimeout(() => {
             const contents = $(".team-show-description")

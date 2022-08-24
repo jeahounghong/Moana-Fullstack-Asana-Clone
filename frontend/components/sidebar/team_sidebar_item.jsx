@@ -32,7 +32,9 @@ class TeamSidebarItem extends React.Component {
             return(
                 <div className="sidebar-team">
                     <div className="sidebar-team-item">
-                        <Link to={`/teams/${this.props.team.id}/show`}><i className="fa-solid fa-caret-right spacer" onClick={this.toggleView}></i>{this.props.team.name}</Link>
+                        <Link to={`/teams/${this.props.team.id}/show`} onClick={() => {this.props.team.teamUsers.forEach((userId) => {this.props.fetchUser(userId)})}}>
+                            <i className="fa-solid fa-caret-right spacer" onClick={this.toggleView}></i>{this.props.team.name}
+                        </Link>
                     </div>
                 </div>
             )
@@ -56,7 +58,13 @@ class TeamSidebarItem extends React.Component {
                 <div className="sidebar-projects">
                     <ul >
                         {this.props.team.teamProjects.map((projectId) => (
-                            this.props.projects[projectId] ? <Link to={`/projects/${projectId}/list`} key={projectId} onClick={() => this.props.fetchProjectSections(projectId)}>
+                            this.props.projects[projectId] ?
+                            <Link to={`/projects/${projectId}/list`} 
+                                    key={projectId} 
+                                    onClick={() => {
+                                        this.props.fetchProjectSections(projectId);
+                                        this.props.team.teamUsers.forEach((userId) => {this.props.fetchUser(userId)})
+                            }}>
                                 <li className="sidebar-project-item">
                                     <div>
                                         {this.props.projects[projectId].title}

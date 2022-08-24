@@ -29,6 +29,8 @@ Rails.application.routes.draw do
 
     resources :team_users, only: [:create, :destroy]
 
+    resources :project_users, only: [:create, :destroy]
+
     resource :session, only: [:create, :destroy]
   end
 end

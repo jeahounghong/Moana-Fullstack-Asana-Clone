@@ -40,3 +40,6 @@ export const updateProject = (project) => dispatch => ProjectApiUtil.updateProje
 
 export const deleteProject = (projectId) => dispatch => ProjectApiUtil.deleteProject(projectId)
     .then(() => dispatch(removeProject(projectId)))
+
+export const addProjectUser = (userData) => dispatch => ProjectApiUtil.addProjectUser(userData)
+    .then(project => {dispatch(receiveProject(project)); dispatch(closeModal())})

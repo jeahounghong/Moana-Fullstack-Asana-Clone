@@ -35,3 +35,11 @@ export const deleteProject = (projectId) => (
         method: `DELETE`
     })
 )
+
+export const addProjectUser = (userData) => (
+    $.ajax({
+        url: `/api/project_users`,
+        method: `POST`,
+        data: {userData: userData}
+    })
+)
