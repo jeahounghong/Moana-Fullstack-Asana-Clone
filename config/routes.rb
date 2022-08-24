@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       resources :projects, only: [:index]
     end
 
-    resources :teams, only: [:create, :update, :destroy] do
+    resources :teams, only: [:create, :update, :destroy, :show] do
       resources :projects, only: [:index]
     end
 

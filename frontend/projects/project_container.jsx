@@ -8,6 +8,7 @@ import ProjectBoard from "./project_board";
 import { showAddProjectUserForm, showNewTaskForm, showUpdateTaskForm } from "../actions/ui_actions";
 import ProjectOverview from "./project_overview";
 import { fetchUser } from "../actions/user_actions";
+import { fetchTeam } from "../actions/team_actions";
 
 class Project extends React.Component {
 
@@ -30,6 +31,9 @@ class Project extends React.Component {
     }
 
     componentDidMount(){
+
+        // debugger;
+
         setTimeout(() => {
             this.props.fetchProjectSections(parseInt(this.props.projectId));
             this.props.fetchProjectTasks(parseInt(this.props.projectId));
@@ -71,6 +75,30 @@ class Project extends React.Component {
                 })
             }
         }, 0)
+
+        setTimeout(() => {
+            if (this.props.projects && this.props.projects[this.props.projectId]){
+                // debugger;
+                this.props.fetchTeam(this.props.projects[this.props.projectId].teamId)
+            }
+        },0)
+        
+        // Fetches all of the users that belong to the team that the project belongs to
+        setTimeout(() => {
+            let that=this;
+            // debugger;
+            if (this.props.teams && 
+                this.props.projects[this.props.projectId] && 
+                this.props.projects[this.props.projectId].teamId && 
+                this.props.teams[this.props.projects[this.props.projectId].teamId]){
+                    // debugger;
+                    this.props.teams[this.props.projects[this.props.projectId].teamId].teamUsers.forEach(userId => {
+                        this.props.fetchUser(userId)
+                    })
+            }
+        }, 1000)
+
+
     }
     
 
@@ -143,7 +171,8 @@ const mapStateToProps = (state, ownProps) => ({
     sections: state.entities.sections,
     projectId: parseInt(ownProps.match.params.project_id),
     tasks: state.entities.tasks,
-    users: state.entities.users
+    users: state.entities.users,
+    teams: state.entities.teams
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -158,7 +187,8 @@ const mapDispatchToProps = dispatch => ({
     createTask: (task) => dispatch(createTask(task)),
     updateTask: (task) => dispatch(updateTask(task)),
     fetchUser: (userId) => dispatch(fetchUser(userId)),
-    showAddProjectUserForm: (projectId, teamId) => dispatch(showAddProjectUserForm(projectId, teamId))
+    showAddProjectUserForm: (projectId, teamId) => dispatch(showAddProjectUserForm(projectId, teamId)),
+    fetchTeam: (teamId) => (dispatch(fetchTeam(teamId)))
 })
 
 const ProjectContainer = connect(mapStateToProps, mapDispatchToProps)(Project);

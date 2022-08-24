@@ -38,6 +38,15 @@ class Api::TeamsController < ApplicationController
         end
     end
 
+    def show
+        @team = Team.find_by(id: params[:id])
+        if @team
+            render :show
+        else
+            render json: ["Team not found"], status: 404
+        end
+    end
+
     private
 
     def team_params

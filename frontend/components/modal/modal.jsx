@@ -18,6 +18,10 @@ class Modal extends React.Component{
         this.backgroundCloseModal = this.backgroundCloseModal.bind(this)
     }
 
+    // componentDidMount(){
+    //     debugger;
+    // }
+
 
     modalContent(modalContent){
         switch(modalContent){

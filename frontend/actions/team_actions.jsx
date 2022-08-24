@@ -30,6 +30,9 @@ export const updateTeam = (team) => dispatch => TeamApiUtil.updateTeam(team)
 export const fetchUserTeams = (userId) => dispatch => TeamApiUtil.fetchUserTeams(userId)
     .then(teams => dispatch(receiveTeams(teams)))
 
+export const fetchTeam = (teamId) => dispatch => TeamApiUtil.fetchTeam(teamId)
+    .then(team => dispatch(receiveTeam(team)))
+
 export const deleteTeam = (teamId) => dispatch => TeamApiUtil.deleteTeam(teamId)
     .then(() => dispatch(removeTeam(teamId)));
 

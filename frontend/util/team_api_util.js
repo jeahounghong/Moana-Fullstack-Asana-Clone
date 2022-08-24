@@ -36,3 +36,10 @@ export const addTeamUser = (userData) => (
         data: {userData: userData}
     })
 )
+
+export const fetchTeam = (teamId) => (
+    $.ajax({
+        url: `/api/teams/${teamId}`,
+        method: `GET`
+    })
+)

@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import AddProjectUserForm from "./add_project_user_form";
+import { fetchUser } from "../../actions/user_actions";
 
 const mapStateToProps = state => ({
     projects: state.entities.projects,
@@ -10,7 +11,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-
+    fetchUser: (userId) => dispatch(fetchUser(userId))
 })
 
 const AddProjectUserFormContainer = connect(mapStateToProps, mapDispatchToProps)(AddProjectUserForm)

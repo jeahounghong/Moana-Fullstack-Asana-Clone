@@ -14,6 +14,9 @@ export default class AddProjectUserForm extends React.Component{
         this.toggleDropdown = this.toggleDropdown.bind(this)
     }
 
+    componentWillReceiveProps(nextProps){
+    }
+
     handleInput(type){
         return (e) => {
             this.setState({[type]: e.currentTarget.value})
@@ -21,13 +24,28 @@ export default class AddProjectUserForm extends React.Component{
     }
 
     toggleDropdown(){
+        // debugger;
+        this.props.teams[this.props.modalTeam].teamUsers.forEach((userId) => {
+            this.props.fetchUser(userId)
+        })
         this.setState({showDropdown: !this.state.showDropdown})
     }
 
     dropdown(){
         if (this.state.showDropdown){
+            let projectTeam = this.props.teams[this.props.modalTeam];
+            let teamUsersIds = projectTeam.teamUsers.filter((userId) => this.props.users[userId])
+            let teamUsers = teamUsersIds.map((userId) => this.props.users[userId])
+            let teamUsersArray = Object.values(teamUsers);
+            // debugger;
             return (<div>
-                Hi
+                <ul>
+                    {teamUsersArray.map((user) => (
+                        <li>
+                            {user.firstName}
+                        </li>
+                    ))}
+                </ul>
             </div>)
         }
     }
