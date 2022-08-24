@@ -21,4 +21,15 @@ class Task < ApplicationRecord
     belongs_to :user, optional: true
 
     has_many :tasks, as: :owner
+
+    def project
+        if self.owner_type == "Project"
+            return self.owner
+        elsif self.owner_type == "Section"
+            return self.owner.project
+        else
+            return self.owner.project
+        end
+    end
+
 end

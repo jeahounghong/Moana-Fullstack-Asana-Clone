@@ -8,6 +8,7 @@ import { TeamContainer } from "./teams/team_container";
 import ProjectContainer from "../projects/project_container";
 import TaskShowContainer from "./tasks/task_show_container";
 import HomeContainer from "./home/home_container";
+import MyTasksContainer from "./my_tasks/my_tasks_container";
 
 class MainApp extends React.Component{
     constructor(props){
@@ -23,6 +24,7 @@ class MainApp extends React.Component{
                 <ProtectedRoute path="/" component={AppNavbarContainer}/>
                 <ProtectedRoute path="/" component={TaskShowContainer}/>
                 <ProtectedRoute path="/home" component={HomeContainer}/>
+                <ProtectedRoute path="/tasks" component={MyTasksContainer}/>
                 <ProtectedRoute path="/teams/:team_id/" component={TeamContainer}/>
                 <ProtectedRoute path="/projects/:project_id/" component={ProjectContainer}/>
             
