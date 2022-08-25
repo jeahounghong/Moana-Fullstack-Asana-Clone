@@ -55,11 +55,69 @@
         // background-color: red;
         border: solid 1px lightgrey;
         background-color: white;
-        padding: 5px;
+        padding: 10px;
         margin: 5px;
         margin-top: 0px;
-        border-radius: 10px;
+        border-radius: 7px;
         height: 70px;
+
+        display: flex;
+        justify-content: space-between;
+        
+        .title{
+            display: flex;
+            align-items: center;
+        }
+
+        .date{
+            font-size: 15px;
+            // margin-top: 5px;
+            // margin-left: 5px;
+        }
+
+        .late{
+            color: red;
+        }
+
+        .on-time {
+            color: grey;
+        }
+
+        .left{
+            font-size: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .fa-circle-check{
+            color: grey;
+            // font-size: 25px;
+            cursor: default;
+            margin-right: 5px;
+        }
+
+        .fa-circle-check:hover{
+            color: lightgreen;
+            transition: 0.3s;
+        }
+
+        .complete{
+            color: lightgreen;
+        }
+
+        .profile-circle{
+            background-color: #78A2CC;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        
     }
 
     .add-task {

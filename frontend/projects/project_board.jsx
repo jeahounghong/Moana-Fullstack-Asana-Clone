@@ -7,7 +7,7 @@ import { useState } from 'react';
 function ProjectBoard(props) {
     console.log("board rerender")
     console.log(props)
-
+    // debugger;
     const initialColumns = {};
     initialColumns['Project'+props.projectId] = {
         id: 'Project'+props.projectId,
@@ -72,30 +72,27 @@ function ProjectBoard(props) {
             setColumns(initialColumns);
         } else {
             Object.values(initialColumns).forEach((col) => {
-                // col.tasks.forEach((task) => {
-                //     if (columns[col.id].tasks[task.id]){
-                //         if (columns[col.id].tasks[task.id].title !== task.title){
+                col.tasks.forEach((task) => {
+                    columns[col.id].tasks.forEach((hookTask) => {
+                        if (hookTask.id === task.id){
+                            if (hookTask.title !== task.title){
+                                setColumns(initialColumns)
+                            }
 
-                //             // debugger;
-                //             // setColumns(initialColumns)
-                //         }
-                //     }
-                // })
+                            if (hookTask.userId !== task.userId){
+                                setColumns(initialColumns)
+                            }
+
+                            if (hookTask.complete !== task.complete){
+                                setColumns(initialColumns)
+                            }
+                            
+                        }
+                    })
+                })
             })
         }
     }
-
-    // Object.values(initialColumns).forEach((col) => {
-    //     col.tasks.forEach((task) => {
-    //         if (columns[col.id].tasks[task.id]){
-    //             if (columns[col.id].tasks[task.id].title !== task.title){
-    //                 setColumns(initialColumns)
-    //             }
-    //         }
-    //     })
-    // })
-
-
 
 
     const onDragEnd = ({source, destination}) => {
@@ -208,10 +205,11 @@ function ProjectBoard(props) {
                 {Object.values(columns).map((col) => (
                     <Column col={col} key={col.id} 
                             showNewTaskForm={props.showNewTaskForm} 
-                            createNewTask={createNewTask}
+                            createNewTask={props.createTask}
                             fetchSectionTasks={props.fetchSectionTasks}
                             fetchProjectTasks={props.fetchProjectTasks}
                             showUpdateTaskForm={props.showUpdateTaskForm}
+                            users={props.users}
                             />
                 ))}
             </div>

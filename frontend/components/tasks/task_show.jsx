@@ -239,8 +239,10 @@ class TaskShow extends React.Component {
                         this.props.fetchTask(this.state.ownerId)
                     }}
                 >
-                    {(this.props.tasks[this.state.ownerId] &&  this.props.tasks[this.state.ownerId].title) ? 
-                    this.props.tasks[this.state.ownerId].title : "Previous Task"}
+                    <i className="fa-solid fa-angle-left task-show-open"></i>
+                    <span className="task-show-open">{(this.props.tasks[this.state.ownerId] &&  this.props.tasks[this.state.ownerId].title) ? 
+                        this.props.tasks[this.state.ownerId].title : "Previous Task"}
+                    </span>
                 </div> : ""}
 
                 <section className="task-title task-show-open" 
