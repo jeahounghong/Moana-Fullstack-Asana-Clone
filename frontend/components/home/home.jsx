@@ -58,13 +58,15 @@ class Home extends React.Component {
                         <div className="left">
                             <i className={`fa-regular fa-circle-check`}
                                     onClick={() => {}}></i>
-                            <span>{task.title}</span>
+                            <div className="priority-task-title">
+                                <span>{task.title}</span>
+                                <div className={`due-date ${task.dueDate < this.today ? "late" : "on-time"}`}>
+                                    {this.dueDate(task.dueDate)}
+                                </div>
+                            </div>
                         </div>
 
                         <div className="right">
-                            <div className={`due-date ${task.dueDate < this.today ? "late" : "on-time"}`}>
-                                {this.dueDate(task.dueDate)}
-                            </div>
                             <div>
                                 Go to project <i class="fa-solid fa-angles-right"></i>
                             </div>

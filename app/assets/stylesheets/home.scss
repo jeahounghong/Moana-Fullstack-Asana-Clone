@@ -131,9 +131,40 @@
     .priority-task{
         display: flex;
         justify-content: space-between;
-        
+        align-items: center;
+        // background-color: red;
+        margin: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        border: solid 1px grey;
+        .due-date{
+            margin-top: 3px;
+            color: grey;
+        }
+        .late{
+            color: red;
+        }
+        .left{
+            display: flex;
+            align-items: center;
+            .fa-circle-check{
+                font-size: 30px;
+                margin-right: 10px;
+            }
+        }
+        .fa-circle-check:hover{
+            color: lightgreen;
+            transition: 0.3s;
+        }
     }
-    .late{
-        color: red;
+
+    .priority-task:hover{
+        background-color: white;
+        .right{
+            transform: translateX(-15px);
+            transition: 0.3s;
+        }
+        transition: 0.3s;
     }
+    
 }
