@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/session_actions";
-import { fetchTask } from "../../actions/task_actions";
+import { fetchTask, updateTask } from "../../actions/task_actions";
 import Home from "./home";
 
 const mapStateToProps = state => ({
@@ -12,7 +12,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     logoutUser: () => dispatch(logoutUser()),
-    fetchTask: (taskId) => dispatch(fetchTask(taskId))
+    fetchTask: (taskId) => dispatch(fetchTask(taskId)),
+    updateTask: (task) => dispatch(updateTask(task))
 })
 
 const HomeContainer = connect(mapStateToProps, mapDispatchToProps)(Home)

@@ -8,6 +8,8 @@ class Home extends React.Component {
         this.date = new Date();
         this.projects = this.projects.bind(this);
         this.tasks = this.tasks.bind(this);
+        this.pushProject = this.pushProject.bind(this);
+        this.toggleComplete = this.toggleComplete.bind(this);
 
 
         this.MONTHS = {
@@ -44,6 +46,30 @@ class Home extends React.Component {
         }
     }
 
+    toggleComplete(task){
+        let currentTask = Object.assign({},task);
+
+        currentTask.owner_id = currentTask.owner_id || currentTask.ownerId;
+        delete currentTask.ownerId;
+        currentTask.due_date = currentTask.due_date || currentTask.dueDate;
+        delete currentTask.dueDate;
+        currentTask.owner_type = currentTask.owner_type || currentTask.ownerType;
+        delete currentTask.ownerType;
+        currentTask.user_id = currentTask.userId;
+        delete currentTask.userId;
+        currentTask.complete = !currentTask.complete;
+
+        this.props.updateTask(currentTask);
+    }
+
+    pushProject(e, projectId){
+        let that = this;
+        if (e.target.className.indexOf("fa-circle-check") < 0){
+            this.props.history.push(`/projects/${projectId}/overview`)
+            // debugger;
+        }
+    }
+
     tasks(){
         if (Object.keys(this.props.tasks).length > 0){
             const validTasks = Object.values(this.props.tasks).filter((task) => {
@@ -54,10 +80,10 @@ class Home extends React.Component {
             return (<ul className="priority-task-list">
                 {Object.values(this.props.tasks).map((task) => (
                     (!task.complete && this.props.currentUser.userTasks.includes(task.id)) ? 
-                    <li className="priority-task">
+                    <li className="priority-task" onClick={(e) => this.pushProject(e, task.projectId)}>
                         <div className="left">
                             <i className={`fa-regular fa-circle-check`}
-                                    onClick={() => {}}></i>
+                                    onClick={() => this.toggleComplete(task)}></i>
                             <div className="priority-task-title">
                                 <span>{task.title}</span>
                                 <div className={`due-date ${task.dueDate < this.today ? "late" : "on-time"}`}>
