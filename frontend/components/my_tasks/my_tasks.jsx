@@ -21,6 +21,11 @@ export default class MyTasks extends React.Component {
 
         this.tasks = this.tasks.bind(this)
         this.toggleComplete = this.toggleComplete.bind(this);
+
+        let day = new Date();
+        day = day.getFullYear() + "-" + ((day.getMonth() + 1) < 10 ? "0" + (day.getMonth() + 1) : (day.getMonth() + 1)) + "-" + 
+                        (day.getDate() < 10 ? ("0" + day.getDate()) : day.getDate())
+        this.today = day;
     }
 
     componentDidMount(){
@@ -79,7 +84,9 @@ export default class MyTasks extends React.Component {
                             {tasks[taskId].subtasks.length > 0 ? <i class="fa-solid fa-folder-tree task-show-open"></i> : ""}
                         </div>
                         <div className='right task-show-open'>
-                            <span className={`task-show-open ${tasks[taskId].complete ? "complete" : ""}`}>
+                            <span className={`task-show-open ${tasks[taskId].complete ? "complete" : ""}
+                                ${tasks[taskId].dueDate < this.today && !tasks[taskId].complete ? "late" : "on-time"}
+                            `}>
                                 {this.dueDate(tasks[taskId].dueDate)}
                             </span>
                             <span className={`task-show-open ${tasks[taskId].complete ? "complete" : ""}`}>
