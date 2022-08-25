@@ -9,6 +9,26 @@ export default class ProjectOverview extends React.Component {
         this.tasks = this.tasks.bind(this)
         this.toggleComplete = this.toggleComplete.bind(this)
         this.updateDescription = this.updateDescription.bind(this);
+
+        this.MONTHS = {
+            0: "January",
+            1: "February",
+            2: "March",
+            3: "April",
+            4: "May",
+            5: "June",
+            6: "July",
+            7: "August",
+            8: "September",
+            9: "October",
+            10: "November",
+            11: "December"
+        }
+
+        let day = new Date();
+        day = day.getFullYear() + "-" + ((day.getMonth() + 1) < 10 ? "0" + (day.getMonth() + 1) : (day.getMonth() + 1)) + "-" + 
+                        (day.getDate() < 10 ? ("0" + day.getDate()) : day.getDate())
+        this.today = day;
     }
 
     description(){
@@ -77,22 +97,42 @@ export default class ProjectOverview extends React.Component {
         this.props.updateTask(currentTask);
     }
 
+    dueDate(date){
+        let day = new Date();
+        day = day.getFullYear() + "-" + ((day.getMonth() + 1) < 10 ? "0" + (day.getMonth() + 1) : (day.getMonth() + 1)) + "-" + 
+                        (day.getDate() < 10 ? ("0" + day.getDate()) : day.getDate())
+        return (<div>
+            {date ? (" " + this.MONTHS[date.substring(5,7) - 1] + " " + date.substring(8,10)) : " No Due Date"}
+        </div>)
+    }
+
     tasks(){
         if (this.props.projects[this.props.projectId]){
             return (<ul>
                 {this.props.projects[this.props.projectId].projectTasks.map((taskId) => (
                     <li className="task-show-open" onClick={() => this.props.showUpdateTaskForm(this.props.tasks[taskId])}> 
                         {this.props.tasks[taskId] ? 
-                            <div
-                                    className="task-show-open overview-tasks"
-                            >
-                                <i className={`fa-regular fa-circle-check
-                                ${this.props.tasks[taskId].complete ? "complete" : "incomplete"}`}
-                                    onMouseDown={() => this.toggleComplete(this.props.tasks[taskId])}
+                            <div className={`task-show-open overview-tasks ${this.props.tasks[taskId].complete ? "complete" : "" } `}>
+                                <div className="left task-show-open">
+                                    <i className={`fa-regular fa-circle-check
+                                    ${this.props.tasks[taskId].complete ? "complete" : "incomplete"}`}
+                                        onMouseDown={() => this.toggleComplete(this.props.tasks[taskId])}></i> 
+                                    <span className={`${this.props.tasks[taskId].complete ? "complete" : "" }`}>
+                                        {" " + this.props.tasks[taskId].title}</span>   
+                                </div>
+                                <div className="right task-show-open">
+                                    <span className="task-show-open due-date">
+                                        {this.props.tasks[taskId] ? this.dueDate(this.props.tasks[taskId].dueDate) : ""}
+                                    </span>
+                                    <span className="profile-circle">
+                                        {this.props.tasks[taskId] && this.props.tasks[taskId].userId && this.props.users[this.props.tasks[taskId].userId] ? 
+                                            this.props.users[this.props.tasks[taskId].userId].firstName[0] +  
+                                            this.props.users[this.props.tasks[taskId].userId].lastName[0]
+                                            : <i class="fa-solid fa-user"></i>
+                                        }
+                                    </span>
+                                </div>
                                 
-                                ></i> 
-                                <span className={`${this.props.tasks[taskId].complete ? "complete" : "" }`}>
-                                    {" " + this.props.tasks[taskId].title}</span>
                             </div>  
                         : ""}
                     </li>

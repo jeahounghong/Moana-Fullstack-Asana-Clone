@@ -200,6 +200,33 @@
 
     }
 
+    .overview-tasks{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        // background-color: yellow;
+
+        .right{
+            display: flex;
+            align-items: center;
+            .profile-circle{
+                color: white;
+                background-color: #78A2CC;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 30px;
+                width: 30px;
+                margin-left: 10px;
+                i:hover{
+                    color: white;
+                }
+            }
+        }
+    }
+
 
     
     
