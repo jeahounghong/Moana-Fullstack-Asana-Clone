@@ -9,6 +9,17 @@
         margin-left: 25px;
         margin-right: 25px;
         border-bottom: solid 1px lightgrey;
+
+        .right{
+            display: flex;
+            span {
+                width: 230px;
+                text-align: center;
+                // background-color: red;
+                white-space: nowrap;
+                overflow-x: hidden;
+            }
+        }
     }
 
     .task-list-item:hover{
@@ -37,8 +48,17 @@
         padding-bottom: 4px;
         height: 15px;
         justify-content: space-between;
-        padding-right: 25px;
+        padding-right: 35px;
         padding-left: 53px;
+
+        .right{
+            display: flex;
+            span{
+                width: 230px;
+                // background-color: red;
+                text-align: center;
+            }
+        }
 
     }
 

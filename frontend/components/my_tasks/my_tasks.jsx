@@ -59,6 +59,8 @@ export default class MyTasks extends React.Component {
 
     tasks(){
         let userTasks = this.props.users[this.props.currentUser].userTasks;
+        let teams = this.props.teams;
+        let projects = this.props.projects
 
         if (Object.values(this.props.tasks).length > 0){
             let tasks = this.props.tasks;
@@ -77,7 +79,11 @@ export default class MyTasks extends React.Component {
                             {tasks[taskId].subtasks.length > 0 ? <i class="fa-solid fa-folder-tree"></i> : ""}
                         </div>
                         <div className='right'>
-                            {this.dueDate(tasks[taskId].dueDate)}
+                            <span>{this.dueDate(tasks[taskId].dueDate)}</span>
+                            <span>{projects[tasks[taskId].projectId] ? projects[tasks[taskId].projectId].title : ""}</span>
+                            <span>{projects[tasks[taskId].projectId] && teams[projects[tasks[taskId].projectId].teamId] ? 
+                                teams[projects[tasks[taskId].projectId].teamId].name : ""
+                            }</span>
                         </div>
                     </li> : ""
                 ))}
@@ -94,9 +100,9 @@ export default class MyTasks extends React.Component {
                     </div>
                 </div>
                 <div className='right'>
-                    <i className="fa-regular fa-calendar task-show-open"></i>
-                    <span> Due Date</span>
-                    
+                    <span><i className="fa-regular fa-calendar task-show-open"></i> Due Date</span>
+                    <span><i class="fa-solid fa-diagram-project"></i> Project</span>
+                    <span><i class="fa-solid fa-people-group"></i> Team</span>
                 </div>
             </div>
             {this.tasks()}
