@@ -8,6 +8,7 @@ export default class ProjectOverview extends React.Component {
         this.people = this.people.bind(this);
         this.tasks = this.tasks.bind(this)
         this.toggleComplete = this.toggleComplete.bind(this)
+        this.updateDescription = this.updateDescription.bind(this);
     }
 
     description(){
@@ -16,6 +17,17 @@ export default class ProjectOverview extends React.Component {
                 {this.props.projects[this.props.projectId].description}
             </div>)
         }
+    }
+
+    updateDescription(e){
+        // let description = document.getElementById("project-description-box")
+        let currentProject = Object.assign({}, this.props.projects[this.props.projectId])
+        currentProject.description = e.target.innerText
+        delete currentProject.projectSections
+        delete currentProject.projectTasks
+        delete currentProject.projectUsers
+        // debugger;
+        this.props.updateProject(currentProject);
     }
 
     people(){
@@ -116,7 +128,9 @@ export default class ProjectOverview extends React.Component {
                 <div className="left-content">
                     <div className="project-overview-description">
                         <h1>Description</h1>
-                        {this.description()}
+                        <div id="project-description-box" onBlur={this.updateDescription} contentEditable={true}>
+                            {this.description()}    
+                        </div>
                     </div>
                     <div className="people">
                         <h1>People</h1>

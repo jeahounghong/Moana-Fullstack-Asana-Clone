@@ -9,6 +9,7 @@ import { showAddProjectUserForm, showNewTaskForm, showUpdateTaskForm } from "../
 import ProjectOverview from "./project_overview";
 import { fetchUser } from "../actions/user_actions";
 import { fetchTeam } from "../actions/team_actions";
+import { updateProject } from "../actions/project_actions";
 
 class Project extends React.Component {
 
@@ -188,7 +189,8 @@ const mapDispatchToProps = dispatch => ({
     updateTask: (task) => dispatch(updateTask(task)),
     fetchUser: (userId) => dispatch(fetchUser(userId)),
     showAddProjectUserForm: (projectId, teamId) => dispatch(showAddProjectUserForm(projectId, teamId)),
-    fetchTeam: (teamId) => (dispatch(fetchTeam(teamId)))
+    fetchTeam: (teamId) => (dispatch(fetchTeam(teamId))),
+    updateProject: (project) => dispatch(updateProject(project))
 })
 
 const ProjectContainer = connect(mapStateToProps, mapDispatchToProps)(Project);
