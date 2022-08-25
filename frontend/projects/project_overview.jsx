@@ -121,7 +121,7 @@ export default class ProjectOverview extends React.Component {
                                         {" " + this.props.tasks[taskId].title}</span>   
                                 </div>
                                 <div className="right task-show-open">
-                                    <span className="task-show-open due-date">
+                                <span className={`due-date task-show-open ${this.props.tasks[taskId].dueDate < this.today && !this.props.tasks[taskId].complete? "late" : "on-time"}`}>
                                         {this.props.tasks[taskId] ? this.dueDate(this.props.tasks[taskId].dueDate) : ""}
                                     </span>
                                     <span className="profile-circle">
@@ -143,14 +143,28 @@ export default class ProjectOverview extends React.Component {
                         {this.props.sections[sectionId] ? this.props.sections[sectionId].sectionTasks.map((taskId) => (
                             <li onClick={() => this.props.showUpdateTaskForm(this.props.tasks[taskId])} className="task-show-open">
                                 {this.props.tasks[taskId] ? 
-                                    <div className="task-show-open overview-tasks">
+                                    <div className={`task-show-open overview-tasks ${this.props.tasks[taskId].complete ? "complete" : "" } `}>
+                                    <div className="left task-show-open">
                                         <i className={`fa-regular fa-circle-check
                                         ${this.props.tasks[taskId].complete ? "complete" : "incomplete"}`}
-                                        onMouseDown={() => this.toggleComplete(this.props.tasks[taskId])}
-                                    ></i> 
-                                    <span className={`${this.props.tasks[taskId].complete ? "complete" : "" }`}>
-                                    {" " + this.props.tasks[taskId].title}</span>
-                                    </div>  
+                                            onMouseDown={() => this.toggleComplete(this.props.tasks[taskId])}></i> 
+                                        <span className={`${this.props.tasks[taskId].complete ? "complete" : "" }`}>
+                                            {" " + this.props.tasks[taskId].title}</span>   
+                                    </div>
+                                    <div className="right task-show-open">
+                                        <span className={`due-date task-show-open ${this.props.tasks[taskId].dueDate < this.today && !this.props.tasks[taskId].complete? "late" : "on-time"}`}>
+                                            {this.props.tasks[taskId] ? this.dueDate(this.props.tasks[taskId].dueDate) : ""}
+                                        </span>
+                                        <span className="profile-circle">
+                                            {this.props.tasks[taskId] && this.props.tasks[taskId].userId && this.props.users[this.props.tasks[taskId].userId] ? 
+                                                this.props.users[this.props.tasks[taskId].userId].firstName[0] +  
+                                                this.props.users[this.props.tasks[taskId].userId].lastName[0]
+                                                : <i class="fa-solid fa-user"></i>
+                                            }
+                                        </span>
+                                    </div>
+                                    
+                                </div>  
                                 : ""}
                             </li>
                         )) : ""}
