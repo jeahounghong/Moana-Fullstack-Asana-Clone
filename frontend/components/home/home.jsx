@@ -62,11 +62,14 @@ class Home extends React.Component {
         this.props.updateTask(currentTask);
     }
 
-    pushProject(e, projectId){
+    pushProject(e, task){
         let that = this;
         if (e.target.className.indexOf("fa-circle-check") < 0){
-            this.props.history.push(`/projects/${projectId}/overview`)
+            this.props.history.push(`/projects/${task.projectId}/overview`)
             // debugger;
+            setTimeout(() => {
+                this.props.showUpdateTaskForm(task);
+            }, 10)
         }
     }
 
@@ -80,7 +83,7 @@ class Home extends React.Component {
             return (<ul className="priority-task-list">
                 {Object.values(this.props.tasks).map((task) => (
                     (!task.complete && this.props.currentUser.userTasks.includes(task.id)) ? 
-                    <li className="priority-task" onClick={(e) => this.pushProject(e, task.projectId)}>
+                    <li className="priority-task" onClick={(e) => this.pushProject(e, task)}>
                         <div className="left">
                             <i className={`fa-regular fa-circle-check`}
                                     onClick={() => this.toggleComplete(task)}></i>
