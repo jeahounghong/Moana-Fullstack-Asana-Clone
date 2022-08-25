@@ -124,6 +124,16 @@
             display: flex;
             flex-wrap: wrap;
         }
-    }
 
+
+    }
+    
+    .priority-task{
+        display: flex;
+        justify-content: space-between;
+        
+    }
+    .late{
+        color: red;
+    }
 }

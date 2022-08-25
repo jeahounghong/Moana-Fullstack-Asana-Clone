@@ -20,6 +20,7 @@ export default class MyTasks extends React.Component {
         }
 
         this.tasks = this.tasks.bind(this)
+
     }
 
     componentDidMount(){
@@ -38,7 +39,6 @@ export default class MyTasks extends React.Component {
         return (<div>
             {date ? (" " + this.MONTHS[date.substring(5,7) - 1] + " " + date.substring(8,10)) : " No Due Date"}
         </div>)
-
     }
 
     tasks(){

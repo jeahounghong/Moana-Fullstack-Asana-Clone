@@ -7,6 +7,73 @@ class Home extends React.Component {
         super(props);
         this.date = new Date();
         this.projects = this.projects.bind(this);
+        this.tasks = this.tasks.bind(this);
+
+
+        this.MONTHS = {
+            0: "January",
+            1: "February",
+            2: "March",
+            3: "April",
+            4: "May",
+            5: "June",
+            6: "July",
+            7: "August",
+            8: "September",
+            9: "October",
+            10: "November",
+            11: "December"
+        }
+
+        let day = new Date();
+        day = day.getFullYear() + "-" + ((day.getMonth() + 1) < 10 ? "0" + (day.getMonth() + 1) : (day.getMonth() + 1)) + "-" + 
+                        (day.getDate() < 10 ? ("0" + day.getDate()) : day.getDate())
+        this.today = day;
+        // debugger;
+    }
+
+    dueDate(date){
+        return date ? (" " + this.MONTHS[date.substring(5,7) - 1] + " " + date.substring(8,10)) : " No Due Date"
+    }
+
+    componentDidMount(){
+        if (this.props.currentUser && this.props.currentUser.userTasks){
+            this.props.currentUser.userTasks.forEach(taskId => {
+                this.props.fetchTask(taskId)
+            })
+        }
+    }
+
+    tasks(){
+        if (Object.keys(this.props.tasks).length > 0){
+            const validTasks = Object.values(this.props.tasks).filter((task) => {
+                this.props.currentUser.userTasks.includes(task.id)
+                // !task.complete
+            })
+            // debugger;
+            return (<ul className="priority-task-list">
+                {Object.values(this.props.tasks).map((task) => (
+                    (!task.complete && this.props.currentUser.userTasks.includes(task.id)) ? 
+                    <li className="priority-task">
+                        <div className="left">
+                            <i className={`fa-regular fa-circle-check`}
+                                    onClick={() => {}}></i>
+                            <span>{task.title}</span>
+                        </div>
+
+                        <div className="right">
+                            <div className={`due-date ${task.dueDate < this.today ? "late" : "on-time"}`}>
+                                {this.dueDate(task.dueDate)}
+                            </div>
+                            <div>
+                                Go to project <i class="fa-solid fa-angles-right"></i>
+                            </div>
+                        </div>
+                        
+                    </li> : ""
+                ))}
+            </ul>)
+        }
     }
 
     projects(){
@@ -71,6 +138,7 @@ class Home extends React.Component {
                 <div className="priorities-projects">
                     <div className="priorities">
                         <h1>My Priorities</h1>
+                        {this.tasks()}
                         
                     </div>
                     <div className="projects">
