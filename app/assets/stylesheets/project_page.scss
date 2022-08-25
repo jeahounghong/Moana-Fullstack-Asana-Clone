@@ -9,11 +9,24 @@
         overflow-y: scroll;
         margin-bottom: 400px;
 
+        .late{
+            color: red;
+        }
+        .right {
+            display: flex;
+            span{
+                width: 200px;
+                // background-color: red;
+                text-align: center;
+            }
+        }
+
         .project-list-header{
             display: flex;
             justify-content: space-between;
             padding: 10px;
             border-bottom: solid 1px gray;
+            
         }
 
         
@@ -72,13 +85,14 @@
         }
 
         .add-section{
-            padding: 10px;
+            padding: 5px;
             margin: 10px;
             font-weight: bold;
-            font-size: 20px;
+            font-size: 15px;
             background-color: #78A2CC;
-            border-radius: 10px;
+            border-radius: 5px;
             width: 145px;
+            text-align: center;
         }
 
         .add-section:hover{

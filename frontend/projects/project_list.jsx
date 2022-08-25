@@ -139,10 +139,23 @@ class ProjectList extends React.Component {
                     (task.ownerType === "Project" && task.ownerId === this.props.projectId) ? 
                     <li key={task.title+task.id} className={`project-list-task task-show-open ${task.complete ? "complete" : "incomplete"}`}
                         onClick={() => this.props.showUpdateTaskForm(task)}>
-                        <div className="task-show-open">
-                            <i className={`fa-regular fa-circle-check ${task.complete ? "complete" : "incomplete"}`}
-                                    onClick={() => this.toggleComplete(task)}></i> {task.title}
-                        </div>
+                        {/* <div className="task-show-open"> */}
+                            <div className="left task-show-open">
+                                <i className={`fa-regular fa-circle-check ${task.complete ? "complete" : "incomplete"}`}
+                                    onClick={() => this.toggleComplete(task)}></i> 
+                                <span> {task.title}</span>
+                                    
+                            </div>
+                            <div className="right task-show-open">
+                                <span className={`due-date ${task.dueDate < this.today && !task.complete? "late" : "on-time"}`}>
+                                    {this.dueDate(task.dueDate)}
+                                </span>
+                                <span>{task.userId ? (this.props.users && this.props.users[task.userId] ? 
+                                        this.props.users[task.userId].firstName + " " + this.props.users[task.userId].lastName : "") : "No Assignee"}</span>
+                            </div>
+                            {/* <i className={`fa-regular fa-circle-check ${task.complete ? "complete" : "incomplete"}`}
+                                    onClick={() => this.toggleComplete(task)}></i> {task.title} */}
+                        {/* </div> */}
                     </li> : ""
                 ))}
 
@@ -204,10 +217,12 @@ class ProjectList extends React.Component {
                                     <div className="left task-show-open">
                                         <i className={`fa-regular fa-circle-check ${task.complete ? "complete" : "incomplete"}`}
                                                 onClick={() => this.toggleComplete(task)}></i> 
-                                        <span className="task-show-open">{task.title}</span>
+                                        <span className="task-show-open"> {task.title}</span>
                                     </div>
                                     <div className="right task-show-open">
-                                        <span>{this.dueDate(task.dueDate)}</span>
+                                        <span className={`due-date ${task.dueDate < this.today && !task.complete? "late" : "on-time"}`}>
+                                            {this.dueDate(task.dueDate)}
+                                        </span>
                                         <span>{task.userId ? (this.props.users && this.props.users[task.userId] ? 
                                         this.props.users[task.userId].firstName + " " + this.props.users[task.userId].lastName : "") : "No Assignee"}</span>
                                     </div>
