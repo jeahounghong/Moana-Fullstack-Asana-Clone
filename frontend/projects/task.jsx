@@ -46,9 +46,25 @@ const Task = (props) => {
             }}
         >
           <div className="left task-show-open">
-            <span className={`task-show-open title ${props.task.complete ? "complete" : ""}`}><i className={`fa-regular fa-circle-check ${props.task.complete ? "complete" : ""}`}></i> 
-            {props.task.title}</span>
-            <span className={`task-show-open date ${props.task.dueDate < today ? "late" : "on-time"}`}>{dueDate(props.task.dueDate)}</span>
+            <span className={`task-show-open title ${props.task.complete ? "complete" : ""}`}>
+                  <i className={`fa-regular fa-circle-check ${props.task.complete ? "complete" : ""}`}
+                      onMouseDown={(e) => {
+                        let currentTask = Object.assign({}, props.task)
+                        currentTask.owner_id = currentTask.owner_id || currentTask.ownerId;
+                        delete currentTask.ownerId;
+                        currentTask.due_date = currentTask.due_date || currentTask.dueDate;
+                        delete currentTask.dueDate;
+                        currentTask.owner_type = currentTask.owner_type || currentTask.ownerType;
+                        delete currentTask.ownerType;
+                        currentTask.user_id = currentTask.userId;
+                        delete currentTask.userId;
+                        currentTask.complete = !currentTask.complete;
+
+                        props.updateTask(currentTask);
+                      }}
+                  ></i> 
+            {props.task.title ? props.task.title : "New Task"}</span>
+            <span className={`task-show-open date ${props.task.dueDate < today && !props.task.complete  ? "late" : "on-time"}`}>{dueDate(props.task.dueDate)}</span>
           </div>
 
           <div className="right task-show-open">

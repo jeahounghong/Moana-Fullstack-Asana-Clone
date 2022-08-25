@@ -18,7 +18,8 @@
         border: solid 1px rgb(232, 232, 232);
         background-color: rgb(232, 232, 232);
         border-radius: 20px;
-        height:85vh;
+        // padding-bottom: 700px;
+        height:100vh;
     }
 
     .project-board-column-container:hover{
@@ -30,7 +31,8 @@
     .project-board-column{
         background-color: white;
         width: 300px;
-        height: 75vh;
+        height: 80vh;
+        // margin-bottom: 500px;
         margin-right: 10px;
         margin-left: 10px;
         border-radius: 10px;
@@ -84,7 +86,7 @@
         }
 
         .left{
-            font-size: 20px;
+            font-size: 15px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -92,7 +94,7 @@
 
         .fa-circle-check{
             color: grey;
-            // font-size: 25px;
+            font-size: 20px;
             cursor: default;
             margin-right: 5px;
         }
@@ -118,6 +120,11 @@
         }
 
         
+    }
+
+    .project-board-task:hover{
+        border: solid 1px gray;
+        transition: 0.3s;
     }
 
     .add-task {

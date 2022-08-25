@@ -43,7 +43,7 @@ function ProjectBoard(props) {
             }
         }
     })
-    
+    console.log(initialColumns)
     const [columns, setColumns] = useState(initialColumns)
 
     // if (columns !== initialColumns){
@@ -73,6 +73,10 @@ function ProjectBoard(props) {
         } else {
             Object.values(initialColumns).forEach((col) => {
                 col.tasks.forEach((task) => {
+                    // if (columns[col.id].tasks.length !== col.tasks.length){
+                    //     setColumns(initialColumns)
+                    // }
+
                     columns[col.id].tasks.forEach((hookTask) => {
                         if (hookTask.id === task.id){
                             if (hookTask.title !== task.title){
@@ -86,6 +90,10 @@ function ProjectBoard(props) {
                             if (hookTask.complete !== task.complete){
                                 setColumns(initialColumns)
                             }
+                            if (hookTask.dueDate !== task.dueDate){
+                                setColumns(initialColumns)
+                            }
+
                             
                         }
                     })
@@ -113,6 +121,11 @@ function ProjectBoard(props) {
         movedTask.ownerType = finalType;
         console.log(movedTask)
         props.updateTask(movedTask);
+        setTimeout(() => {
+            props.fetchTeamProjects(props.projects[movedTask.projectId].teamId)
+            props.fetchProjectSections(movedTask.projectId)
+
+        },0)
         // debugger;
 
         const start = columns[source.droppableId]
@@ -210,6 +223,7 @@ function ProjectBoard(props) {
                             fetchProjectTasks={props.fetchProjectTasks}
                             showUpdateTaskForm={props.showUpdateTaskForm}
                             users={props.users}
+                            updateTask = {props.updateTask}
                             />
                 ))}
             </div>
