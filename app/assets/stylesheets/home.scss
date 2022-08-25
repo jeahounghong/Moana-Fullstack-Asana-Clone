@@ -83,4 +83,47 @@
         }
     }
 
+    .projects {
+        a {
+            font-size: 20px;
+            display: flex;
+            text-decoration: none;
+            align-items: center;
+            color: black;
+            margin: 5px;
+            border-radius: 5px;
+            // background-color: cyan;
+            padding: 5px;
+        }
+
+        a:hover{
+            background-color: white;
+            transition: 0.3s;
+        }
+
+        .project-box{
+            background-color: #78A2CC;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10px;
+        }
+
+        li{
+            // background-color: red;
+            // margin: 5px;
+            width: 50%;
+        }
+        ul {
+            // background-color: yellow;
+            padding: 5px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+    }
+
 }

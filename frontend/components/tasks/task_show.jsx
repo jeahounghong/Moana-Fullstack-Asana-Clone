@@ -186,7 +186,7 @@ class TaskShow extends React.Component {
                         onClick={this.toggleComplete}
                 >
                     <div className="task-show-open">
-                        <i class="fa-solid fa-check"></i> { this.state.complete ? "Completed": "Mark Complete"}
+                        <i class="fa-solid fa-check"></i> { this.state && this.state.complete ? "Completed": "Mark Complete"}
                     </div>
                 </div>
 

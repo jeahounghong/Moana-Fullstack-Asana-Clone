@@ -1,10 +1,31 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 class Home extends React.Component {
 
     constructor(props){
         super(props);
         this.date = new Date();
+        this.projects = this.projects.bind(this);
+    }
+
+    projects(){
+        if (this.props.projects && Object.keys(this.props.projects).length > 1){
+            const projects = Object.values(this.props.projects).map((project) => 
+                <li>
+                    <Link to={`/projects/${project.id}/overview`}>
+                        <div className="project-box">
+                            <i class="fa-solid fa-diagram-project"></i>
+                        </div>
+                        <span>
+                            {project.title}
+                        </span>
+                    </Link>
+                </li>)
+            return (<ul>
+                {projects}
+            </ul>)
+        }
     }
 
     weekday(day){
@@ -54,7 +75,7 @@ class Home extends React.Component {
                     </div>
                     <div className="projects">
                         <h1>My Projects</h1>
-                        
+                        {this.projects()}
                     </div>
                 </div>
 
