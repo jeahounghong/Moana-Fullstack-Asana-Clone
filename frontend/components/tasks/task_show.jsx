@@ -182,7 +182,7 @@ class TaskShow extends React.Component {
         return(
         <div id="task-show-container" className="task-show-open" >
             <div className="task-show-header task-show-open">
-                <div className={`complete-button ${this.state.complete ? "complete" : ""}`}
+                <div className={`complete-button ${this.state && this.state.complete ? "complete" : ""}`}
                         onClick={this.toggleComplete}
                 >
                     <div className="task-show-open">
