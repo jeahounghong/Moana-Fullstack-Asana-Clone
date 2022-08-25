@@ -17,6 +17,17 @@ class AppNavbar extends React.Component{
         this.toggleSidebar = this.toggleSidebar.bind(this);
         this.toggleTitleDropdown = this.toggleTitleDropdown.bind(this);
         this.dropdown = this.dropdown.bind(this);
+        document.addEventListener("click", (e) => {
+            if (this.state.titleDropdownShow){
+                if (e.target.className.indexOf("keep-dropdown-open") < 0){
+                    this.toggleTitleDropdown()
+                }
+            }
+        })
+    }
+
+    componentDidMount(){
+        
     }
 
     navbarTitle(){
@@ -114,7 +125,7 @@ class AppNavbar extends React.Component{
                 <p>{ this.navbarTitle()}
                     {(this.props.url !== "/home" && this.props.url !== "/tasks" & this.props.url !== "/inbox") ? 
                     <div className="drop-down">
-                        <i onClick={this.toggleTitleDropdown} class="fa-solid fa-chevron-down"></i>
+                        <i onClick={this.toggleTitleDropdown} class="fa-solid fa-chevron-down keep-dropdown-open"></i>
                     </div>
                     : ""}
                 </p>
