@@ -15,6 +15,30 @@ class ProjectList extends React.Component {
         this.renderProjectTasks = this.renderProjectTasks.bind(this);
         this.renderSectionTasks = this.renderSectionTasks.bind(this)
         this.toggleComplete = this.toggleComplete.bind(this);
+
+        this.MONTHS = {
+            0: "January",
+            1: "February",
+            2: "March",
+            3: "April",
+            4: "May",
+            5: "June",
+            6: "July",
+            7: "August",
+            8: "September",
+            9: "October",
+            10: "November",
+            11: "December"
+        }
+
+        let day = new Date();
+        day = day.getFullYear() + "-" + ((day.getMonth() + 1) < 10 ? "0" + (day.getMonth() + 1) : (day.getMonth() + 1)) + "-" + 
+                        (day.getDate() < 10 ? ("0" + day.getDate()) : day.getDate())
+        this.today = day;
+    }
+
+    dueDate(date){
+        return date ? (" " + this.MONTHS[date.substring(5,7) - 1] + " " + date.substring(8,10)) : " No Due Date"
     }
 
     description(){
@@ -144,6 +168,16 @@ class ProjectList extends React.Component {
         // debugger;
         return(
         <div className="project-list right-most">
+            <div className="project-list-header">
+                <div className="left">
+                    <span>Task</span>
+                </div>
+
+                <div className="right">
+                    <span>Due Date</span>
+                    <span>Assignee</span>
+                </div>
+            </div>
             <div className="project-list-tasks">
                 {this.renderProjectTasks()}
             </div>
@@ -167,8 +201,17 @@ class ProjectList extends React.Component {
                                 <li key={task.title+task.id} className={`project-list-task task-show-open ${task.complete ? "complete" : "incomplete"}`}
                                         onClick={() => this.props.showUpdateTaskForm(task)}
                                 >
-                                    <i className={`fa-regular fa-circle-check ${task.complete ? "complete" : "incomplete"}`}
-                                            onClick={() => this.toggleComplete(task)}></i> {task.title}
+                                    <div className="left task-show-open">
+                                        <i className={`fa-regular fa-circle-check ${task.complete ? "complete" : "incomplete"}`}
+                                                onClick={() => this.toggleComplete(task)}></i> 
+                                        <span className="task-show-open">{task.title}</span>
+                                    </div>
+                                    <div className="right task-show-open">
+                                        <span>{this.dueDate(task.dueDate)}</span>
+                                        <span>{task.userId ? (this.props.users && this.props.users[task.userId] ? 
+                                        this.props.users[task.userId].firstName + " " + this.props.users[task.userId].lastName : "") : "No Assignee"}</span>
+                                    </div>
+
                                 </li> : ""
                                 
                             ))}

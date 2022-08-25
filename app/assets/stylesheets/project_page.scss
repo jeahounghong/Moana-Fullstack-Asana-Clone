@@ -4,9 +4,18 @@
     .project-list{
         // background-color: red;
         padding: 20px;
+        padding-top: 10px;
         height: 85vh;
         overflow-y: scroll;
         margin-bottom: 400px;
+
+        .project-list-header{
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: solid 1px gray;
+        }
+
         
         .project-section-li-items {
             // width: 100%;
@@ -25,6 +34,8 @@
             border-bottom: solid 1px lightgrey;
             // width: 100%;
             padding: 10px;
+            display: flex;
+            justify-content: space-between;
         }
 
         .project-list-task:hover{
