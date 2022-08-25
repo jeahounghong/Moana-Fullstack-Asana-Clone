@@ -71,17 +71,22 @@ export default class MyTasks extends React.Component {
                                 this.props.showUpdateTaskForm(tasks[taskId])
                             }
                         }}>
-                        <div className='left'>
+                        <div className='left task-show-open'>
                             <i className={`fa-regular fa-circle-check ${tasks[taskId].complete ? "complete" : "incomplete"}`}
                                 onMouseDown={() => this.toggleComplete(tasks[taskId])}
                             ></i>
                             <span className={`${tasks[taskId].complete ? "complete" : ""}`}>{" " + tasks[taskId].title + " "}</span>
-                            {tasks[taskId].subtasks.length > 0 ? <i class="fa-solid fa-folder-tree"></i> : ""}
+                            {tasks[taskId].subtasks.length > 0 ? <i class="fa-solid fa-folder-tree task-show-open"></i> : ""}
                         </div>
-                        <div className='right'>
-                            <span>{this.dueDate(tasks[taskId].dueDate)}</span>
-                            <span>{projects[tasks[taskId].projectId] ? projects[tasks[taskId].projectId].title : ""}</span>
-                            <span>{projects[tasks[taskId].projectId] && teams[projects[tasks[taskId].projectId].teamId] ? 
+                        <div className='right task-show-open'>
+                            <span className={`task-show-open ${tasks[taskId].complete ? "complete" : ""}`}>
+                                {this.dueDate(tasks[taskId].dueDate)}
+                            </span>
+                            <span className={`task-show-open ${tasks[taskId].complete ? "complete" : ""}`}>
+                                {projects[tasks[taskId].projectId] ? projects[tasks[taskId].projectId].title : ""}
+                            </span>
+                            <span className={`task-show-open ${tasks[taskId].complete ? "complete" : ""}`}>
+                                {projects[tasks[taskId].projectId] && teams[projects[tasks[taskId].projectId].teamId] ? 
                                 teams[projects[tasks[taskId].projectId].teamId].name : ""
                             }</span>
                         </div>
@@ -100,7 +105,7 @@ export default class MyTasks extends React.Component {
                     </div>
                 </div>
                 <div className='right'>
-                    <span><i className="fa-regular fa-calendar task-show-open"></i> Due Date</span>
+                    <span><i className="fa-regular fa-calendar "></i> Due Date</span>
                     <span><i class="fa-solid fa-diagram-project"></i> Project</span>
                     <span><i class="fa-solid fa-people-group"></i> Team</span>
                 </div>
