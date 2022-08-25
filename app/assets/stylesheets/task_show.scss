@@ -128,6 +128,11 @@
         color: grey;
     }
 
+    .no-direct:empty:before{
+        content: attr(data-placeholder);
+        color: grey;
+    }
+
     .scrollable{
         // background-color: red;
         overflow-y: scroll;
@@ -180,6 +185,10 @@
         flex-direction: column;
         margin-left: 20px;
         margin-right: 20px;
+
+        .fa-circle-check{
+            margin-right: 5px;
+        }
 
         p{
             color: gray;

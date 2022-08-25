@@ -7,12 +7,14 @@ class TaskShow extends React.Component {
 
     constructor(props){
         super(props);
+        // debugger;
         this.state = this.props.task;
         this.handleInput = this.handleInput.bind(this);
         this.toggleComplete = this.toggleComplete.bind(this);
         this.updateCurrentTask = this.updateCurrentTask.bind(this);
         this.subtasks = this.subtasks.bind(this);
-        this.toggleSubtaskComplete = this.toggleSubtaskComplete.bind(this)
+        this.toggleSubtaskComplete = this.toggleSubtaskComplete.bind(this);
+        this.updateSubtaskTitle = this.updateSubtaskTitle.bind(this);
 
         document.addEventListener("click", (e) => {
             if (this.props.show){
@@ -137,6 +139,24 @@ class TaskShow extends React.Component {
         this.props.updateTask(currentTask)
     }
 
+    updateSubtaskTitle(subtask){
+        let currentTask = Object.assign({}, subtask);
+        let subtaskTitle = document.getElementById(`subtask-${subtask.id}`).innerHTML
+
+        currentTask.owner_id = currentTask.ownerId;
+        delete currentTask.ownerId;
+        currentTask.due_date = currentTask.dueDate;
+        delete currentTask.dueDate;
+        currentTask.owner_type = currentTask.ownerType;
+        delete currentTask.ownerType;
+        currentTask.user_id = currentTask.userId;
+        delete currentTask.userId;
+        currentTask.title = subtaskTitle;
+        // debugger
+
+        this.props.updateTask(currentTask)
+    }
+
     subtasks(){
         if (this.state.subtasks){
             return (<ul className="task-show-open subtask-list">
@@ -144,14 +164,26 @@ class TaskShow extends React.Component {
                     this.props.tasks[taskId] ? <li className="task-show-open subtask-list-item" onClick={(e) => {
                         // debugger;
 
-                        if (e.target.className.indexOf("fa-trash-can") < 0 && e.target.className.indexOf("fa-circle-check") < 0){
+                        if (e.target.className.indexOf("fa-trash-can") < 0 && e.target.className.indexOf("fa-circle-check") < 0 &&
+                            e.target.className.indexOf("no-direct") < 0
+                        ){
                             this.props.showUpdateTaskForm(this.props.tasks[taskId])
                         }
                         }}>
                         <div className="left task-show-open">
                             <i className={`fa-regular fa-circle-check task-show-open ${this.props.tasks[taskId].complete ? "complete" : "incomplete"}`}
-                                onClick={() => this.toggleSubtaskComplete(this.props.tasks[taskId])}></i>
-                            <span className={`task-show-open ${this.props.tasks[taskId].complete ? "complete" : ""}`}>{" " + this.props.tasks[taskId].title}</span>
+                                onClick={(e) => {
+                                    if (e.target.className.indexOf("no-direct") < 0){
+                                        this.toggleSubtaskComplete(this.props.tasks[taskId])
+                                    }
+                                }}></i>
+                            <span className={`task-show-open ${this.props.tasks[taskId].complete ? "complete" : ""} no-direct`}
+                                contentEditable={true} id={`subtask-${taskId}`}
+                                onBlur={(e) => this.updateSubtaskTitle(this.props.tasks[taskId])}
+                                data-placeholder={"New subtask"}
+                            >
+                                {(this.props.tasks[taskId].title)}
+                            </span>
                         </div>
 
                         <div className="right task-show-open" onClick={() => this.props.deleteTask(taskId)}>
@@ -164,7 +196,7 @@ class TaskShow extends React.Component {
                     this.path = this.props.location.pathname.substring(10);
                     let idx = this.path.indexOf("/")
                     this.path = parseInt(this.path.substring(0,idx))
-                    setTimeout(() =>this.props.fetchTask(this.state.id),100)
+                    setTimeout(() =>this.props.fetchTask(this.state.id),200)
                     setTimeout(() => {this.props.showUpdateTaskForm(this.props.tasks[this.state.id])}, 200)
                 }}>
                     <i class="fa-regular fa-plus task-show-open"></i>
@@ -202,7 +234,10 @@ class TaskShow extends React.Component {
             
             <div className="task-show-open scrollable">
                 {this.state.ownerType === "Task" ? <div className="task-show-open sub-task-owner"
-                    onClick={() => this.props.showUpdateTaskForm(this.props.tasks[this.state.ownerId])}
+                    onClick={() => {
+                        this.props.showUpdateTaskForm(this.props.tasks[this.state.ownerId])
+                        this.props.fetchTask(this.state.ownerId)
+                    }}
                 >
                     {(this.props.tasks[this.state.ownerId] &&  this.props.tasks[this.state.ownerId].title) ? 
                     this.props.tasks[this.state.ownerId].title : "Previous Task"}
@@ -210,7 +245,7 @@ class TaskShow extends React.Component {
 
                 <section className="task-title task-show-open" 
                         contentEditable={true} 
-                        data-placeholder="New Task"
+                        data-placeholder={this.props.task && this.props.task.ownerType && this.props.task.ownerType === "Task" ? "New Subtask" : "New Task"}
                         onChange={this.handleInput("title")}
                         >
                     {this.state ? this.state.title : ""}
