@@ -20,7 +20,7 @@ export default class MyTasks extends React.Component {
         }
 
         this.tasks = this.tasks.bind(this)
-
+        this.toggleComplete = this.toggleComplete.bind(this);
     }
 
     componentDidMount(){
@@ -30,6 +30,22 @@ export default class MyTasks extends React.Component {
         this.props.users[this.props.currentUser].userProjectsIds.forEach(projectId => {
             this.props.fetchProjectUsers(projectId)
         })
+    }
+
+    toggleComplete(task){
+        let currentTask = Object.assign({},task);
+
+        currentTask.owner_id = currentTask.owner_id || currentTask.ownerId;
+        delete currentTask.ownerId;
+        currentTask.due_date = currentTask.due_date || currentTask.dueDate;
+        delete currentTask.dueDate;
+        currentTask.owner_type = currentTask.owner_type || currentTask.ownerType;
+        delete currentTask.ownerType;
+        currentTask.user_id = currentTask.userId;
+        delete currentTask.userId;
+        currentTask.complete = !currentTask.complete;
+
+        this.props.updateTask(currentTask);
     }
 
     dueDate(date){
@@ -48,9 +64,15 @@ export default class MyTasks extends React.Component {
             let tasks = this.props.tasks;
             return (<ul>
                 {userTasks.map((taskId) => (
-                    tasks[taskId] ? <li className='task-list-item task-show-open' onClick={() => this.props.showUpdateTaskForm(tasks[taskId])}>
+                    tasks[taskId] ? <li className='task-list-item task-show-open' onClick={(e) => {
+                            if (e.target.className.indexOf("fa-circle-check") < 0){
+                                this.props.showUpdateTaskForm(tasks[taskId])
+                            }
+                        }}>
                         <div className='left'>
-                            <i className={`fa-regular fa-circle-check ${tasks[taskId].complete ? "complete" : "incomplete"}`}></i>
+                            <i className={`fa-regular fa-circle-check ${tasks[taskId].complete ? "complete" : "incomplete"}`}
+                                onMouseDown={() => this.toggleComplete(tasks[taskId])}
+                            ></i>
                             <span className={`${tasks[taskId].complete ? "complete" : ""}`}>{" " + tasks[taskId].title + " "}</span>
                             {tasks[taskId].subtasks.length > 0 ? <i class="fa-solid fa-folder-tree"></i> : ""}
                         </div>

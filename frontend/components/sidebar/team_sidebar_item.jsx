@@ -18,7 +18,10 @@ class TeamSidebarItem extends React.Component {
     }
 
     componentDidMount(){
-
+        // debugger;
+        this.props.team.teamUsers.forEach((userId) => {
+            this.props.fetchUser(userId)
+        })
     }
 
     toggleView(e){

@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { fetchTask } from "../../actions/task_actions";
+import { fetchTask, updateTask } from "../../actions/task_actions";
 import {showUpdateTaskForm} from "../../actions/ui_actions"
 import { fetchProjectUsers } from "../../actions/user_actions";
 import MyTasks from "./my_tasks";
@@ -15,7 +15,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     fetchTask: (taskId) => dispatch(fetchTask(taskId)),
     showUpdateTaskForm: (task) => dispatch(showUpdateTaskForm(task)),
-    fetchProjectUsers: (projectId) => dispatch(fetchProjectUsers(projectId))
+    fetchProjectUsers: (projectId) => dispatch(fetchProjectUsers(projectId)),
+    updateTask: (task) => dispatch(updateTask(task))
 })
 
 const MyTasksContainer = connect(mapStateToProps, mapDispatchToProps)(MyTasks);

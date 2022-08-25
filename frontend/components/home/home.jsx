@@ -10,6 +10,7 @@ class Home extends React.Component {
         this.tasks = this.tasks.bind(this);
         this.pushProject = this.pushProject.bind(this);
         this.toggleComplete = this.toggleComplete.bind(this);
+        this.people = this.people.bind(this);
 
 
         this.MONTHS = {
@@ -126,6 +127,23 @@ class Home extends React.Component {
         }
     }
 
+    people(){
+        if (this.props.users && Object.keys(this.props.users).length > 1){
+            return (<ul className="people-list">
+                {Object.values(this.props.users).map(user => (
+                    user.id !== this.props.currentUser.id ? 
+                    <li className="people-box">
+                        <div className="profile-circle">
+                            {user.firstName[0] + user.lastName[0]}
+                        </div>
+                        <span>{user.firstName}</span>
+                        <span>{user.lastName}</span>
+                    </li> : ""
+                ))}
+            </ul>)
+        }
+    }
+
     weekday(day){
         const weekday = {
             0: "Sunday",
@@ -180,7 +198,7 @@ class Home extends React.Component {
 
                 <div className="people">
                     <h1>People</h1>
-                    
+                    {this.people()}
                 </div>
             </div>
         </div>

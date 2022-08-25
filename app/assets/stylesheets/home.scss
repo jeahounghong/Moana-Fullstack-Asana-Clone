@@ -83,11 +83,12 @@
             // border: solid 1px lightgrey;
             // background-color: red;
             margin-top: 1vw;
-            height: 170px;
+            height: 200px;
             border-radius: 10px;
             background-color: rgba($color: white, $alpha: 0.5);
             backdrop-filter: blur(10px);
             overflow-x: scroll;
+            overflow-y: hidden;
         }
     }
 
@@ -183,4 +184,45 @@
         transition: 0.3s;
     }
     
+
+    .people-list{
+        display: flex;
+        // background-color: yellow;
+        padding: 10px;
+        padding-top: 10px;
+        // height: 100%;
+        // margin-top: 30px;
+
+        .people-box{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            // background-color: red;
+            padding: 10px;
+            border-radius: 10px;
+            margin-left: 5px;
+            margin-right: 5px;
+            span{
+                margin-top: 6px;
+            }
+        }
+        .people-box:hover{
+            background-color: rgba($color: rgb(207,207,207), $alpha: 0.9);
+            transition: 0.3s;
+        }
+
+        .profile-circle{
+            background-color: #78A2CC;
+            height: 70px;
+            width: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            font-weight: bold;
+            color: white;
+        }
+    }
 }
