@@ -49,3 +49,7 @@ Upon clicking a task on any of the views provided, the task sidebar will appear 
 ## My Tasks
 
 The "My Tasks" sidebar icon takes the user to page where all of the tasks assigned to them can be found. The user is then able to make and persist changes to said projects on the page. 
+
+## Future Features
+
+- Moana will have future updates to include comments, file attachment, comment and task likes, notifications, email verification for sign ups. 
