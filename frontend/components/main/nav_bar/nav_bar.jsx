@@ -6,7 +6,7 @@ const NavBar = (props) => (
         <div id="nav-bar-logo">
             <img src={window.logo} alt="Logo" />
         </div>
-        <div id="gray-background"></div>
+        
         
         <div className="session-buttons">
             <Link className="session-button" to="/login">Log In</Link>

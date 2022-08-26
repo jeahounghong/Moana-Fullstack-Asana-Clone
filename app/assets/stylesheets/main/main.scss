@@ -1,6 +1,8 @@
 .nav-bar{
     background-color: rgba($color: #000000, $alpha: 0.0);
     width: 100%;
+    // min-width: 100px;
+    // max-width: 2000px;
     margin: none;
     height: 80px;
     display: flex;
@@ -9,6 +11,11 @@
     align-items: center;
     color: black;
     text-decoration: none;
+    position: absolute;
+    top: 0;
+    // background-color: white;
+    z-index: 10;
+    // left: 0;
 
     :first-child{
         padding-left: 50px;
@@ -31,6 +38,7 @@
         
         text-decoration: none;
         color: black;
+        z-index: 10;
         // font-weight: bold;
     }
 
@@ -55,40 +63,19 @@
         // transform: 0.3s;
     }
     
-    #gray-background{
-        height: 700px;
-        width: 40%;
-        z-index: -1;
-        background-color: rgb(195, 195, 195);
-        position: absolute;
-        top: 0;
-        right: 0;
-    }
 }
 
+
 #phrase{
-    position: absolute;
-    font-size: 50px;
     color: black;
-    top: 200px;
-    left: 100px;
-
-    div {
-        padding-bottom: 20px;
-    }
-
-    .underline{
-        margin-top: 60px;
-        width: 80px;
-        border-top: solid 2px rgb(195, 195, 195);
-    }
 }
 
 #hawaii-1 img {
     position: absolute;
     height: 500px;
-    top: 150px;
-    right: 450px;
+    top: 12%;
+    right: 350px;
+    // left: 160px;
     z-index: 1;
     // box-shadow: 0px 10px 10px white;
     border: solid 10px white;
@@ -97,33 +84,183 @@
 #horseshoe img {
     position: absolute;
     height: 500px;
-    top: 220px;
-    right: 30px;
+    top:150px;
+    right: 10px;
     border: solid 10px white;
 }
 
-#main-page-description{
-    font-size: 20px;
-    width: 500px;
+// .main-buttons{
+//     margin-top: 30px;
+//     display: flex;
+//     font-size: 20px;
+//     text-decoration: none;
+//     * {
+//         margin-right: 15px;
+//         background-color: black;
+//         color: white;
+//         text-decoration: none;
+//         padding: 10px;
+//         border-radius: 10px;
+//     }
+
+//     .demo {
+//         // background-color: rgb(180, 210, 255);
+//         background-color: #78A2CC;
+//         color: white;
+//     }
+// }
+
+
+.main{
+    // background-color: red;
+    height: 100%;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // justify-content: center;
+    max-width: 2500px;
+    padding-top: 50px;
+
+    .main-presentation{
+        top:-50px;
+        width: 100%;
+        display: flex;
+        position: relative;
+        
+        .left{
+            width: 60%;
+            #top-phrase{
+                padding-top: 180px;
+                padding-left: 100px;
+                font-size:50px;
+            }
+            #bottom-phrase{
+                font-size: 50px;
+                padding-top: 10px;
+                padding-left: 100px;
+            }
+            .underline{
+                width: 200px;
+                height: 2px;
+                margin-left: 100px;
+                margin-top: 100px;
+                background-color: lightgrey;
+            }
+            #main-page-description{
+                padding-left: 100px;
+                padding-right: 30%;
+                padding-top: 40px;
+                font-size: 20px;
+            }
+
+            .main-buttons{
+                padding-left: 100px;
+                padding-top: 30px;
+                margin-top: 10px;
+                padding-bottom: 70px;
+
+                .get-started, .demo{
+                    background-color: black;
+                    color:white;
+                    text-decoration: none;
+                    padding: 5px;
+                    border-radius: 5px;
+                    margin-right: 10px;
+                }
+                .get-started:hover{
+                    background-color: #3c3c3c;
+                    cursor: default;
+                    transition: 0.3s;
+                }
+
+                .demo{
+                    background-color: #78A2CC;
+                    cursor: default;
+                }
+
+                .demo:hover{
+                    cursor: default;
+                    background-color: #85b3e1;
+                    transition: 0.3s;
+                }
+            }
+        }
+        .right{
+            // padding-top: 80vh;
+            background-color: rgb(195, 195, 195);
+            width: 40%;
+            // height: 100%;
+            z-index: -1;
+            // margin-bottom: 100px;
+        }
+        color: black;
+
+    }
+    .companies{
+        margin-top: 150px;
+        // padding-top: 400px;
+        font-size: 20px;
+        margin-bottom: 25px;
+    }
+    .company-images{
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    
+    #gray-background{
+        width: 100px;
+        height: 80px;
+        padding-bottom: 220vh;
+        z-index: -1;
+        background-color: rgb(195, 195, 195);
+        color: rgb(195, 195, 195);
+        display: flex;
+        position: absolute;
+        top: 500px;
+        left: 56vw;
+    }
+
+    
 }
 
-.main-buttons{
-    margin-top: 30px;
+footer {
+    // position: fixed;
+    // left: 0px;
+    // bottom: 0;
+    // margin-top: 200px;
+    padding-bottom: 100px;
+    padding-top: 20px;
+    // background-color: black;
+    width: 100%;
     display: flex;
-    font-size: 20px;
-    text-decoration: none;
-    * {
-        margin-right: 15px;
-        background-color: black;
-        color: white;
-        text-decoration: none;
-        padding: 10px;
-        border-radius: 10px;
-    }
+    flex-direction: column;
+    align-items: center;
+    // color: white;
+    .personal-links{
+        padding-top: 20px;
+        width:230px;
+        display: flex;
+        justify-content: space-between;
+        font-size: 40px;
+        a {
+            text-decoration: none;
+            color: gray;
+        }
 
-    .demo {
-        // background-color: rgb(180, 210, 255);
-        background-color: #78A2CC;
-        color: white;
+        a:hover{
+            color: lightgrey;
+            transition: 0.3s;
+        }
+
     }
+}
+
+.space-between{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
