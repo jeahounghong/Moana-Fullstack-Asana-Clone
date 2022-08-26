@@ -48,6 +48,7 @@ export default class DateComponent extends React.Component {
             delete currentTask.ownerType;
             currentTask.user_id = currentTask.userId;
             delete currentTask.userId;
+            currentTask.title = this.currentTask.title;
             // debugger;
             this.props.updateTask(currentTask);
 
