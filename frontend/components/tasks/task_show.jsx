@@ -235,8 +235,8 @@ class TaskShow extends React.Component {
             <div className="task-show-open scrollable">
                 {this.state.ownerType === "Task" ? <div className="task-show-open sub-task-owner"
                     onClick={() => {
-                        this.props.showUpdateTaskForm(this.props.tasks[this.state.ownerId])
                         this.props.fetchTask(this.state.ownerId)
+                        setTimeout(() => {this.props.showUpdateTaskForm(this.props.tasks[this.state.ownerId])}, 100)
                     }}
                 >
                     <i className="fa-solid fa-angle-left task-show-open"></i>
