@@ -34,7 +34,18 @@ Everything begins with a team. Users will have the option to add teams in the si
 Upon clicking the "New Project" icon in the teams overview page, the user will be given the option to create a project that is public or private. All users will be able to see projects in their sidebar (regardless of whether or not it is private), but not only users who are within the project will have access to it. Projects can be accessed via the home page, team overview page, or the sidebar. The project comes with three views that the user can choose to view tasks in.
 
 - ### List View
+    - The list view is the straightforward vertical organization of tasks. The first section will always be a To Do section dedicated towards tasks for the project. The user can add new sections by toggling the add section button and typing in a new section title. Upon pressing Enter, the section should now present itself within the list view. Users can edit or delete a task by clicking on the section title itself and either editing the title or deleting it entirely. 
 
 - ### Board View
+    - The board view is an implementation of multiple column React Beautiful Drag-And-Drop and displays tasks represented as cards in seection columns. The cards can be dragged and relocated to switch a task from one section to another. 
 
 - ### Overview
+    - The overview page is analogous to the team overview page in that it allows users to add users specifically to the project, see the project tasks, and edit the description. 
+
+## Tasks
+
+Upon clicking a task on any of the views provided, the task sidebar will appear on the left. This display allows users to edit the task title, assign users within the project, as well as assign due dates. Tasks also have the option of adding subtasks, which have identical functionality. Soon, tasks will have the option of leaving comments, attaching files, and setting custom filters such as priority, topic, etc. 
+
+## My Tasks
+
+The "My Tasks" sidebar icon takes the user to page where all of the tasks assigned to them can be found. The user is then able to make and persist changes to said projects on the page. 
