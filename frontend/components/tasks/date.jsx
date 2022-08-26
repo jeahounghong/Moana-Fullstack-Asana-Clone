@@ -39,7 +39,7 @@ export default class DateComponent extends React.Component {
     toggleInput(){
         if (this.state.input){
             console.log("closed Input")
-            let currentTask = Object.assign({},this.props.task);
+            let currentTask = Object.assign({},this.props.tasks[this.props.task.id]);
             currentTask.owner_id = currentTask.owner_id || currentTask.ownerId;
             delete currentTask.ownerId;
             currentTask.due_date = document.getElementById("date-input").value
