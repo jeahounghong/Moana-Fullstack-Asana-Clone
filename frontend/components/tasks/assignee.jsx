@@ -83,7 +83,7 @@ class Assignee extends React.Component {
 
         
         // debugger;
-        let currentTask = Object.assign({},this.props.task);
+        let currentTask = Object.assign({},this.props.tasks[this.props.task.id]);
 
         currentTask.owner_id = currentTask.owner_id || currentTask.ownerId;
         delete currentTask.ownerId;
