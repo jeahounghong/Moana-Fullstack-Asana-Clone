@@ -61,12 +61,19 @@ class User < ApplicationRecord
 
     # Custom Validations
     def valid_email
+
         count = 0;
         email = self.email
-        email.each_char do |c|
-            count += 1 if c == "@"
+
+        if email == nil
+            errors.add(:email, "is a required field")
+        else
+            email.each_char do |c|
+                count += 1 if c == "@"
+            end
+            errors.add(:email, "is not valid.") unless count == 1
         end
-        errors.add(:email, "is not valid.") unless count == 1
+
     end
 
     # attr_reader :email
