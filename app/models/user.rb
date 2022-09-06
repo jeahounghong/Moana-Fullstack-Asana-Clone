@@ -64,9 +64,9 @@ class User < ApplicationRecord
 
         count = 0;
         email = self.email
-
+        # email = email || ""
         if email == nil
-            errors.add(:email, "is a required field")
+            # errors.add(:email, "is a required field")
         else
             email.each_char do |c|
                 count += 1 if c == "@"
