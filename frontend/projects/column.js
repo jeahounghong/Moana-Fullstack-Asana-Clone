@@ -42,7 +42,7 @@ const Column = (props) => {
                         ))}
                         {provided.placeholder}
                         <div className="add-task task-show-open" onClick={() => createNewTaskColumn()}>
-                            <label className='task-show-open'><i class="fa-regular fa-plus task-show-open"></i>Add Task</label>
+                            <label className='task-show-open'><i className="fa-regular fa-plus task-show-open"></i>Add Task</label>
                         </div>
                     </div>
                     

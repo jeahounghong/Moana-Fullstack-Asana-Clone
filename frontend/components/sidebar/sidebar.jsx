@@ -46,9 +46,9 @@ class Sidebar extends React.Component{
             <div id="sidebar">
                 <img className="sidebar-logo" src={window.darklogo} alt="" />
                 <ul className="sidebar-list">
-                    <Link to="/home"><i class="fa-solid fa-house"></i> Home</Link>
-                    <Link to="/tasks"><i class="fa-regular fa-circle-check"></i> My Tasks</Link>
-                    <Link id="sidebar-inbox" to="/inbox"><i class="fa-solid fa-inbox"></i> Inbox</Link>
+                    <Link to="/home"><i className="fa-solid fa-house"></i> Home</Link>
+                    <Link to="/tasks"><i className="fa-regular fa-circle-check"></i> My Tasks</Link>
+                    <Link id="sidebar-inbox" to="/inbox"><i className="fa-solid fa-inbox"></i> Inbox</Link>
                     <div className="sidebar-scroll">
                         <div> 
                             <div id="my-teams">
@@ -79,9 +79,9 @@ class Sidebar extends React.Component{
                     </div>
 
                     <div className="sidebar-profile-icons">
-                        <a href="https://www.linkedin.com/in/david-jeahoung-hong-7ab00b134/"><i class="fa-brands fa-linkedin icon"></i></a>
-                        <a href="https://github.com/jeahounghong"><i class="fa-brands fa-github icon"></i></a>
-                        <a href="https://angel.co/u/david-jeahoung-hong"><i class="fa-brands fa-angellist icon"></i></a>
+                        <a href="https://www.linkedin.com/in/david-jeahoung-hong-7ab00b134/"><i className="fa-brands fa-linkedin icon"></i></a>
+                        <a href="https://github.com/jeahounghong"><i className="fa-brands fa-github icon"></i></a>
+                        <a href="https://angel.co/u/david-jeahoung-hong"><i className="fa-brands fa-angellist icon"></i></a>
                     </div>
                 </div>
             </div>

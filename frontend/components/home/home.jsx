@@ -98,7 +98,7 @@ class Home extends React.Component {
 
                         <div className="right">
                             <div>
-                                Go to project <i class="fa-solid fa-angles-right"></i>
+                                Go to project <i className="fa-solid fa-angles-right"></i>
                             </div>
                         </div>
                         
@@ -114,7 +114,7 @@ class Home extends React.Component {
                 <li>
                     <Link to={`/projects/${project.id}/overview`}>
                         <div className="project-box">
-                            <i class="fa-solid fa-diagram-project"></i>
+                            <i className="fa-solid fa-diagram-project"></i>
                         </div>
                         <span>
                             {project.title}

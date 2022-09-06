@@ -178,7 +178,9 @@ class TaskShow extends React.Component {
                                     }
                                 }}></i>
                             <span className={`task-show-open ${this.props.tasks[taskId].complete ? "complete" : ""} no-direct`}
-                                contentEditable={true} id={`subtask-${taskId}`}
+                                contentEditable={true} 
+                                suppressContentEditableWarning={true}
+                                id={`subtask-${taskId}`}
                                 onBlur={(e) => this.updateSubtaskTitle(this.props.tasks[taskId])}
                                 data-placeholder={"New subtask"}
                             >
@@ -199,7 +201,7 @@ class TaskShow extends React.Component {
                     setTimeout(() =>this.props.fetchTask(this.state.id),200)
                     setTimeout(() => {this.props.showUpdateTaskForm(this.props.tasks[this.state.id])}, 200)
                 }}>
-                    <i class="fa-regular fa-plus task-show-open"></i>
+                    <i className="fa-regular fa-plus task-show-open"></i>
                     <span className="task-show-open">
                         Add Task
                     </span>
@@ -218,7 +220,7 @@ class TaskShow extends React.Component {
                         onClick={this.toggleComplete}
                 >
                     <div className="task-show-open">
-                        <i class="fa-solid fa-check"></i> { this.state && this.state.complete ? "Completed": "Mark Complete"}
+                        <i className="fa-solid fa-check"></i> { this.state && this.state.complete ? "Completed": "Mark Complete"}
                     </div>
                 </div>
 
@@ -247,6 +249,7 @@ class TaskShow extends React.Component {
 
                 <section className="task-title task-show-open" 
                         contentEditable={true} 
+                        suppressContentEditableWarning={true}
                         data-placeholder={this.props.task && this.props.task.ownerType && this.props.task.ownerType === "Task" ? "New Subtask" : "New Task"}
                         onChange={this.handleInput("title")}
                         >
@@ -282,6 +285,7 @@ class TaskShow extends React.Component {
                     <p className="task-show-open">Description</p>
                     <section className="task-description task-show-open" 
                             contentEditable={true}
+                            suppressContentEditableWarning={true}
                             data-placeholder="Write description here..."
                             // onBlur={this.updateCurrentTask} 
                         >

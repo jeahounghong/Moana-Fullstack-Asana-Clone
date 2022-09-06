@@ -32,7 +32,7 @@ class Assignee extends React.Component {
                         {explicitUser.firstName[0] + explicitUser.lastName[0]}
                     </div>
                     <span className="task-show-open">{explicitUser.firstName + " " + explicitUser.lastName}</span>
-                    <i class="fa-solid fa-circle-xmark task-show-open" onMouseDown={() => this.reassign(null)}></i>
+                    <i className="fa-solid fa-circle-xmark task-show-open" onMouseDown={() => this.reassign(null)}></i>
             </div>)
         } else {
             if (this.props.task && this.props.task.userId && this.props.users[this.props.task.userId]){
@@ -42,12 +42,12 @@ class Assignee extends React.Component {
                         {user.firstName[0] + user.lastName[0]}
                     </div>
                     <span className="task-show-open">{user.firstName + " " + user.lastName}</span>
-                    <i class="fa-solid fa-circle-xmark task-show-open" onMouseDown={() => this.reassign(null)}></i>
+                    <i className="fa-solid fa-circle-xmark task-show-open" onMouseDown={() => this.reassign(null)}></i>
                 </div>)
             } else {
                 return (<div className="profile-box task-show-open">
                     <div className="profile-circle task-show-open">
-                        <i class="fa-solid fa-user task-show-open"></i>
+                        <i className="fa-solid fa-user task-show-open"></i>
                     </div>
                     <span className="task-show-open">No User</span>
                     

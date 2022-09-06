@@ -84,7 +84,8 @@ class TeamShow extends React.Component {
             <div className="team-show-left">
                 <div>
                     <h3>Description:</h3>
-                    <section className="team-show-description" contentEditable={true}>
+                    <section className="team-show-description" contentEditable={true}
+                    suppressContentEditableWarning={true}>
                         {this.props.team ? this.props.team.description : ""}
                     </section>
                 </div>
@@ -102,7 +103,7 @@ class TeamShow extends React.Component {
                 <ul>
                     <li onClick={this.props.showNewProjectForm}>
                         <div className="project-square new-project">
-                            <i class="fa-solid fa-plus"></i>
+                            <i className="fa-solid fa-plus"></i>
                         </div>
                         <p>New Project</p>
                     </li>
@@ -113,7 +114,7 @@ class TeamShow extends React.Component {
                                     <Link to={`/projects/${project.id}/list`} key={project.id} onClick={()=> this.props.fetchProjectSections(project.id)}>
                                         <li  className="team-show-projects-item" >
                                             <div className="project-square actual-projects">
-                                                <i class="fa-solid fa-diagram-project"></i>
+                                                <i className="fa-solid fa-diagram-project"></i>
                                             </div>
                                             <p>{project.title}</p>
                                         </li>

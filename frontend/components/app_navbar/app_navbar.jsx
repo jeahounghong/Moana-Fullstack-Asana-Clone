@@ -125,7 +125,7 @@ class AppNavbar extends React.Component{
                 <p>{ this.navbarTitle()}
                     {(this.props.url !== "/home" && this.props.url !== "/tasks" & this.props.url !== "/inbox") ? 
                     <div className="drop-down">
-                        <i onClick={this.toggleTitleDropdown} class="fa-solid fa-chevron-down keep-dropdown-open"></i>
+                        <i onClick={this.toggleTitleDropdown} className="fa-solid fa-chevron-down keep-dropdown-open"></i>
                     </div>
                     : ""}
                 </p>

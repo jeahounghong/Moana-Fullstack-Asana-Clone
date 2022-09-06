@@ -164,7 +164,7 @@ class ProjectList extends React.Component {
                 <li className="project-list-add-task" onClick={() => {
                                 this.props.createTask({owner_id: this.props.projectId, owner_type: "Project"})
                             }}>
-                    <i class="fa-regular fa-plus"></i>Add Task
+                    <i className="fa-regular fa-plus"></i>Add Task
                 </li>
             </ul>
 
@@ -225,7 +225,7 @@ class ProjectList extends React.Component {
                                         <i className={`fa-regular fa-circle-check ${task.complete ? "complete" : "incomplete"}`}
                                                 onClick={() => this.toggleComplete(task)}></i> 
                                         <span className="task-show-open"> {task.title}</span>
-                                        {task.subtasks.length > 0 ? <i class="fa-solid fa-folder-tree task-show-open"></i> : ""}
+                                        {task.subtasks.length > 0 ? <i className="fa-solid fa-folder-tree task-show-open"></i> : ""}
                                     </div>
                                     <div className="right task-show-open">
                                         <span className={`due-date ${task.dueDate < this.today && !task.complete? "late" : "on-time"}`}>
@@ -241,7 +241,7 @@ class ProjectList extends React.Component {
                             <li className="project-list-add-task" onClick={() => {
                                 this.props.createTask({owner_id: section.id, owner_type: "Section"})
                             }}>
-                                <i class="fa-regular fa-plus"></i>Add Task
+                                <i className="fa-regular fa-plus"></i>Add Task
                             </li>
                         </div> 
                          : ""

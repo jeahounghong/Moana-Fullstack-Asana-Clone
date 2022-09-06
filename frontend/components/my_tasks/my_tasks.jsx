@@ -81,7 +81,7 @@ export default class MyTasks extends React.Component {
                                 onMouseDown={() => this.toggleComplete(tasks[taskId])}
                             ></i>
                             <span className={`${tasks[taskId].complete ? "complete" : ""}`}>{" " + tasks[taskId].title + " "}</span>
-                            {tasks[taskId].subtasks.length > 0 ? <i class="fa-solid fa-folder-tree task-show-open"></i> : ""}
+                            {tasks[taskId].subtasks.length > 0 ? <i className="fa-solid fa-folder-tree task-show-open"></i> : ""}
                         </div>
                         <div className='right task-show-open'>
                             <span className={`task-show-open ${tasks[taskId].complete ? "complete" : ""}
@@ -113,8 +113,8 @@ export default class MyTasks extends React.Component {
                 </div>
                 <div className='right'>
                     <span><i className="fa-regular fa-calendar "></i> Due Date</span>
-                    <span><i class="fa-solid fa-diagram-project"></i> Project</span>
-                    <span><i class="fa-solid fa-people-group"></i> Team</span>
+                    <span><i className="fa-solid fa-diagram-project"></i> Project</span>
+                    <span><i className="fa-solid fa-people-group"></i> Team</span>
                 </div>
             </div>
             {this.tasks()}

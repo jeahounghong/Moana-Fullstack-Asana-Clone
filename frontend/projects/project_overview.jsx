@@ -128,7 +128,7 @@ export default class ProjectOverview extends React.Component {
                                         {this.props.tasks[taskId] && this.props.tasks[taskId].userId && this.props.users[this.props.tasks[taskId].userId] ? 
                                             this.props.users[this.props.tasks[taskId].userId].firstName[0] +  
                                             this.props.users[this.props.tasks[taskId].userId].lastName[0]
-                                            : <i class="fa-solid fa-user"></i>
+                                            : <i className="fa-solid fa-user"></i>
                                         }
                                     </span>
                                 </div>
@@ -159,7 +159,7 @@ export default class ProjectOverview extends React.Component {
                                             {this.props.tasks[taskId] && this.props.tasks[taskId].userId && this.props.users[this.props.tasks[taskId].userId] ? 
                                                 this.props.users[this.props.tasks[taskId].userId].firstName[0] +  
                                                 this.props.users[this.props.tasks[taskId].userId].lastName[0]
-                                                : <i class="fa-solid fa-user"></i>
+                                                : <i className="fa-solid fa-user"></i>
                                             }
                                         </span>
                                     </div>
@@ -182,7 +182,9 @@ export default class ProjectOverview extends React.Component {
                 <div className="left-content">
                     <div className="project-overview-description">
                         <h1>Description</h1>
-                        <div id="project-description-box" onBlur={this.updateDescription} contentEditable={true}>
+                        <div id="project-description-box" onBlur={this.updateDescription} 
+                        suppressContentEditableWarning={true}
+                        contentEditable={true}>
                             {this.description()}    
                         </div>
                     </div>
