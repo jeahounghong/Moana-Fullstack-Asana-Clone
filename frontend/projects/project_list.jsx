@@ -133,7 +133,9 @@ class ProjectList extends React.Component {
         return (
             <ul>
                 <li className="project-section-li-items" key="project-list-todo">
-                    To Do
+                    <div>
+                        To Do
+                    </div>
                 </li>
                 {Object.values(this.props.tasks).map((task) => (
                     (task.ownerType === "Project" && task.ownerId === this.props.projectId) ? 
@@ -172,7 +174,7 @@ class ProjectList extends React.Component {
     renderSectionTasks(sectionId){
         return(
             <ul>
-                sdgnsdg
+                {/* sdgnsdg */}
             </ul>
         )
     }
@@ -208,6 +210,7 @@ class ProjectList extends React.Component {
                                         suppressContentEditableWarning={true}>
                                     {this.props.sections[section.id] ? this.props.sections[section.id].title : ""}
                                 </span>
+                                <i className="fa-solid fa-trash-can"></i>
                             </li>
                             {Object.values(this.props.tasks).map((task)=>(
                                 (task.ownerType === "Section" && task.ownerId === section.id) ? 
