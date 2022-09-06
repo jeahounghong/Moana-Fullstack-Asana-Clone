@@ -210,7 +210,11 @@ class ProjectList extends React.Component {
                                         suppressContentEditableWarning={true}>
                                     {this.props.sections[section.id] ? this.props.sections[section.id].title : ""}
                                 </span>
-                                <i className="fa-solid fa-trash-can"></i>
+                                <i className="fa-solid fa-trash-can"
+                                    onClick={() => {
+                                        this.props.deleteSection(section.id)
+                                    }}
+                                ></i>
                             </li>
                             {Object.values(this.props.tasks).map((task)=>(
                                 (task.ownerType === "Section" && task.ownerId === section.id) ? 
