@@ -81,7 +81,7 @@ class Sidebar extends React.Component{
                     <div className="sidebar-profile-icons">
                         <a href="https://www.linkedin.com/in/david-jeahoung-hong-7ab00b134/"><i class="fa-brands fa-linkedin icon"></i></a>
                         <a href="https://github.com/jeahounghong"><i class="fa-brands fa-github icon"></i></a>
-                        <a href=""><i class="fa-brands fa-angellist icon"></i></a>
+                        <a href="https://angel.co/u/david-jeahoung-hong"><i class="fa-brands fa-angellist icon"></i></a>
                     </div>
                 </div>
             </div>

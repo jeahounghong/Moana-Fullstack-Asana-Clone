@@ -53,7 +53,7 @@ class MainComponent extends React.Component{
                 <div className="personal-links">
                     <a href="https://www.linkedin.com/in/david-jeahoung-hong-7ab00b134/"><i class="fa-brands fa-linkedin"></i></a>
                     <a href="https://github.com/jeahounghong"><i class="fa-brands fa-github"></i></a>
-                    <a href=""><i class="fa-brands fa-angellist"></i></a>
+                    <a href="https://angel.co/u/david-jeahoung-hong"><i class="fa-brands fa-angellist"></i></a>
                 </div>
             </footer>
             
