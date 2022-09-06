@@ -17,6 +17,9 @@ Moana is a full stack clone of the popular project management tool Asana. Asana 
 
 The splash page has general information about Moana and options to sign up, log in, or demo the application. 
 
+![Zooming into a state](/app/assets/images/splash.png)
+<p align="center">Moana splash page<p>
+
 ### When logged out
 
 Users will be redirected to the sign up page. They can choose to create an account or go back to home and log in/demo the app.
@@ -29,7 +32,7 @@ Users will land at the home page upon a successful sign in. The home page has an
 
 Everything begins with a team. Users will have the option to add teams in the sidebar. Upon the creation of a team, users can then add people to teams by clicking the "Add User" icon. The dropdown by the team name will allow users to edit team details or delete the team. The teams overview will be the main way to create new projects within a team.
 
-![Zooming into a state](/assets/images/teams.png)
+![Zooming into a state](/app/assets/images/teams.png)
 <p align="center">Team's overview page<p>
 
 ## Projects
@@ -45,27 +48,27 @@ Upon clicking the "New Project" icon in the teams overview page, the user will b
 - ### Board View
     - The board view is an implementation of multiple column React Beautiful Drag-And-Drop and displays tasks represented as cards in seection columns. The cards can be dragged and relocated to switch a task from one section to another. 
 
-![Zooming into a state](/assets/project_board.png)
+![Zooming into a state](/app/assets/images/project_board.png)
 <p align="center">Project's board page<p>
 
 - ### Overview
     - The overview page is analogous to the team overview page in that it allows users to add users specifically to the project, see the project tasks, and edit the description. 
 
-![Zooming into a state](/assets/projects.png)
+![Zooming into a state](/app/assets/images/projects.png)
 <p align="center">Project's overview page<p>
 
 ## Tasks
 
 Upon clicking a task on any of the views provided, the task sidebar will appear on the left. This display allows users to edit the task title, assign users within the project, as well as assign due dates. Tasks also have the option of adding subtasks, which have identical functionality. Soon, tasks will have the option of leaving comments, attaching files, and setting custom filters such as priority, topic, etc. 
 
-![Zooming into a state](/assets/task_show.png)
+![Zooming into a state](/app/assets/images/task_show.png)
 <p align="center">Task show modal<p>
 
 ## My Tasks
 
 The "My Tasks" sidebar icon takes the user to page where all of the tasks assigned to them can be found. The user is then able to make and persist changes to said projects on the page. 
 
-![Zooming into a state](/assets/my_yasks.png)
+![Zooming into a state](/app/assets/images/my_tasks.png)
 <p align="center">My Tasks Page<p>
 
 ## Future Features
