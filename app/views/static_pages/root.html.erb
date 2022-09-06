@@ -1,5 +1,5 @@
 <script type="text/javascript">
-    window.currentUser = <%= logged_in? ? render("api/users/user.json.jbuilder", user: current_user).html_safe : nil %>
+    window.currentUser = {<%= logged_in? ? render("api/users/user.json.jbuilder", user: current_user).html_safe : nil %>}
  
 </script>
 <div id="root">React is not working</div>
