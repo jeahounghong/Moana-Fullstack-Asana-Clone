@@ -29,7 +29,7 @@ class MainComponent extends React.Component{
                     From the small stuff to the big picture, Moana organizes work so teams know what to do, why it matters, and how to get it done.
                     </div>
                     <div className="main-buttons">
-                        <Link className="get-started" to="/login">Get Started</Link>
+                        <Link className="get-started" to="/signup">Get Started</Link>
                         <a className="demo" onClick={() => this.props.loginUser({username: "DemoDavid", password: "password"})}>Demo</a>
                     </div>
                 </div>
