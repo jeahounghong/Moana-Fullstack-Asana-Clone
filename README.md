@@ -39,7 +39,7 @@ Upon clicking the "New Project" icon in the teams overview page, the user will b
 - ### List View
     - The list view is the straightforward vertical organization of tasks. The first section will always be a To Do section dedicated towards tasks for the project. The user can add new sections by toggling the add section button and typing in a new section title. Upon pressing Enter, the section should now present itself within the list view. Users can edit or delete a task by clicking on the section title itself and either editing the title or deleting it entirely. 
 
-![Zooming into a state](/assets/images/project_list.png)
+![Zooming into a state](/app/assets/images/project_list.png)
 <p align="center">Project's list page<p>
 
 - ### Board View
