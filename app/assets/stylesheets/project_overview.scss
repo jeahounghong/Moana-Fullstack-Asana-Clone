@@ -236,3 +236,29 @@
     
 
 }
+
+.pro{
+    margin-right: 250px;
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    p{
+        margin-bottom: 30px;
+        font-weight: bold;
+        font-size: 20px;
+        background-color: #78A2CC;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: default;
+        color: white;
+    }
+    p:hover{
+        background-color: #85b6e6;
+        transition: 0.3s;
+    }
+    video{
+        height: 360px;
+    }
+}
