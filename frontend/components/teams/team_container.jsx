@@ -13,7 +13,8 @@ const mapStateToProps = (state, ownProps) => ({
     projects: state.entities.projects,
     currentUser: state.session.id,
     teamId: ownProps.match.params.team_id,
-    users: state.entities.users
+    users: state.entities.users,
+    path: ownProps.location.pathname,
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -52,10 +53,50 @@ class Team extends React.Component{
         )
     }
 
+    upgradeToPro(){
+        return <div className="pro right-most">
+            <a href="https://www.linkedin.com/in/david-jeahoung-hong-7ab00b134/">
+                <p>Upgrade to Pro!</p>
+            </a>
+            <video autoPlay muted loop>
+                <source src="https://d3ki9tyy5l5ruj.cloudfront.net/obj/949edc4d27496bb98db9a9a584adf44437613b90/dashboard_empty_state.mp4"
+                type="video/mp4" autoplay/>
+            </video>
+            {/* <video src="https://d3ki9tyy5l5ruj.cloudfront.net/obj/949edc4d27496bb98db9a9a584adf44437613b90/dashboard_empty_state.mp4" class="EmptyStateVideoCta-media EmptyStateVideoCta-media--small" loop="" autoplay=""></video> */}
+        </div>
+    }
+
+    upgradeToPro(){
+        return <div className="pro right-most">
+            <a href="https://www.linkedin.com/in/david-jeahoung-hong-7ab00b134/">
+                <p>Upgrade to Pro!</p>
+            </a>
+            <video autoPlay muted loop>
+                <source src="https://d3ki9tyy5l5ruj.cloudfront.net/obj/949edc4d27496bb98db9a9a584adf44437613b90/dashboard_empty_state.mp4"
+                type="video/mp4" autoplay/>
+            </video>
+            {/* <video src="https://d3ki9tyy5l5ruj.cloudfront.net/obj/949edc4d27496bb98db9a9a584adf44437613b90/dashboard_empty_state.mp4" class="EmptyStateVideoCta-media EmptyStateVideoCta-media--small" loop="" autoplay=""></video> */}
+        </div>
+    }
+
+    renderTeam(path){
+        switch(path.substring(path.length-4,path.length)){
+            case "show":
+                return <TeamShow {...this.props}/>;
+            case "ages":
+                return this.upgradeToPro();
+            case "ndar":
+                return this.upgradeToPro();
+            default:
+                return null
+        }
+    }
+
     render(){return (
         <div className="team-page">
             {this.teamNavbar()}
-            <TeamShow {...this.props}/>
+            {this.renderTeam(this.props.path)}
+            {/* <TeamShow {...this.props}/> */}
         </div>
     )}
 }
