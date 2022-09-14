@@ -8,6 +8,7 @@ class Assignee extends React.Component {
             input: false,
             value: "",
             user: null,
+            deleted: false,
         }
         
         this.path = props.location.pathname.substring(0);
@@ -26,6 +27,7 @@ class Assignee extends React.Component {
     }
 
     taskUser(explicitUser){
+        debugger;
         if (explicitUser){
             return(<div className="profile-box task-show-open">
                     <div className="profile-circle task-show-open">
@@ -35,14 +37,18 @@ class Assignee extends React.Component {
                     <i className="fa-solid fa-circle-xmark task-show-open" onMouseDown={() => this.reassign(null)}></i>
             </div>)
         } else {
-            if (this.props.task && this.props.task.userId && this.props.users[this.props.task.userId]){
+            if (this.props.task && this.props.task.userId && this.props.users[this.props.task.userId] && !this.state.deleted){
                 const user = this.props.users[this.props.task.userId];
                 return (<div className="profile-box task-show-open">
                     <div className="profile-circle task-show-open">
                         {user.firstName[0] + user.lastName[0]}
                     </div>
                     <span className="task-show-open">{user.firstName + " " + user.lastName}</span>
-                    <i className="fa-solid fa-circle-xmark task-show-open" onMouseDown={() => this.reassign(null)}></i>
+                    <i className="fa-solid fa-circle-xmark task-show-open" 
+                        onMouseDown={(e) => {
+                            this.setState({deleted: true})
+                            this.reassign(null, e);
+                    }}></i>
                 </div>)
             } else {
                 return (<div className="profile-box task-show-open">
@@ -63,22 +69,25 @@ class Assignee extends React.Component {
     }
 
     toggleInput(e){
-        console.log(e.currentTarget)
+        // debugger;
+        // console.log(e.currentTarget)
+        // console.log(e.target.className)
         this.path = this.props.location.pathname.substring(10);
         let idx = this.path.indexOf("/")
         this.path = parseInt(this.path.substring(0,idx))
-        this.setState({input: !this.state.input})
-        console.log(this.props)
-
-        setTimeout(() => {
-            let input = document.getElementById("assignee-input")
-            if (input){
-                input.select();
-            }
-        }, 0)
+        // console.log(this.props)
+        if (e.target.className.indexOf("xmark") < 0){
+            this.setState({input: !this.state.input})
+            setTimeout(() => {
+                let input = document.getElementById("assignee-input")
+                if (input){
+                    input.select();
+                }
+            }, 0)
+        }
     }
 
-    reassign(user){
+    reassign(user, e){
         console.log("reassign")
 
         
@@ -94,15 +103,16 @@ class Assignee extends React.Component {
         currentTask.user_id = currentTask.user_id || (user ? user.id : user);
         delete currentTask.userId;
 
-        
-
         this.props.updateTask(currentTask)
 
+        // debugger;
+
         this.setState({value: ""})
+        // debugger;
         this.setState({user: user})
 
         if (user === null){
-            this.toggleInput()
+            this.toggleInput(e)
         }
 
     }
@@ -117,7 +127,12 @@ class Assignee extends React.Component {
             return(<div className="dropdown">
                 {validUsers.map((user) => (
                     (user.firstName + " " + user.lastName).substring(0,this.state.value.length) === this.state.value ?
-                    <div className="profile-box task-show-open" onMouseDown={(e) => this.reassign(user)}>
+                    <div className="profile-box task-show-open" 
+                        onMouseDown={(e) => {
+                            this.reassign(user);
+                            this.setState({deleted: false})
+                        }
+                    }>
                         <div className="profile-circle task-show-open">
                             {user.firstName[0] + user.lastName[0]}
                         </div>
