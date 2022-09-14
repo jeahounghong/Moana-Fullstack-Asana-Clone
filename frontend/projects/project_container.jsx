@@ -164,8 +164,9 @@ class Project extends React.Component {
 
     upgradeToPro(){
         return <div className="pro right-most">
-            <p>Upgrade to Pro!</p>
-            
+            <a href="https://www.linkedin.com/in/david-jeahoung-hong-7ab00b134/">
+                <p>Upgrade to Pro!</p>
+            </a>
             <video autoPlay muted loop>
                 <source src="https://d3ki9tyy5l5ruj.cloudfront.net/obj/949edc4d27496bb98db9a9a584adf44437613b90/dashboard_empty_state.mp4"
                 type="video/mp4" autoplay/>
