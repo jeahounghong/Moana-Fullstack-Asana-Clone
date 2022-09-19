@@ -7,6 +7,7 @@ class AppNavbar extends React.Component{
         super(props);
         this.state = {
             titleDropdownShow: false,
+            profileDropdownShow: false,
         }
         this.project = -1;
         this.team = -1;
@@ -17,10 +18,17 @@ class AppNavbar extends React.Component{
         this.toggleSidebar = this.toggleSidebar.bind(this);
         this.toggleTitleDropdown = this.toggleTitleDropdown.bind(this);
         this.dropdown = this.dropdown.bind(this);
+        this.profileDropdown = this.profileDropdown.bind(this);
         document.addEventListener("click", (e) => {
             if (this.state.titleDropdownShow){
                 if (e.target.className.indexOf("keep-dropdown-open") < 0){
                     this.toggleTitleDropdown()
+                }
+            }
+
+            if (this.state.profileDropdownShow){
+                if (e.target.className.indexOf("profile-dropdown-show") < 0){
+                    this.setState({profileDropdownShow: false})
                 }
             }
         })
@@ -103,6 +111,22 @@ class AppNavbar extends React.Component{
         }
     }
 
+    profileDropdown(){
+        if (this.props.currentUser){
+            return <div className="backdrop">
+                <div>
+                    Logged in as: 
+                </div>
+                <div className="username-bold">
+                    {this.props.currentUser.username}
+                </div>
+                <div className="logout-button profile-dropdown-show" onClick={this.props.logoutUser}>
+                    Log Out
+                </div>
+            </div>
+        }
+    }
+
     toggleTitleDropdown(){
         console.log("toggle title dropdow")
         this.setState({titleDropdownShow: !this.state.titleDropdownShow});
@@ -132,10 +156,10 @@ class AppNavbar extends React.Component{
             </div>
 
             <div className="app-navbar-right">
-                <div className="add-icon">
+                {/* <div className="add-icon">
                     <i className="fa-solid fa-plus"></i>
-                </div>
-                <div className="circle-name">
+                </div> */}
+                <div className="circle-name profile-dropdown-show" onClick={() => this.setState({profileDropdownShow: !this.state.profileDropdownShow})}>
                     {this.props.currentUser ? this.props.currentUser.firstName[0].toUpperCase() + this.props.currentUser.lastName[0].toUpperCase() : ""}
                 </div>
                 {/* <p>Welcome, {this.props.currentUser.firstName[0]}{this.props.currentUser.lastName[0]}</p> */}
@@ -145,6 +169,12 @@ class AppNavbar extends React.Component{
             <div className="drop-down-menu-container">
                     {this.state.titleDropdownShow ? this.dropdown() : ""}
             </div>
+
+            <div className="profile-dropdown profile-dropdown-show">
+                {this.state.profileDropdownShow ? this.profileDropdown() : ""}
+            </div>
+
+
         </div>
     )}
 }

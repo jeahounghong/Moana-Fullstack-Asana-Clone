@@ -25,6 +25,12 @@
             color: white;
         }
 
+        .circle-name:hover{
+            background-color: #91c4f7;
+            transition: 0.3s;
+            cursor: default;
+        }
+
         .add-icon{
             display: flex;
             align-items: center;
@@ -136,4 +142,42 @@
     }
 
 
+}
+
+.profile-dropdown{
+    // background-color: red;
+    position: absolute;
+    right: 10px;
+    top: 60px;
+    width: 200px;
+    // padding: 10px;
+
+    .backdrop{
+        padding: 5px;
+        background-color: white;
+        border-radius: 5px;
+        // border: solid 1px gray;
+        box-shadow: 0px 2px 5px rgba($color: #000000, $alpha: 0.5);
+    }
+
+    .username-bold{
+        font-weight: bold;
+        font-size: 20px;
+        margin-top: 5px;
+    }
+
+
+    .logout-button{
+        margin-top: 5px;
+        background-color: #78A2CC;
+        border-radius: 5px;
+        padding: 10px;
+        text-align: center; 
+
+    }
+
+    .logout-button:hover{
+        background-color: #91c4f7;
+        transform: 0.3s;
+    }
 }
