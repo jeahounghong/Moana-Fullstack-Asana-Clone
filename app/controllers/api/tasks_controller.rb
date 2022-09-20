@@ -20,8 +20,10 @@ class Api::TasksController < ApplicationController
     end
 
     def show
+        puts "SHOWING"
         @task = Task.find_by(id: params[:id])
         if @task 
+            # render json: @task
             render :show
         else
             render json: ["Task not found"], status: 404
